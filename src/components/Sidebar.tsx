@@ -26,6 +26,12 @@ const navItems: NavItem[] = [
     match: (p) => p === '/practice' || p.startsWith('/review') || p.startsWith('/drill'),
   },
   {
+    icon: '📅',
+    label: 'Plan',
+    path: '/plan',
+    match: (p) => p === '/plan',
+  },
+  {
     icon: '📜',
     label: 'Scroll',
     path: '/scroll',
@@ -46,6 +52,8 @@ export default function Sidebar() {
 
   const dueCount = state.reviewQueue.length
   const user = state.user
+  const plan = state.weeklyPlan
+  const todayPlan = plan?.days.find((d) => d.isToday && !d.isRest)
 
   return (
     <aside
@@ -193,11 +201,10 @@ export default function Sidebar() {
         })}
       </nav>
 
-      {/* Review due section — shown above user profile when words are due */}
+      {/* Review due section */}
       {dueCount > 0 && (
         <div style={{ padding: '0 12px', marginBottom: '8px' }}>
           {dueCount < 4 ? (
-            /* Compact row for 1–3 due */
             <button
               onClick={() => navigate('/review')}
               style={{
@@ -241,7 +248,6 @@ export default function Sidebar() {
               </span>
             </button>
           ) : (
-            /* Card for 4+ due */
             <div
               style={{
                 background: 'rgba(201,168,76,0.08)',
@@ -313,6 +319,68 @@ export default function Sidebar() {
               </button>
             </div>
           )}
+        </div>
+      )}
+
+      {/* Today's plan preview (shown above user profile when plan exists) */}
+      {todayPlan && todayPlan.scene && todayPlan.grammarFocus && (
+        <div style={{ padding: '0 12px 12px' }}>
+          <button
+            onClick={() => navigate('/plan')}
+            style={{
+              width: '100%',
+              background: 'var(--lapis-deep)',
+              border: '1px solid rgba(91,143,214,0.2)',
+              borderRadius: '12px',
+              padding: '10px 12px',
+              cursor: 'pointer',
+              textAlign: 'left',
+            }}
+          >
+            <div
+              style={{
+                fontFamily: 'Cinzel, serif',
+                fontSize: '7px',
+                textTransform: 'uppercase',
+                letterSpacing: '0.14em',
+                color: 'var(--lapis-bright)',
+                opacity: 0.7,
+                marginBottom: '6px',
+              }}
+            >
+              Today's Plan
+            </div>
+            <div
+              style={{
+                display: 'flex',
+                alignItems: 'center',
+                gap: '8px',
+                marginBottom: '4px',
+              }}
+            >
+              <span style={{ fontSize: '16px' }}>{todayPlan.scene.emoji}</span>
+              <span
+                style={{
+                  fontFamily: 'Cinzel, serif',
+                  fontSize: '11px',
+                  fontWeight: 600,
+                  color: 'var(--moon)',
+                }}
+              >
+                {todayPlan.scene.title}
+              </span>
+            </div>
+            <div
+              style={{
+                fontFamily: 'Crimson Pro, serif',
+                fontSize: '10px',
+                fontStyle: 'italic',
+                color: 'var(--moon-dim)',
+              }}
+            >
+              {todayPlan.estimatedMinutes} min · {todayPlan.grammarFocus.category}
+            </div>
+          </button>
         </div>
       )}
 

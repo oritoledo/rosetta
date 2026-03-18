@@ -9,6 +9,7 @@ import { VocabWord, seedVocabulary } from '../data/vocabulary'
 import { GrammarError } from '../data/errors'
 import { mockErrors } from '../data/mockErrors'
 import { getDueWords } from '../hooks/useSM2'
+import type { WeeklyPlan } from '../types/plan'
 
 // ─── Types ────────────────────────────────────────────────────────────────────
 
@@ -39,6 +40,10 @@ export interface AppState {
   visitedTabs: Record<string, string[]>       // sceneId → tab ids visited
   briefCompleted: Record<string, boolean>     // sceneId → completed
   selectedPersona: string                     // persona id, default 'sofia'
+  weeklyPlan: WeeklyPlan | null
+  planGeneratedAt: number | null
+  planRegenerating: boolean
+  planSeed: number
 }
 
 type Action =
@@ -53,6 +58,9 @@ type Action =
   | { type: 'MARK_TAB_VISITED'; payload: { sceneId: string; tabId: string } }
   | { type: 'COMPLETE_BRIEF'; payload: string }             // sceneId
   | { type: 'SET_PERSONA'; payload: string }                // persona id
+  | { type: 'SET_WEEKLY_PLAN'; payload: { plan: WeeklyPlan; seed: number } }
+  | { type: 'SET_PLAN_REGENERATING'; payload: boolean }
+  | { type: 'MARK_DAY_COMPLETED'; payload: string }         // date ISO string
 
 // ─── Helpers ──────────────────────────────────────────────────────────────────
 
@@ -101,7 +109,6 @@ function reducer(state: AppState, action: Action): AppState {
       }
 
     case 'ADD_TO_CHEAT_SHEET': {
-      // Avoid duplicates
       const alreadyIn = state.cheatSheet.some((i) => i.id === action.payload.id)
       if (alreadyIn) return state
       return { ...state, cheatSheet: [...state.cheatSheet, action.payload] }
@@ -135,6 +142,32 @@ function reducer(state: AppState, action: Action): AppState {
     case 'SET_PERSONA':
       return { ...state, selectedPersona: action.payload }
 
+    case 'SET_WEEKLY_PLAN':
+      return {
+        ...state,
+        weeklyPlan: action.payload.plan,
+        planGeneratedAt: Date.now(),
+        planSeed: action.payload.seed,
+        planRegenerating: false,
+      }
+
+    case 'SET_PLAN_REGENERATING':
+      return { ...state, planRegenerating: action.payload }
+
+    case 'MARK_DAY_COMPLETED': {
+      if (!state.weeklyPlan) return state
+      const targetDate = action.payload
+      const updatedDays = state.weeklyPlan.days.map((day) => {
+        const dayDate = day.date instanceof Date ? day.date : new Date(day.date)
+        const dayIso = dayDate.toISOString().slice(0, 10)
+        return dayIso === targetDate ? { ...day, isCompleted: true } : day
+      })
+      return {
+        ...state,
+        weeklyPlan: { ...state.weeklyPlan, days: updatedDays },
+      }
+    }
+
     default:
       return state
   }
@@ -151,6 +184,10 @@ const initialState: AppState = {
   visitedTabs: {},
   briefCompleted: {},
   selectedPersona: 'sofia',
+  weeklyPlan: null,
+  planGeneratedAt: null,
+  planRegenerating: false,
+  planSeed: Date.now(),
 }
 
 // ─── Context ──────────────────────────────────────────────────────────────────
@@ -176,6 +213,7 @@ export function StoreProvider({ children }: { children: ReactNode }) {
     const rawVisited    = localStorage.getItem('rosetta_visited_tabs')
     const rawBriefs     = localStorage.getItem('rosetta_brief_completed')
     const rawPersona    = localStorage.getItem('rosetta_persona')
+    const rawPlanSeed   = localStorage.getItem('rosetta_plan_seed')
 
     const partial: Partial<AppState> = {}
 
@@ -186,6 +224,7 @@ export function StoreProvider({ children }: { children: ReactNode }) {
     if (rawVisited)    { try { partial.visitedTabs = JSON.parse(rawVisited) }         catch { /* ignore */ } }
     if (rawBriefs)     { try { partial.briefCompleted = JSON.parse(rawBriefs) }       catch { /* ignore */ } }
     if (rawPersona)    { try { partial.selectedPersona = JSON.parse(rawPersona) }     catch { /* ignore */ } }
+    if (rawPlanSeed)   { try { partial.planSeed = JSON.parse(rawPlanSeed) }           catch { /* ignore */ } }
 
     if (Object.keys(partial).length > 0) {
       dispatch({ type: 'HYDRATE', payload: partial })
@@ -201,7 +240,17 @@ export function StoreProvider({ children }: { children: ReactNode }) {
     localStorage.setItem('rosetta_visited_tabs',    JSON.stringify(state.visitedTabs))
     localStorage.setItem('rosetta_brief_completed', JSON.stringify(state.briefCompleted))
     localStorage.setItem('rosetta_persona',         JSON.stringify(state.selectedPersona))
-  }, [state.user, state.vocabulary, state.errors, state.cheatSheet, state.visitedTabs, state.briefCompleted, state.selectedPersona])
+    localStorage.setItem('rosetta_plan_seed',       JSON.stringify(state.planSeed))
+  }, [
+    state.user,
+    state.vocabulary,
+    state.errors,
+    state.cheatSheet,
+    state.visitedTabs,
+    state.briefCompleted,
+    state.selectedPersona,
+    state.planSeed,
+  ])
 
   return (
     <StoreContext.Provider value={{ state, dispatch }}>

@@ -3,6 +3,7 @@ import { useNavigate } from 'react-router-dom'
 import SectionLabel from '../components/SectionLabel'
 import SceneCard from '../components/SceneCard'
 import StatCard from '../components/StatCard'
+import WeeklyPlanWidget from '../components/WeeklyPlanWidget'
 import { sceneList } from '../data/scenes'
 import { useStore } from '../store/userStore'
 import { getPersonaById } from '../data/personas'
@@ -285,6 +286,11 @@ export default function HomeScreen() {
               Resume Scene →
             </button>
           </div>
+
+          {/* WEEKLY PLAN WIDGET */}
+          {state.weeklyPlan && (
+            <WeeklyPlanWidget plan={state.weeklyPlan} />
+          )}
 
           {/* SCENES SECTION */}
           <SectionLabel>Scenes for you today</SectionLabel>
