@@ -1,4 +1,5 @@
 import { ActivityItem } from '../data/mockProgress'
+import { getPersonaById } from '../data/personas'
 
 interface ActivityRowProps {
   item: ActivityItem
@@ -37,6 +38,7 @@ export default function ActivityRow({ item }: ActivityRowProps) {
   const badgeStyle = scoreBadgeStyle(item.score, item.status)
   const badgeText =
     item.status === 'in-progress' ? 'In Progress' : `${item.score}%`
+  const persona = getPersonaById(item.personaId)
 
   return (
     <div
@@ -51,22 +53,43 @@ export default function ActivityRow({ item }: ActivityRowProps) {
         gap: '16px',
       }}
     >
-      {/* Icon box */}
-      <div
-        style={{
-          width: '40px',
-          height: '40px',
-          background: '#f0ece4',
-          border: '1px solid rgba(139,115,85,0.2)',
-          borderRadius: '10px',
-          display: 'flex',
-          alignItems: 'center',
-          justifyContent: 'center',
-          fontSize: '18px',
-          flexShrink: 0,
-        }}
-      >
-        {item.emoji}
+      {/* Icon box + persona avatar dot */}
+      <div style={{ position: 'relative', flexShrink: 0 }}>
+        <div
+          style={{
+            width: '40px',
+            height: '40px',
+            background: '#f0ece4',
+            border: '1px solid rgba(139,115,85,0.2)',
+            borderRadius: '10px',
+            display: 'flex',
+            alignItems: 'center',
+            justifyContent: 'center',
+            fontSize: '18px',
+          }}
+        >
+          {item.emoji}
+        </div>
+        {/* Persona avatar dot */}
+        <div
+          title={`Practiced with ${persona.name}`}
+          style={{
+            position: 'absolute',
+            bottom: '-4px',
+            right: '-4px',
+            width: '18px',
+            height: '18px',
+            borderRadius: '50%',
+            background: persona.avatarBg,
+            border: `1.5px solid ${persona.avatarAccent}`,
+            display: 'flex',
+            alignItems: 'center',
+            justifyContent: 'center',
+            fontSize: '9px',
+          }}
+        >
+          {persona.emoji}
+        </div>
       </div>
 
       {/* Info */}

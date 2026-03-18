@@ -4,9 +4,13 @@ import SectionLabel from '../components/SectionLabel'
 import SceneCard from '../components/SceneCard'
 import StatCard from '../components/StatCard'
 import { sceneList } from '../data/scenes'
+import { useStore } from '../store/userStore'
+import { getPersonaById } from '../data/personas'
 
 export default function HomeScreen() {
   const navigate = useNavigate()
+  const { state } = useStore()
+  const persona = getPersonaById(state.selectedPersona)
 
   return (
     <motion.div
@@ -173,22 +177,24 @@ export default function HomeScreen() {
               marginBottom: '32px',
             }}
           >
-            {/* Icon box */}
+            {/* Persona avatar */}
             <div
+              title={`Currently practicing with ${persona.name} — change in scene settings`}
               style={{
                 width: '56px',
                 height: '56px',
-                background: 'rgba(232,238,245,0.08)',
-                border: '1px solid rgba(232,238,245,0.1)',
+                background: persona.avatarBg,
+                border: `2px solid ${persona.avatarAccent}`,
                 borderRadius: '14px',
                 display: 'flex',
                 alignItems: 'center',
                 justifyContent: 'center',
                 fontSize: '28px',
                 flexShrink: 0,
+                boxShadow: `0 0 16px ${persona.avatarAccent}40`,
               }}
             >
-              ☕
+              {persona.emoji}
             </div>
 
             {/* Info */}

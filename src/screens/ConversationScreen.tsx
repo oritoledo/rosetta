@@ -1,11 +1,13 @@
-import { useState } from 'react'
+import { useState, useEffect, useRef } from 'react'
 import { motion, AnimatePresence } from 'framer-motion'
 import { useNavigate, useParams } from 'react-router-dom'
 import ChatBubble from '../components/ChatBubble'
-import { mockConversation } from '../data/mockConversation'
+import { ChatMessage } from '../data/mockConversation'
 import { scenes } from '../data/scenes'
 import { useStore } from '../store/userStore'
 import { CheatSheetItemType } from '../store/userStore'
+import { useSpeechRecognition, useTTS } from '../hooks/useSpeech'
+import { getPersonaById, languageToLocale } from '../data/personas'
 
 const grammarTips = [
   {
@@ -35,23 +37,72 @@ const typeLabels: Record<CheatSheetItemType, string> = {
   pronunciation: 'Pronunciation',
 }
 
+// Converts persona conversation messages to ChatMessage format
+function personaToChat(
+  messages: { role: 'ai' | 'user'; text: string; translation?: string }[],
+): ChatMessage[] {
+  return messages.map((m, i) => ({
+    id: i + 1,
+    role: m.role,
+    text: m.text,
+    translation: m.translation,
+  }))
+}
+
 export default function ConversationScreen() {
   const navigate = useNavigate()
   const { id } = useParams<{ id: string }>()
   const scene = (id && scenes[id]) ? scenes[id] : scenes.cafe
-  const { state } = useStore()
-  const [inputValue, setInputValue] = useState('')
-  const [isRecording, setIsRecording] = useState(false)
-  const [cheatSheetOpen, setCheatSheetOpen] = useState(false)
+  const { state, dispatch } = useStore()
 
+  // ── Persona ────────────────────────────────────────────────────────────────
+  const persona = getPersonaById(state.selectedPersona)
+  const sceneKey = scene.id as keyof typeof persona.conversation
+  const personaMessages = persona.conversation[sceneKey] ?? persona.conversation.cafe
+  const initialMessages = personaToChat(personaMessages)
+  const ttsLang = persona.ttsLang ?? languageToLocale(scene.language)
+
+  // ── State ──────────────────────────────────────────────────────────────────
+  const [inputValue, setInputValue] = useState('')
+  const [cheatSheetOpen, setCheatSheetOpen] = useState(false)
+  const [bannerDismissed, setBannerDismissed] = useState(() =>
+    sessionStorage.getItem('rosetta_mic_banner_dismissed') === '1',
+  )
+  const inputRef = useRef<HTMLInputElement>(null)
+
+  // ── Speech Recognition ────────────────────────────────────────────────────
+  const speech = useSpeechRecognition(ttsLang)
+
+  // When transcript updates, put it in the input field
+  useEffect(() => {
+    if (speech.transcript) {
+      setInputValue(speech.transcript)
+    }
+  }, [speech.transcript])
+
+  // When listening stops with a non-empty transcript, auto-focus input
+  useEffect(() => {
+    if (!speech.isListening && speech.transcript) {
+      inputRef.current?.focus()
+    }
+  }, [speech.isListening])
+
+  // ── TTS ───────────────────────────────────────────────────────────────────
+  const tts = useTTS()
+
+  // ── Cheat sheet ───────────────────────────────────────────────────────────
   const sceneCheatSheet = state.cheatSheet.filter((i) => i.sceneId === scene.id)
   const allCheatSheet = state.cheatSheet
 
+  // ── Input ─────────────────────────────────────────────────────────────────
   const handleKeyDown = (e: React.KeyboardEvent<HTMLInputElement>) => {
     if (e.key === 'Enter' && inputValue.trim()) {
       setInputValue('')
     }
   }
+
+  // ── Suggested prompt (next user message from persona script) ───────────────
+  const suggestedPrompt = personaMessages.find((m) => m.role === 'user')
 
   return (
     <motion.div
@@ -79,6 +130,56 @@ export default function ConversationScreen() {
             overflow: 'hidden',
           }}
         >
+          {/* Browser compat banner */}
+          <AnimatePresence>
+            {!speech.isSupported && !bannerDismissed && (
+              <motion.div
+                initial={{ height: 0, opacity: 0 }}
+                animate={{ height: 'auto', opacity: 1 }}
+                exit={{ height: 0, opacity: 0 }}
+                transition={{ duration: 0.2 }}
+                style={{
+                  background: 'rgba(201,168,76,0.1)',
+                  borderBottom: '1px solid rgba(201,168,76,0.2)',
+                  padding: '10px 14px',
+                  display: 'flex',
+                  alignItems: 'center',
+                  gap: '10px',
+                  flexShrink: 0,
+                }}
+              >
+                <span
+                  style={{
+                    fontFamily: 'Crimson Pro, serif',
+                    fontSize: '12px',
+                    fontStyle: 'italic',
+                    color: 'var(--moon-dim)',
+                    flex: 1,
+                  }}
+                >
+                  Voice input works best in Chrome or Edge. You can still type your responses.
+                </span>
+                <button
+                  onClick={() => {
+                    setBannerDismissed(true)
+                    sessionStorage.setItem('rosetta_mic_banner_dismissed', '1')
+                  }}
+                  style={{
+                    background: 'none',
+                    border: 'none',
+                    cursor: 'pointer',
+                    color: 'var(--muted)',
+                    fontSize: '16px',
+                    padding: '0 4px',
+                    flexShrink: 0,
+                  }}
+                >
+                  ×
+                </button>
+              </motion.div>
+            )}
+          </AnimatePresence>
+
           {/* Chat header */}
           <div
             style={{
@@ -97,15 +198,15 @@ export default function ConversationScreen() {
                   width: '44px',
                   height: '44px',
                   borderRadius: '50%',
-                  background: 'var(--lapis-deep)',
-                  border: '1.5px solid var(--lapis)',
+                  background: persona.avatarBg,
+                  border: `1.5px solid ${persona.avatarAccent}`,
                   display: 'flex',
                   alignItems: 'center',
                   justifyContent: 'center',
                   fontSize: '22px',
                 }}
               >
-                {scene.guide.emoji}
+                {persona.emoji}
               </div>
               {/* Online dot */}
               <div
@@ -132,7 +233,7 @@ export default function ConversationScreen() {
                   marginBottom: '2px',
                 }}
               >
-                {scene.guide.name}
+                {persona.name} · {persona.role}
               </div>
               <div
                 style={{
@@ -215,8 +316,13 @@ export default function ConversationScreen() {
               gap: '14px',
             }}
           >
-            {mockConversation.map((msg) => (
-              <ChatBubble key={msg.id} message={msg} />
+            {initialMessages.map((msg) => (
+              <ChatBubble
+                key={msg.id}
+                message={msg}
+                tts={msg.role === 'ai' ? tts : undefined}
+                ttsLang={ttsLang}
+              />
             ))}
           </div>
 
@@ -228,40 +334,108 @@ export default function ConversationScreen() {
               flexShrink: 0,
             }}
           >
+            {/* Mic error pill */}
+            <AnimatePresence>
+              {speech.error && (
+                <motion.div
+                  initial={{ opacity: 0, y: 4 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  exit={{ opacity: 0, y: 4 }}
+                  style={{
+                    marginBottom: '8px',
+                    display: 'inline-block',
+                    background: 'rgba(232,80,60,0.08)',
+                    border: '1px solid rgba(232,80,60,0.2)',
+                    borderRadius: '20px',
+                    padding: '4px 12px',
+                  }}
+                >
+                  <span
+                    style={{
+                      fontFamily: 'Cinzel, serif',
+                      fontSize: '9px',
+                      textTransform: 'uppercase',
+                      letterSpacing: '0.1em',
+                      color: '#e8a090',
+                    }}
+                  >
+                    Mic not available — type instead
+                  </span>
+                </motion.div>
+              )}
+            </AnimatePresence>
+
             <div
               style={{
                 display: 'flex',
                 gap: '12px',
                 alignItems: 'center',
+                position: 'relative',
               }}
             >
-              {/* Mic button */}
-              <button
-                onClick={() => setIsRecording((r) => !r)}
-                className={isRecording ? 'mic-recording' : ''}
-                style={{
-                  width: '52px',
-                  height: '52px',
-                  borderRadius: '50%',
-                  background: isRecording ? '#c04030' : 'var(--lapis)',
-                  border: `1px solid ${isRecording ? 'rgba(192,64,48,0.5)' : 'rgba(91,143,214,0.4)'}`,
-                  boxShadow: isRecording
-                    ? '0 0 24px rgba(192,64,48,0.5)'
-                    : '0 0 24px rgba(42,82,152,0.4)',
-                  display: 'flex',
-                  alignItems: 'center',
-                  justifyContent: 'center',
-                  fontSize: '20px',
-                  cursor: 'pointer',
-                  flexShrink: 0,
-                  transition: 'background 200ms ease',
-                }}
-              >
-                🎙
-              </button>
+              {/* Mic button with pulse ring */}
+              <div style={{ position: 'relative', flexShrink: 0 }}>
+                {/* Pulse ring when listening */}
+                <AnimatePresence>
+                  {speech.isListening && (
+                    <motion.div
+                      key="pulse"
+                      initial={{ scale: 1, opacity: 0.6 }}
+                      animate={{ scale: 1.6, opacity: 0 }}
+                      exit={{ opacity: 0 }}
+                      transition={{ duration: 1.2, repeat: Infinity, ease: 'easeOut' }}
+                      style={{
+                        position: 'absolute',
+                        inset: '-2px',
+                        borderRadius: '50%',
+                        border: '2px solid rgba(232,80,60,0.4)',
+                        pointerEvents: 'none',
+                      }}
+                    />
+                  )}
+                </AnimatePresence>
+
+                <button
+                  onClick={() => {
+                    if (speech.isListening) speech.stopListening()
+                    else speech.startListening()
+                  }}
+                  title={
+                    !speech.isSupported
+                      ? 'Voice input requires Chrome or Edge'
+                      : speech.isListening
+                      ? 'Stop listening'
+                      : 'Start voice input'
+                  }
+                  style={{
+                    width: '52px',
+                    height: '52px',
+                    borderRadius: '50%',
+                    background: speech.isListening
+                      ? 'rgba(232,80,60,0.8)'
+                      : 'var(--lapis)',
+                    border: `1px solid ${speech.isListening ? 'rgba(232,80,60,0.5)' : 'rgba(91,143,214,0.4)'}`,
+                    boxShadow: speech.isListening
+                      ? '0 0 24px rgba(232,80,60,0.4)'
+                      : '0 0 24px rgba(42,82,152,0.4)',
+                    display: 'flex',
+                    alignItems: 'center',
+                    justifyContent: 'center',
+                    fontSize: '20px',
+                    cursor: speech.isSupported ? 'pointer' : 'not-allowed',
+                    opacity: speech.isSupported ? 1 : 0.3,
+                    transition: 'background 200ms ease, border-color 200ms ease',
+                    position: 'relative',
+                    zIndex: 1,
+                  }}
+                >
+                  {speech.isListening ? '⏹' : '🎙️'}
+                </button>
+              </div>
 
               {/* Text input */}
               <input
+                ref={inputRef}
                 type="text"
                 value={inputValue}
                 onChange={(e) => setInputValue(e.target.value)}
@@ -305,18 +479,47 @@ export default function ConversationScreen() {
               </button>
             </div>
 
-            <div
-              style={{
-                fontFamily: 'Crimson Pro, serif',
-                fontSize: '10px',
-                fontStyle: 'italic',
-                color: 'var(--muted)',
-                marginTop: '8px',
-                paddingLeft: '64px',
-              }}
-            >
-              Press mic to speak or type your reply
-            </div>
+            {/* Listening status / suggested prompt */}
+            {speech.isListening ? (
+              <div
+                style={{
+                  fontFamily: 'Crimson Pro, serif',
+                  fontSize: '10px',
+                  fontStyle: 'italic',
+                  color: 'rgba(232,80,60,0.8)',
+                  marginTop: '8px',
+                  paddingLeft: '64px',
+                }}
+              >
+                Listening…
+              </div>
+            ) : suggestedPrompt && !inputValue ? (
+              <div
+                style={{
+                  fontFamily: 'Crimson Pro, serif',
+                  fontSize: '10px',
+                  fontStyle: 'italic',
+                  color: 'var(--muted)',
+                  marginTop: '8px',
+                  paddingLeft: '64px',
+                }}
+              >
+                {persona.name} might expect: "{suggestedPrompt.text}"
+              </div>
+            ) : (
+              <div
+                style={{
+                  fontFamily: 'Crimson Pro, serif',
+                  fontSize: '10px',
+                  fontStyle: 'italic',
+                  color: 'var(--muted)',
+                  marginTop: '8px',
+                  paddingLeft: '64px',
+                }}
+              >
+                Press mic to speak or type your reply
+              </div>
+            )}
           </div>
         </div>
 
@@ -569,6 +772,77 @@ export default function ConversationScreen() {
                   borderRadius: '2px',
                 }}
               />
+            </div>
+          </div>
+
+          {/* Guide info */}
+          <div style={{ marginTop: '20px' }}>
+            <div
+              style={{
+                fontFamily: 'Cinzel, serif',
+                fontSize: '9px',
+                textTransform: 'uppercase',
+                letterSpacing: '0.18em',
+                color: 'var(--lapis-bright)',
+                opacity: 0.7,
+                marginBottom: '10px',
+              }}
+            >
+              Your guide
+            </div>
+            <div
+              style={{
+                background: 'var(--basalt-raised)',
+                border: '1px solid rgba(232,238,245,0.07)',
+                borderRadius: '12px',
+                padding: '12px',
+                display: 'flex',
+                gap: '10px',
+                alignItems: 'center',
+              }}
+            >
+              <div
+                style={{
+                  width: '36px',
+                  height: '36px',
+                  borderRadius: '50%',
+                  background: persona.avatarBg,
+                  border: `1.5px solid ${persona.avatarAccent}`,
+                  display: 'flex',
+                  alignItems: 'center',
+                  justifyContent: 'center',
+                  fontSize: '18px',
+                  flexShrink: 0,
+                }}
+              >
+                {persona.emoji}
+              </div>
+              <div style={{ flex: 1, minWidth: 0 }}>
+                <div
+                  style={{
+                    fontFamily: 'Cinzel, serif',
+                    fontSize: '12px',
+                    fontWeight: 600,
+                    color: 'var(--moon)',
+                    marginBottom: '2px',
+                  }}
+                >
+                  {persona.name}
+                </div>
+                <div
+                  style={{
+                    fontFamily: 'Crimson Pro, serif',
+                    fontSize: '11px',
+                    fontStyle: 'italic',
+                    color: 'var(--muted)',
+                    overflow: 'hidden',
+                    textOverflow: 'ellipsis',
+                    whiteSpace: 'nowrap',
+                  }}
+                >
+                  {persona.style.slice(0, 50)}…
+                </div>
+              </div>
             </div>
           </div>
 

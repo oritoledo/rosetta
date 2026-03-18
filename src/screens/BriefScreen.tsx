@@ -4,6 +4,8 @@ import { useNavigate, useParams } from 'react-router-dom'
 import { scenes, Scene } from '../data/scenes'
 import { briefs, VocabItem, GrammarItem, PronunciationItem, GrammarSlot, SceneBrief } from '../data/briefs'
 import { useStore, CheatSheetItem } from '../store/userStore'
+import { useTTS, TTSHook } from '../hooks/useSpeech'
+import { getPersonaById, languageToLocale } from '../data/personas'
 
 // ─── Constants ────────────────────────────────────────────────────────────────
 
@@ -88,13 +90,25 @@ function Waveform({ seed, animated }: { seed: string; animated: boolean }) {
 
 // ── Vocab Card ──
 
-function VocabCard({ item, onAdd, isInSheet }: {
+function VocabCard({ item, onAdd, isInSheet, tts, lang }: {
   item: VocabItem
   onAdd: (item: VocabItem) => void
   isInSheet: boolean
+  tts: TTSHook
+  lang: string
 }) {
-  const [active, setActive] = useState(false)
+  const vocabId = `vocab-${item.id}`
+  const isPlaying = tts.activeSpeakingId === vocabId
   const diff = DIFFICULTY_COLORS[item.difficulty]
+
+  function handleAudio(e: React.MouseEvent) {
+    e.stopPropagation()
+    if (isPlaying) {
+      tts.stop()
+    } else {
+      tts.speak(item.word, lang, { id: vocabId })
+    }
+  }
 
   return (
     <motion.div
@@ -103,11 +117,15 @@ function VocabCard({ item, onAdd, isInSheet }: {
       onClick={() => onAdd(item)}
       style={{
         background: 'var(--basalt-mid)',
-        border: `1px solid ${active ? 'rgba(91,143,214,0.4)' : isInSheet ? 'rgba(91,143,214,0.25)' : 'rgba(232,238,245,0.07)'}`,
+        border: `1px solid ${isPlaying ? 'rgba(91,143,214,0.4)' : isInSheet ? 'rgba(91,143,214,0.25)' : 'rgba(232,238,245,0.07)'}`,
         borderRadius: 16,
         padding: 20,
         cursor: 'pointer',
-        boxShadow: active ? '0 0 20px rgba(42,82,152,0.2)' : isInSheet ? '0 0 12px rgba(42,82,152,0.1)' : 'none',
+        boxShadow: isPlaying
+          ? '0 0 12px rgba(42,82,152,0.2)'
+          : isInSheet
+          ? '0 0 12px rgba(42,82,152,0.1)'
+          : 'none',
         transition: 'border-color 200ms, box-shadow 200ms',
       }}
     >
@@ -117,36 +135,36 @@ function VocabCard({ item, onAdd, isInSheet }: {
           {item.word}
         </div>
         <button
-          onClick={(e) => { e.stopPropagation(); setActive((v) => !v) }}
+          onClick={handleAudio}
           style={{
             width: 32, height: 32, borderRadius: '50%',
-            background: 'transparent',
+            background: isPlaying ? 'var(--lapis)' : 'transparent',
             border: '1px solid rgba(232,238,245,0.1)',
             cursor: 'pointer', fontSize: 14,
-            color: active ? 'var(--lapis-bright)' : 'var(--moon-dim)',
+            color: isPlaying ? 'var(--moon-bright)' : 'var(--moon-dim)',
             display: 'flex', alignItems: 'center', justifyContent: 'center',
             flexShrink: 0,
-            transition: 'color 150ms',
+            transition: 'background 150ms, color 150ms',
           }}
         >
-          🔊
+          {isPlaying ? '⏹' : '🔊'}
         </button>
       </div>
 
       {/* Phonetic */}
       <div style={{
         fontFamily: 'Crimson Pro, serif', fontSize: 13, fontStyle: 'italic',
-        color: active ? 'var(--lapis-bright)' : 'var(--muted)',
+        color: isPlaying ? 'var(--lapis-bright)' : 'var(--muted)',
         marginTop: 2,
-        transform: active ? 'scale(1.02)' : 'scale(1)',
+        transform: isPlaying ? 'scale(1.02)' : 'scale(1)',
         transformOrigin: 'left center',
         transition: 'color 150ms, transform 150ms',
       }}>
         {item.phonetic}
       </div>
 
-      {/* Waveform when active */}
-      {active && (
+      {/* Waveform when playing */}
+      {isPlaying && (
         <motion.div
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
@@ -290,19 +308,27 @@ function GrammarCard({ item, onAdd, isInSheet }: {
 
 // ── Pronunciation Card ──
 
-function PronunciationCard({ item, onAdd, isInSheet }: {
+function PronunciationCard({ item, onAdd, isInSheet, tts, lang }: {
   item: PronunciationItem
   onAdd: (item: PronunciationItem) => void
   isInSheet: boolean
+  tts: TTSHook
+  lang: string
 }) {
-  const [animating, setAnimating] = useState(false)
+  const [speedMode, setSpeedMode] = useState<'slow' | 'normal'>('slow')
+  const pronId = `pron-${item.id}`
+  const isPlaying = tts.activeSpeakingId === pronId
   const bars = deterministicBars(item.id, 32, 6, 40)
   const diff = DIFFICULTY_COLORS[item.difficulty]
 
   function handleAudio(e: React.MouseEvent) {
     e.stopPropagation()
-    setAnimating(true)
-    setTimeout(() => setAnimating(false), 2000)
+    if (isPlaying) {
+      tts.stop()
+    } else {
+      const rate = speedMode === 'slow' ? 0.6 : 0.85
+      tts.speak(item.word, lang, { id: pronId, rate })
+    }
   }
 
   return (
@@ -325,12 +351,15 @@ function PronunciationCard({ item, onAdd, isInSheet }: {
             onClick={handleAudio}
             style={{
               width: 32, height: 32, borderRadius: '50%',
-              background: 'transparent', border: '1px solid rgba(232,238,245,0.1)',
-              cursor: 'pointer', fontSize: 14, color: 'var(--moon-dim)',
+              background: isPlaying ? 'var(--lapis)' : 'transparent',
+              border: '1px solid rgba(232,238,245,0.1)',
+              cursor: 'pointer', fontSize: 14,
+              color: isPlaying ? 'var(--moon-bright)' : 'var(--moon-dim)',
               display: 'flex', alignItems: 'center', justifyContent: 'center',
+              transition: 'background 150ms, color 150ms',
             }}
           >
-            🔊
+            {isPlaying ? '⏹' : '🔊'}
           </button>
           <span style={{
             fontFamily: 'Cinzel, serif', fontSize: 8, textTransform: 'uppercase', letterSpacing: '0.1em',
@@ -393,18 +422,18 @@ function PronunciationCard({ item, onAdd, isInSheet }: {
           return (
             <motion.div
               key={i}
-              animate={animating
+              animate={isPlaying
                 ? { scaleY: [1, 0.5 + Math.random(), 1.2 - Math.random() * 0.4, 1] }
                 : { scaleY: 1 }
               }
-              transition={animating
-                ? { duration: 2, delay: i * 0.04, ease: 'easeInOut' }
+              transition={isPlaying
+                ? { duration: 2, delay: i * 0.04, ease: 'easeInOut', repeat: Infinity }
                 : { duration: 0.3 }
               }
               style={{
                 width: 3,
                 height: blended,
-                background: isEdge ? 'var(--basalt-edge)' : 'var(--lapis-mid)',
+                background: isEdge ? 'var(--basalt-edge)' : (isPlaying ? 'var(--lapis-bright)' : 'var(--lapis-mid)'),
                 borderRadius: 2,
                 transformOrigin: 'center',
               }}
@@ -412,8 +441,29 @@ function PronunciationCard({ item, onAdd, isInSheet }: {
           )
         })}
       </div>
-      <div style={{ fontFamily: 'Crimson Pro, serif', fontSize: 10, fontStyle: 'italic', color: 'var(--muted)', textAlign: 'center', marginBottom: 14 }}>
-        Tap 🔊 to hear
+
+      {/* Speed toggle */}
+      <div
+        onClick={(e) => e.stopPropagation()}
+        style={{ display: 'flex', gap: 6, marginBottom: 10, justifyContent: 'center' }}
+      >
+        {(['slow', 'normal'] as const).map((mode) => (
+          <button
+            key={mode}
+            onClick={(e) => { e.stopPropagation(); setSpeedMode(mode) }}
+            style={{
+              fontFamily: 'Cinzel, serif', fontSize: 9, textTransform: 'uppercase', letterSpacing: '0.1em',
+              padding: '4px 12px', borderRadius: 20,
+              background: speedMode === mode ? 'var(--lapis)' : 'transparent',
+              border: `1px solid ${speedMode === mode ? 'rgba(91,143,214,0.4)' : 'rgba(232,238,245,0.12)'}`,
+              color: speedMode === mode ? 'var(--moon-bright)' : 'var(--muted)',
+              cursor: 'pointer',
+              transition: 'all 150ms ease',
+            }}
+          >
+            {mode === 'slow' ? 'Slow' : 'Normal speed'}
+          </button>
+        ))}
       </div>
 
       {/* Mistake note */}
@@ -445,6 +495,13 @@ export default function BriefScreen() {
   const visitedTabs = state.visitedTabs[sceneId] ?? []
   const allVisited = ALL_TABS.every((t) => visitedTabs.includes(t))
   const cheatSheetIds = new Set(state.cheatSheet.map((i) => i.id))
+
+  // Persona
+  const persona = getPersonaById(state.selectedPersona)
+  const ttsLang = languageToLocale(scene.language)
+
+  // TTS
+  const tts = useTTS()
 
   // Mark the initial tab as visited on mount
   useEffect(() => {
@@ -540,7 +597,7 @@ export default function BriefScreen() {
           overflowY: 'auto',
         }}>
           {/* Scene identity */}
-          <div style={{ marginBottom: 28 }}>
+          <div style={{ marginBottom: 20 }}>
             <div style={{ fontSize: 36, filter: 'drop-shadow(0 0 20px rgba(91,143,214,0.35))', marginBottom: 10 }}>
               {scene.emoji}
             </div>
@@ -556,6 +613,44 @@ export default function BriefScreen() {
                   {chip}
                 </span>
               ))}
+            </div>
+          </div>
+
+          {/* Persona guide row */}
+          <div
+            style={{
+              background: 'var(--basalt-raised)',
+              border: '1px solid rgba(232,238,245,0.07)',
+              borderRadius: 12,
+              padding: '10px 12px',
+              marginBottom: 20,
+              display: 'flex',
+              gap: 10,
+              alignItems: 'center',
+            }}
+          >
+            <div
+              style={{
+                width: 32, height: 32, borderRadius: '50%',
+                background: persona.avatarBg,
+                border: `1.5px solid ${persona.avatarAccent}`,
+                display: 'flex', alignItems: 'center', justifyContent: 'center',
+                fontSize: 16, flexShrink: 0,
+              }}
+            >
+              {persona.emoji}
+            </div>
+            <div style={{ flex: 1, minWidth: 0 }}>
+              <div style={{ fontFamily: 'Cinzel, serif', fontSize: 11, fontWeight: 600, color: 'var(--moon)', marginBottom: 2 }}>
+                {persona.name}
+              </div>
+              <div style={{
+                fontFamily: 'Crimson Pro, serif', fontSize: 10, fontStyle: 'italic',
+                color: 'var(--muted)',
+                overflow: 'hidden', textOverflow: 'ellipsis', whiteSpace: 'nowrap',
+              }}>
+                {persona.style.slice(0, 60)}
+              </div>
             </div>
           </div>
 
@@ -617,7 +712,7 @@ export default function BriefScreen() {
               Briefing Progress
             </div>
             <div style={{ display: 'flex', gap: 8, marginBottom: 6 }}>
-              {ALL_TABS.map((tab, i) => {
+              {ALL_TABS.map((tab) => {
                 const isCurrentTab = tab === activeTab
                 const visited = visitedTabs.includes(tab)
                 return (
@@ -666,6 +761,8 @@ export default function BriefScreen() {
                         item={item}
                         onAdd={addVocabToSheet}
                         isInSheet={cheatSheetIds.has(`${sceneId}_${item.id}`)}
+                        tts={tts}
+                        lang={ttsLang}
                       />
                     ))}
                   </div>
@@ -705,6 +802,8 @@ export default function BriefScreen() {
                       item={item}
                       onAdd={addPronToSheet}
                       isInSheet={cheatSheetIds.has(`${sceneId}_${item.id}`)}
+                      tts={tts}
+                      lang={ttsLang}
                     />
                   ))}
                 </div>

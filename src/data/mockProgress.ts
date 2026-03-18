@@ -12,6 +12,7 @@ export interface ActivityItem {
   language: string
   score: number
   status: 'completed' | 'in-progress'
+  personaId: string
 }
 
 export type StampState = 'done' | 'open' | 'locked'
@@ -40,17 +41,17 @@ export const weeklyActivity: WeekDay[] = [
 ]
 
 export const recentActivity: ActivityItem[] = [
-  { id: 1, emoji: '☕', name: 'Café', timeAgo: '2 days ago', language: 'Italian', score: 74, status: 'completed' },
-  { id: 2, emoji: '🛒', name: 'Market', timeAgo: '3 days ago', language: 'Italian', score: 81, status: 'completed' },
-  { id: 3, emoji: '🚕', name: 'Taxi', timeAgo: '4 days ago', language: 'Italian', score: 66, status: 'completed' },
-  { id: 4, emoji: '🏨', name: 'Hotel', timeAgo: '5 days ago', language: 'Italian', score: 88, status: 'completed' },
-  { id: 5, emoji: '🏥', name: 'Doctor', timeAgo: 'Today', language: 'Italian', score: 0, status: 'in-progress' },
+  { id: 1, emoji: '☕', name: 'Café',   timeAgo: '2 days ago', language: 'Italian', score: 74, status: 'completed',   personaId: 'sofia'  },
+  { id: 2, emoji: '🛒', name: 'Market', timeAgo: '3 days ago', language: 'Italian', score: 81, status: 'completed',   personaId: 'yusuf'  },
+  { id: 3, emoji: '🚕', name: 'Taxi',   timeAgo: '4 days ago', language: 'Italian', score: 66, status: 'completed',   personaId: 'marco'  },
+  { id: 4, emoji: '🏨', name: 'Hotel',  timeAgo: '5 days ago', language: 'Italian', score: 88, status: 'completed',   personaId: 'elena'  },
+  { id: 5, emoji: '🏥', name: 'Doctor', timeAgo: 'Today',      language: 'Italian', score: 0,  status: 'in-progress', personaId: 'marco'  },
 ]
 
 export const skills: Skill[] = [
   { label: 'Ordering & Requests', percent: 82, gradient: 'linear-gradient(90deg, #1b3a5c, #3a6abf)' },
-  { label: 'Small Talk', percent: 68, gradient: 'linear-gradient(90deg, #2a3a4a, #5b8fd6)' },
-  { label: 'Formal & Business', percent: 34, gradient: 'linear-gradient(90deg, #1a2a2a, #3a8a8a)' },
+  { label: 'Small Talk',          percent: 68, gradient: 'linear-gradient(90deg, #2a3a4a, #5b8fd6)' },
+  { label: 'Formal & Business',   percent: 34, gradient: 'linear-gradient(90deg, #1a2a2a, #3a8a8a)' },
   { label: 'Emergency Situations', percent: 51, gradient: 'linear-gradient(90deg, #2a2a3a, #6a6ab0)' },
 ]
 

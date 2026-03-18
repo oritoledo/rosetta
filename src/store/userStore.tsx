@@ -38,6 +38,7 @@ export interface AppState {
   cheatSheet: CheatSheetItem[]
   visitedTabs: Record<string, string[]>       // sceneId → tab ids visited
   briefCompleted: Record<string, boolean>     // sceneId → completed
+  selectedPersona: string                     // persona id, default 'sofia'
 }
 
 type Action =
@@ -51,6 +52,7 @@ type Action =
   | { type: 'REMOVE_FROM_CHEAT_SHEET'; payload: string }   // item id
   | { type: 'MARK_TAB_VISITED'; payload: { sceneId: string; tabId: string } }
   | { type: 'COMPLETE_BRIEF'; payload: string }             // sceneId
+  | { type: 'SET_PERSONA'; payload: string }                // persona id
 
 // ─── Helpers ──────────────────────────────────────────────────────────────────
 
@@ -130,6 +132,9 @@ function reducer(state: AppState, action: Action): AppState {
         briefCompleted: { ...state.briefCompleted, [action.payload]: true },
       }
 
+    case 'SET_PERSONA':
+      return { ...state, selectedPersona: action.payload }
+
     default:
       return state
   }
@@ -145,6 +150,7 @@ const initialState: AppState = {
   cheatSheet: [],
   visitedTabs: {},
   briefCompleted: {},
+  selectedPersona: 'sofia',
 }
 
 // ─── Context ──────────────────────────────────────────────────────────────────
@@ -169,6 +175,7 @@ export function StoreProvider({ children }: { children: ReactNode }) {
     const rawCheatSheet = localStorage.getItem('rosetta_cheatsheet')
     const rawVisited    = localStorage.getItem('rosetta_visited_tabs')
     const rawBriefs     = localStorage.getItem('rosetta_brief_completed')
+    const rawPersona    = localStorage.getItem('rosetta_persona')
 
     const partial: Partial<AppState> = {}
 
@@ -178,6 +185,7 @@ export function StoreProvider({ children }: { children: ReactNode }) {
     if (rawCheatSheet) { try { partial.cheatSheet = JSON.parse(rawCheatSheet) }       catch { /* ignore */ } }
     if (rawVisited)    { try { partial.visitedTabs = JSON.parse(rawVisited) }         catch { /* ignore */ } }
     if (rawBriefs)     { try { partial.briefCompleted = JSON.parse(rawBriefs) }       catch { /* ignore */ } }
+    if (rawPersona)    { try { partial.selectedPersona = JSON.parse(rawPersona) }     catch { /* ignore */ } }
 
     if (Object.keys(partial).length > 0) {
       dispatch({ type: 'HYDRATE', payload: partial })
@@ -192,7 +200,8 @@ export function StoreProvider({ children }: { children: ReactNode }) {
     localStorage.setItem('rosetta_cheatsheet',      JSON.stringify(state.cheatSheet))
     localStorage.setItem('rosetta_visited_tabs',    JSON.stringify(state.visitedTabs))
     localStorage.setItem('rosetta_brief_completed', JSON.stringify(state.briefCompleted))
-  }, [state.user, state.vocabulary, state.errors, state.cheatSheet, state.visitedTabs, state.briefCompleted])
+    localStorage.setItem('rosetta_persona',         JSON.stringify(state.selectedPersona))
+  }, [state.user, state.vocabulary, state.errors, state.cheatSheet, state.visitedTabs, state.briefCompleted, state.selectedPersona])
 
   return (
     <StoreContext.Provider value={{ state, dispatch }}>

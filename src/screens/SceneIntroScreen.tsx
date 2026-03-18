@@ -1,11 +1,18 @@
 import { motion } from 'framer-motion'
 import { useNavigate, useParams } from 'react-router-dom'
 import { scenes } from '../data/scenes'
+import { useStore } from '../store/userStore'
+import PersonaPicker from '../components/PersonaPicker'
 
 export default function SceneIntroScreen() {
   const navigate = useNavigate()
   const { id } = useParams<{ id: string }>()
   const scene = (id && scenes[id]) ? scenes[id] : scenes.cafe
+  const { state, dispatch } = useStore()
+
+  function handleSelectPersona(personaId: string) {
+    dispatch({ type: 'SET_PERSONA', payload: personaId })
+  }
 
   return (
     <motion.div
@@ -176,77 +183,14 @@ export default function SceneIntroScreen() {
           style={{
             background: 'var(--basalt)',
             overflowY: 'auto',
-            padding: '60px',
+            padding: '48px 52px',
             display: 'flex',
             flexDirection: 'column',
-            justifyContent: 'center',
+            gap: '24px',
           }}
         >
           {/* Cultural Brief */}
-          <div
-            style={{
-              fontFamily: 'Cinzel, serif',
-              fontSize: '10px',
-              textTransform: 'uppercase',
-              letterSpacing: '0.22em',
-              color: 'var(--lapis-bright)',
-              opacity: 0.7,
-              marginBottom: '16px',
-            }}
-          >
-            Before you begin
-          </div>
-          <div
-            style={{
-              background: 'var(--basalt-mid)',
-              border: '1px solid rgba(232,238,245,0.07)',
-              borderRadius: '18px',
-              padding: '24px',
-            }}
-          >
-            {scene.brief.map((item, i) => (
-              <div
-                key={i}
-                style={{
-                  display: 'flex',
-                  alignItems: 'flex-start',
-                  gap: '14px',
-                  paddingBottom: i < scene.brief.length - 1 ? '16px' : 0,
-                  marginBottom: i < scene.brief.length - 1 ? '16px' : 0,
-                  borderBottom:
-                    i < scene.brief.length - 1
-                      ? '1px solid rgba(232,238,245,0.05)'
-                      : 'none',
-                }}
-              >
-                <div
-                  style={{
-                    width: '6px',
-                    height: '6px',
-                    borderRadius: '50%',
-                    background: 'var(--lapis-mid)',
-                    marginTop: '6px',
-                    flexShrink: 0,
-                  }}
-                />
-                <p
-                  style={{
-                    fontFamily: 'Crimson Pro, serif',
-                    fontSize: '14px',
-                    fontStyle: 'italic',
-                    color: 'var(--moon-dim)',
-                    lineHeight: '1.6',
-                    margin: 0,
-                  }}
-                >
-                  {item}
-                </p>
-              </div>
-            ))}
-          </div>
-
-          {/* Guide section */}
-          <div style={{ marginTop: '28px' }}>
+          <div>
             <div
               style={{
                 fontFamily: 'Cinzel, serif',
@@ -255,76 +199,67 @@ export default function SceneIntroScreen() {
                 letterSpacing: '0.22em',
                 color: 'var(--lapis-bright)',
                 opacity: 0.7,
-                marginBottom: '12px',
+                marginBottom: '16px',
               }}
             >
-              Your guide
+              Before you begin
             </div>
             <div
               style={{
                 background: 'var(--basalt-mid)',
                 border: '1px solid rgba(232,238,245,0.07)',
                 borderRadius: '18px',
-                padding: '20px',
-                display: 'flex',
-                alignItems: 'center',
-                gap: '16px',
+                padding: '24px',
               }}
             >
-              <div
-                style={{
-                  width: '56px',
-                  height: '56px',
-                  borderRadius: '50%',
-                  background: 'var(--lapis-deep)',
-                  border: '1.5px solid rgba(91,143,214,0.35)',
-                  display: 'flex',
-                  alignItems: 'center',
-                  justifyContent: 'center',
-                  fontSize: '28px',
-                  flexShrink: 0,
-                }}
-              >
-                {scene.guide.emoji}
-              </div>
-              <div style={{ flex: 1 }}>
+              {scene.brief.map((item, i) => (
                 <div
+                  key={i}
                   style={{
-                    fontFamily: 'Cinzel, serif',
-                    fontSize: '16px',
-                    fontWeight: 600,
-                    color: 'var(--moon)',
+                    display: 'flex',
+                    alignItems: 'flex-start',
+                    gap: '14px',
+                    paddingBottom: i < scene.brief.length - 1 ? '16px' : 0,
+                    marginBottom: i < scene.brief.length - 1 ? '16px' : 0,
+                    borderBottom:
+                      i < scene.brief.length - 1
+                        ? '1px solid rgba(232,238,245,0.05)'
+                        : 'none',
                   }}
                 >
-                  {scene.guide.name}
+                  <div
+                    style={{
+                      width: '6px',
+                      height: '6px',
+                      borderRadius: '50%',
+                      background: 'var(--lapis-mid)',
+                      marginTop: '6px',
+                      flexShrink: 0,
+                    }}
+                  />
+                  <p
+                    style={{
+                      fontFamily: 'Crimson Pro, serif',
+                      fontSize: '14px',
+                      fontStyle: 'italic',
+                      color: 'var(--moon-dim)',
+                      lineHeight: '1.6',
+                      margin: 0,
+                    }}
+                  >
+                    {item}
+                  </p>
                 </div>
-                <div
-                  style={{
-                    fontFamily: 'Crimson Pro, serif',
-                    fontSize: '13px',
-                    fontStyle: 'italic',
-                    color: 'var(--muted)',
-                    marginTop: '4px',
-                  }}
-                >
-                  {scene.guide.description}
-                </div>
-              </div>
-              <button
-                style={{
-                  background: 'none',
-                  border: 'none',
-                  cursor: 'pointer',
-                  fontFamily: 'Cinzel, serif',
-                  fontSize: '10px',
-                  color: 'var(--lapis-bright)',
-                  padding: 0,
-                }}
-              >
-                Change →
-              </button>
+              ))}
             </div>
           </div>
+
+          {/* Persona Picker */}
+          <PersonaPicker
+            selectedId={state.selectedPersona}
+            onSelect={handleSelectPersona}
+            currentSceneId={scene.id}
+          />
 
           {/* CTA button */}
           <motion.button
@@ -332,7 +267,6 @@ export default function SceneIntroScreen() {
             whileHover={{ backgroundColor: 'var(--lapis-mid)', boxShadow: '0 0 56px rgba(42,82,152,0.5)' }}
             transition={{ duration: 0.15 }}
             style={{
-              marginTop: '40px',
               width: '100%',
               height: '60px',
               background: 'var(--lapis)',
@@ -346,6 +280,7 @@ export default function SceneIntroScreen() {
               textTransform: 'uppercase',
               letterSpacing: '0.14em',
               color: 'var(--moon-bright)',
+              flexShrink: 0,
             }}
           >
             Begin Scene
