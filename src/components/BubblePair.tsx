@@ -11,7 +11,7 @@ export function AIBubble({ message }: AIBubbleProps) {
         style={{
           alignSelf: 'flex-start',
           background: 'var(--basalt-mid)',
-          border: '1px solid rgba(232,238,245,0.07)',
+          border: '1px solid rgba(226,232,240,0.07)',
           borderRadius: '16px',
           borderBottomLeftRadius: '3px',
           padding: '10px 14px',
@@ -46,7 +46,7 @@ export function AIBubble({ message }: AIBubbleProps) {
       style={{
         alignSelf: 'flex-start',
         background: 'var(--basalt-mid)',
-        border: '1px solid rgba(232,238,245,0.07)',
+        border: '1px solid rgba(226,232,240,0.07)',
         borderRadius: '16px',
         borderBottomLeftRadius: '3px',
         padding: '10px 14px',
@@ -55,7 +55,7 @@ export function AIBubble({ message }: AIBubbleProps) {
     >
       <p
         style={{
-          fontFamily: 'Crimson Pro, serif',
+          fontFamily: 'Public Sans, sans-serif',
           fontSize: '13px',
           fontStyle: 'italic',
           color: 'var(--moon-dim)',
@@ -68,11 +68,11 @@ export function AIBubble({ message }: AIBubbleProps) {
       {message.translation && !message.isStreaming && (
         <p
           style={{
-            fontFamily: 'Crimson Pro, serif',
+            fontFamily: 'Public Sans, sans-serif',
             fontSize: '10px',
             fontStyle: 'italic',
             color: 'var(--muted)',
-            borderTop: '1px solid rgba(232,238,245,0.05)',
+            borderTop: '1px solid rgba(226,232,240,0.05)',
             paddingTop: '5px',
             margin: 0,
             marginTop: '5px',
@@ -95,7 +95,7 @@ export function UserBubble({ content }: UserBubbleProps) {
       style={{
         alignSelf: 'flex-end',
         background: 'var(--lapis-deep)',
-        border: '1px solid rgba(91,143,214,0.2)',
+        border: '1px solid rgba(52,211,153,0.2)',
         borderRadius: '16px',
         borderBottomRightRadius: '3px',
         padding: '10px 14px',
@@ -105,7 +105,7 @@ export function UserBubble({ content }: UserBubbleProps) {
     >
       <p
         style={{
-          fontFamily: 'Crimson Pro, serif',
+          fontFamily: 'Public Sans, sans-serif',
           fontSize: '13px',
           fontStyle: 'italic',
           color: 'var(--moon)',

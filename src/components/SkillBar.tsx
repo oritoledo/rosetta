@@ -12,7 +12,7 @@ export default function SkillBar({ label, percent, gradient, index = 0 }: SkillB
     <div
       style={{
         background: 'white',
-        border: '1px solid rgba(139,115,85,0.15)',
+        border: '1px solid rgba(16,185,129,0.12)',
         borderRadius: '16px',
         padding: '20px 24px',
         marginBottom: '12px',
@@ -28,7 +28,7 @@ export default function SkillBar({ label, percent, gradient, index = 0 }: SkillB
       >
         <span
           style={{
-            fontFamily: 'Crimson Pro, serif',
+            fontFamily: 'Public Sans, sans-serif',
             fontSize: '15px',
             fontStyle: 'italic',
             color: '#3a3228',
@@ -38,9 +38,9 @@ export default function SkillBar({ label, percent, gradient, index = 0 }: SkillB
         </span>
         <span
           style={{
-            fontFamily: 'Cinzel, serif',
+            fontFamily: 'Public Sans, sans-serif',
             fontSize: '14px',
-            color: '#1a1612',
+            color: '#0d1117',
           }}
         >
           {percent}%
@@ -49,7 +49,7 @@ export default function SkillBar({ label, percent, gradient, index = 0 }: SkillB
       <div
         style={{
           height: '8px',
-          background: 'rgba(139,115,85,0.12)',
+          background: 'rgba(16,185,129,0.1)',
           borderRadius: '4px',
           overflow: 'hidden',
         }}

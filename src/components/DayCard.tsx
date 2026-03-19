@@ -42,7 +42,7 @@ export default function DayCard({ day, index, onComplete }: DayCardProps) {
         transition={{ duration: 0.3, delay: index * 0.06 }}
         style={{
           background: 'var(--basalt)',
-          border: '1px dashed rgba(232,238,245,0.06)',
+          border: '1px dashed rgba(226,232,240,0.06)',
           borderRadius: '18px',
           overflow: 'hidden',
         }}
@@ -55,13 +55,13 @@ export default function DayCard({ day, index, onComplete }: DayCardProps) {
             display: 'flex',
             alignItems: 'center',
             gap: '14px',
-            borderBottom: '1px solid rgba(232,238,245,0.04)',
+            borderBottom: '1px solid rgba(226,232,240,0.04)',
           }}
         >
           <div>
             <div
               style={{
-                fontFamily: 'Cinzel, serif',
+                fontFamily: 'Public Sans, sans-serif',
                 fontSize: '14px',
                 fontWeight: 700,
                 color: 'var(--moon)',
@@ -71,7 +71,7 @@ export default function DayCard({ day, index, onComplete }: DayCardProps) {
             </div>
             <div
               style={{
-                fontFamily: 'Crimson Pro, serif',
+                fontFamily: 'Public Sans, sans-serif',
                 fontSize: '11px',
                 fontStyle: 'italic',
                 color: 'var(--muted)',
@@ -83,7 +83,7 @@ export default function DayCard({ day, index, onComplete }: DayCardProps) {
           <div style={{ flex: 1, textAlign: 'center' }}>
             <span
               style={{
-                fontFamily: 'Cinzel, serif',
+                fontFamily: 'Public Sans, sans-serif',
                 fontSize: '12px',
                 textTransform: 'uppercase',
                 letterSpacing: '0.08em',
@@ -99,7 +99,7 @@ export default function DayCard({ day, index, onComplete }: DayCardProps) {
         <div style={{ padding: '20px', textAlign: 'center' }}>
           <p
             style={{
-              fontFamily: 'Crimson Pro, serif',
+              fontFamily: 'Public Sans, sans-serif',
               fontSize: '15px',
               fontStyle: 'italic',
               color: 'var(--muted)',
@@ -110,7 +110,7 @@ export default function DayCard({ day, index, onComplete }: DayCardProps) {
           </p>
           <p
             style={{
-              fontFamily: 'Crimson Pro, serif',
+              fontFamily: 'Public Sans, sans-serif',
               fontSize: '12px',
               fontStyle: 'italic',
               color: 'var(--muted)',
@@ -134,10 +134,10 @@ export default function DayCard({ day, index, onComplete }: DayCardProps) {
 
   // ── Completed state ───────────────────────────────────────────────────────
   const cardBorder = day.isToday
-    ? 'rgba(91,143,214,0.3)'
+    ? 'rgba(52,211,153,0.3)'
     : day.isCompleted
     ? 'rgba(82,212,138,0.2)'
-    : 'rgba(232,238,245,0.07)'
+    : 'rgba(226,232,240,0.07)'
 
   const cardShadow = day.isToday
     ? '0 4px 24px rgba(27,58,92,0.3)'
@@ -176,7 +176,7 @@ export default function DayCard({ day, index, onComplete }: DayCardProps) {
             border: '1px solid rgba(82,212,138,0.3)',
             borderRadius: '20px',
             padding: '3px 10px',
-            fontFamily: 'Cinzel, serif',
+            fontFamily: 'Public Sans, sans-serif',
             fontSize: '9px',
             textTransform: 'uppercase',
             letterSpacing: '0.1em',
@@ -196,14 +196,14 @@ export default function DayCard({ day, index, onComplete }: DayCardProps) {
           display: 'flex',
           alignItems: 'center',
           gap: '14px',
-          borderBottom: '1px solid rgba(232,238,245,0.05)',
+          borderBottom: '1px solid rgba(226,232,240,0.05)',
         }}
       >
         {/* Day label + date */}
         <div style={{ minWidth: '80px' }}>
           <div
             style={{
-              fontFamily: 'Cinzel, serif',
+              fontFamily: 'Public Sans, sans-serif',
               fontSize: '14px',
               fontWeight: 700,
               color: day.isToday ? 'var(--lapis-bright)' : 'var(--moon)',
@@ -213,7 +213,7 @@ export default function DayCard({ day, index, onComplete }: DayCardProps) {
           </div>
           <div
             style={{
-              fontFamily: 'Crimson Pro, serif',
+              fontFamily: 'Public Sans, sans-serif',
               fontSize: '11px',
               fontStyle: 'italic',
               color: 'var(--muted)',
@@ -230,7 +230,7 @@ export default function DayCard({ day, index, onComplete }: DayCardProps) {
           <div>
             <div
               style={{
-                fontFamily: 'Cinzel, serif',
+                fontFamily: 'Public Sans, sans-serif',
                 fontSize: '14px',
                 fontWeight: 600,
                 color: 'var(--moon)',
@@ -240,7 +240,7 @@ export default function DayCard({ day, index, onComplete }: DayCardProps) {
             </div>
             <div
               style={{
-                fontFamily: 'Crimson Pro, serif',
+                fontFamily: 'Public Sans, sans-serif',
                 fontSize: '11px',
                 fontStyle: 'italic',
                 color: 'var(--muted)',
@@ -255,7 +255,7 @@ export default function DayCard({ day, index, onComplete }: DayCardProps) {
         <div style={{ textAlign: 'right', flexShrink: 0 }}>
           <span
             style={{
-              fontFamily: 'Cinzel, serif',
+              fontFamily: 'Public Sans, sans-serif',
               fontSize: '9px',
               textTransform: 'uppercase',
               letterSpacing: '0.1em',
@@ -270,7 +270,7 @@ export default function DayCard({ day, index, onComplete }: DayCardProps) {
           </span>
           <div
             style={{
-              fontFamily: 'Crimson Pro, serif',
+              fontFamily: 'Public Sans, sans-serif',
               fontSize: '11px',
               fontStyle: 'italic',
               color: 'var(--muted)',
@@ -297,14 +297,14 @@ export default function DayCard({ day, index, onComplete }: DayCardProps) {
           <div
             style={{
               background: 'var(--basalt)',
-              border: '1px solid rgba(232,238,245,0.06)',
+              border: '1px solid rgba(226,232,240,0.06)',
               borderRadius: '10px',
               padding: '10px 12px',
             }}
           >
             <div
               style={{
-                fontFamily: 'Cinzel, serif',
+                fontFamily: 'Public Sans, sans-serif',
                 fontSize: '7px',
                 textTransform: 'uppercase',
                 letterSpacing: '0.12em',
@@ -316,7 +316,7 @@ export default function DayCard({ day, index, onComplete }: DayCardProps) {
             </div>
             <div
               style={{
-                fontFamily: 'Cinzel, serif',
+                fontFamily: 'Public Sans, sans-serif',
                 fontSize: '11px',
                 fontWeight: 600,
                 color: 'var(--moon)',
@@ -346,7 +346,7 @@ export default function DayCard({ day, index, onComplete }: DayCardProps) {
               />
               <span
                 style={{
-                  fontFamily: 'Cinzel, serif',
+                  fontFamily: 'Public Sans, sans-serif',
                   fontSize: '8px',
                   textTransform: 'uppercase',
                   letterSpacing: '0.1em',
@@ -362,14 +362,14 @@ export default function DayCard({ day, index, onComplete }: DayCardProps) {
           <div
             style={{
               background: 'var(--basalt)',
-              border: '1px solid rgba(232,238,245,0.06)',
+              border: '1px solid rgba(226,232,240,0.06)',
               borderRadius: '10px',
               padding: '10px 12px',
             }}
           >
             <div
               style={{
-                fontFamily: 'Cinzel, serif',
+                fontFamily: 'Public Sans, sans-serif',
                 fontSize: '7px',
                 textTransform: 'uppercase',
                 letterSpacing: '0.12em',
@@ -381,7 +381,7 @@ export default function DayCard({ day, index, onComplete }: DayCardProps) {
             </div>
             <div
               style={{
-                fontFamily: 'Cinzel, serif',
+                fontFamily: 'Public Sans, sans-serif',
                 fontSize: '22px',
                 fontWeight: 700,
                 color: 'var(--moon-bright)',
@@ -392,7 +392,7 @@ export default function DayCard({ day, index, onComplete }: DayCardProps) {
             </div>
             <div
               style={{
-                fontFamily: 'Crimson Pro, serif',
+                fontFamily: 'Public Sans, sans-serif',
                 fontSize: '10px',
                 fontStyle: 'italic',
                 color: 'var(--muted)',
@@ -407,14 +407,14 @@ export default function DayCard({ day, index, onComplete }: DayCardProps) {
           <div
             style={{
               background: 'var(--basalt)',
-              border: '1px solid rgba(232,238,245,0.06)',
+              border: '1px solid rgba(226,232,240,0.06)',
               borderRadius: '10px',
               padding: '10px 12px',
             }}
           >
             <div
               style={{
-                fontFamily: 'Cinzel, serif',
+                fontFamily: 'Public Sans, sans-serif',
                 fontSize: '7px',
                 textTransform: 'uppercase',
                 letterSpacing: '0.12em',
@@ -443,7 +443,7 @@ export default function DayCard({ day, index, onComplete }: DayCardProps) {
               </div>
               <span
                 style={{
-                  fontFamily: 'Cinzel, serif',
+                  fontFamily: 'Public Sans, sans-serif',
                   fontSize: '11px',
                   fontWeight: 600,
                   color: 'var(--moon)',
@@ -454,7 +454,7 @@ export default function DayCard({ day, index, onComplete }: DayCardProps) {
             </div>
             <div
               style={{
-                fontFamily: 'Crimson Pro, serif',
+                fontFamily: 'Public Sans, sans-serif',
                 fontSize: '10px',
                 fontStyle: 'italic',
                 color: 'var(--muted)',
@@ -474,7 +474,7 @@ export default function DayCard({ day, index, onComplete }: DayCardProps) {
               border: 'none',
               cursor: 'pointer',
               padding: '0 0 8px',
-              fontFamily: 'Cinzel, serif',
+              fontFamily: 'Public Sans, sans-serif',
               fontSize: '8px',
               textTransform: 'uppercase',
               letterSpacing: '0.14em',
@@ -510,7 +510,7 @@ export default function DayCard({ day, index, onComplete }: DayCardProps) {
                       padding: '6px 0',
                       borderBottom:
                         i < day.reasoning.length - 1
-                          ? '1px solid rgba(232,238,245,0.04)'
+                          ? '1px solid rgba(226,232,240,0.04)'
                           : 'none',
                     }}
                   >
@@ -519,7 +519,7 @@ export default function DayCard({ day, index, onComplete }: DayCardProps) {
                     </span>
                     <p
                       style={{
-                        fontFamily: 'Crimson Pro, serif',
+                        fontFamily: 'Public Sans, sans-serif',
                         fontSize: '12px',
                         fontStyle: 'italic',
                         color: 'var(--moon-dim)',
@@ -545,16 +545,16 @@ export default function DayCard({ day, index, onComplete }: DayCardProps) {
                 flex: 1,
                 height: '44px',
                 background: 'var(--lapis)',
-                border: '1px solid rgba(91,143,214,0.4)',
+                border: '1px solid rgba(52,211,153,0.4)',
                 borderRadius: '12px',
                 cursor: 'pointer',
-                fontFamily: 'Cinzel, serif',
+                fontFamily: 'Public Sans, sans-serif',
                 fontSize: '11px',
                 fontWeight: 700,
                 textTransform: 'uppercase',
                 letterSpacing: '0.12em',
                 color: 'var(--moon-bright)',
-                boxShadow: '0 0 24px rgba(42,82,152,0.3)',
+                boxShadow: '0 0 24px rgba(16,185,129,0.3)',
                 transition: 'background 150ms ease',
               }}
               onMouseEnter={(e) => {
@@ -575,10 +575,10 @@ export default function DayCard({ day, index, onComplete }: DayCardProps) {
                 flex: 1,
                 height: '44px',
                 background: 'transparent',
-                border: '1px solid rgba(232,238,245,0.12)',
+                border: '1px solid rgba(226,232,240,0.12)',
                 borderRadius: '12px',
                 cursor: 'pointer',
-                fontFamily: 'Cinzel, serif',
+                fontFamily: 'Public Sans, sans-serif',
                 fontSize: '11px',
                 textTransform: 'uppercase',
                 letterSpacing: '0.1em',
@@ -587,11 +587,11 @@ export default function DayCard({ day, index, onComplete }: DayCardProps) {
               }}
               onMouseEnter={(e) => {
                 ;(e.currentTarget as HTMLButtonElement).style.borderColor =
-                  'rgba(91,143,214,0.3)'
+                  'rgba(52,211,153,0.3)'
               }}
               onMouseLeave={(e) => {
                 ;(e.currentTarget as HTMLButtonElement).style.borderColor =
-                  'rgba(232,238,245,0.12)'
+                  'rgba(226,232,240,0.12)'
               }}
             >
               Preview Scene
@@ -608,7 +608,7 @@ export default function DayCard({ day, index, onComplete }: DayCardProps) {
                 border: '1px solid rgba(82,212,138,0.25)',
                 borderRadius: '12px',
                 cursor: 'pointer',
-                fontFamily: 'Cinzel, serif',
+                fontFamily: 'Public Sans, sans-serif',
                 fontSize: '11px',
                 textTransform: 'uppercase',
                 letterSpacing: '0.1em',
@@ -627,7 +627,7 @@ export default function DayCard({ day, index, onComplete }: DayCardProps) {
               background: 'transparent',
               border: 'none',
               cursor: 'pointer',
-              fontFamily: 'Cinzel, serif',
+              fontFamily: 'Public Sans, sans-serif',
               fontSize: '9px',
               textTransform: 'uppercase',
               letterSpacing: '0.1em',

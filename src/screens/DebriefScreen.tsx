@@ -99,7 +99,7 @@ export default function DebriefScreen() {
         >
           <div
             style={{
-              fontFamily: 'Cinzel, serif',
+              fontFamily: 'Public Sans, sans-serif',
               fontSize: '10px',
               textTransform: 'uppercase',
               letterSpacing: '0.22em',
@@ -116,7 +116,7 @@ export default function DebriefScreen() {
 
           <h1
             style={{
-              fontFamily: 'Cinzel, serif',
+              fontFamily: 'Public Sans, sans-serif',
               fontSize: '28px',
               fontWeight: 700,
               color: 'var(--moon-bright)',
@@ -128,7 +128,7 @@ export default function DebriefScreen() {
           </h1>
           <p
             style={{
-              fontFamily: 'Crimson Pro, serif',
+              fontFamily: 'Public Sans, sans-serif',
               fontSize: '16px',
               fontStyle: 'italic',
               color: 'var(--muted)',
@@ -156,14 +156,14 @@ export default function DebriefScreen() {
                 key={label}
                 style={{
                   background: 'var(--basalt-mid)',
-                  border: '1px solid rgba(232,238,245,0.07)',
+                  border: '1px solid rgba(226,232,240,0.07)',
                   borderRadius: '16px',
                   padding: '20px',
                 }}
               >
                 <div
                   style={{
-                    fontFamily: 'Cinzel, serif',
+                    fontFamily: 'Public Sans, sans-serif',
                     fontSize: '28px',
                     fontWeight: 700,
                     color: 'var(--moon-bright)',
@@ -174,7 +174,7 @@ export default function DebriefScreen() {
                 </div>
                 <div
                   style={{
-                    fontFamily: 'Cinzel, serif',
+                    fontFamily: 'Public Sans, sans-serif',
                     fontSize: '9px',
                     textTransform: 'uppercase',
                     letterSpacing: '0.12em',
@@ -186,7 +186,7 @@ export default function DebriefScreen() {
                 </div>
                 <div
                   style={{
-                    fontFamily: 'Crimson Pro, serif',
+                    fontFamily: 'Public Sans, sans-serif',
                     fontSize: '11px',
                     fontStyle: 'italic',
                     color: 'var(--lapis-bright)',
@@ -202,18 +202,18 @@ export default function DebriefScreen() {
           {/* Done button */}
           <motion.button
             onClick={() => navigate('/')}
-            whileHover={{ backgroundColor: 'var(--lapis-mid)', boxShadow: '0 0 56px rgba(42,82,152,0.5)' }}
+            whileHover={{ backgroundColor: 'var(--lapis-mid)', boxShadow: '0 0 56px rgba(16,185,129,0.5)' }}
             transition={{ duration: 0.15 }}
             style={{
               marginTop: '40px',
               width: '100%',
               height: '60px',
               background: 'var(--lapis)',
-              border: '1px solid rgba(91,143,214,0.4)',
+              border: '1px solid rgba(52,211,153,0.4)',
               borderRadius: '16px',
-              boxShadow: '0 0 40px rgba(42,82,152,0.35)',
+              boxShadow: '0 0 40px rgba(16,185,129,0.35)',
               cursor: 'pointer',
-              fontFamily: 'Cinzel, serif',
+              fontFamily: 'Public Sans, sans-serif',
               fontSize: '14px',
               fontWeight: 700,
               textTransform: 'uppercase',
@@ -229,14 +229,14 @@ export default function DebriefScreen() {
         <div
           style={{
             background: 'var(--basalt-mid)',
-            borderLeft: '1px solid rgba(232,238,245,0.06)',
+            borderLeft: '1px solid rgba(226,232,240,0.06)',
             padding: '60px',
             overflowY: 'auto',
           }}
         >
           <div
             style={{
-              fontFamily: 'Cinzel, serif',
+              fontFamily: 'Public Sans, sans-serif',
               fontSize: '10px',
               textTransform: 'uppercase',
               letterSpacing: '0.22em',
@@ -269,7 +269,7 @@ export default function DebriefScreen() {
             >
               <div
                 style={{
-                  fontFamily: 'Cinzel, serif',
+                  fontFamily: 'Public Sans, sans-serif',
                   fontSize: '10px',
                   textTransform: 'uppercase',
                   letterSpacing: '0.15em',
@@ -281,7 +281,7 @@ export default function DebriefScreen() {
               </div>
               <div
                 style={{
-                  fontFamily: 'Crimson Pro, serif',
+                  fontFamily: 'Public Sans, sans-serif',
                   fontSize: '13px',
                   fontStyle: 'italic',
                   color: 'var(--moon-dim)',
@@ -293,7 +293,7 @@ export default function DebriefScreen() {
               </div>
               <div
                 style={{
-                  fontFamily: 'Crimson Pro, serif',
+                  fontFamily: 'Public Sans, sans-serif',
                   fontSize: '12px',
                   fontStyle: 'italic',
                   color: 'var(--muted)',
@@ -309,7 +309,7 @@ export default function DebriefScreen() {
                   border: 'none',
                   padding: 0,
                   cursor: 'pointer',
-                  fontFamily: 'Cinzel, serif',
+                  fontFamily: 'Public Sans, sans-serif',
                   fontSize: '10px',
                   color: 'var(--lapis-bright)',
                   textDecoration: 'none',

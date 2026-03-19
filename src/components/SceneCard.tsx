@@ -9,9 +9,9 @@ interface SceneCardProps {
 
 const levelColors = {
   Beginner: {
-    bg: 'rgba(42,82,152,0.18)',
+    bg: 'rgba(16,185,129,0.18)',
     color: 'var(--lapis-bright)',
-    border: 'rgba(42,82,152,0.3)',
+    border: 'rgba(16,185,129,0.3)',
   },
   Intermediate: {
     bg: 'rgba(180,140,40,0.15)',
@@ -39,17 +39,17 @@ export default function SceneCard({ scene }: SceneCardProps) {
     <motion.div
       onClick={() => navigate(`/scene/${scene.id}`)}
       initial={false}
-      whileHover={{ y: -3, boxShadow: '0 8px 32px rgba(0,0,0,0.4)', borderColor: hasDue ? 'rgba(91,143,214,0.45)' : 'rgba(91,143,214,0.25)' }}
+      whileHover={{ y: -3, boxShadow: '0 8px 32px rgba(0,0,0,0.4)', borderColor: hasDue ? 'rgba(52,211,153,0.45)' : 'rgba(52,211,153,0.25)' }}
       transition={{ duration: 0.2 }}
       style={{
         background: 'var(--basalt-mid)',
         border: hasDue
-          ? '1px solid rgba(91,143,214,0.22)'
-          : '1px solid rgba(232,238,245,0.06)',
+          ? '1px solid rgba(52,211,153,0.22)'
+          : '1px solid rgba(226,232,240,0.06)',
         borderRadius: '18px',
         overflow: 'hidden',
         cursor: 'pointer',
-        boxShadow: hasDue ? '0 0 16px rgba(42,82,152,0.12)' : 'none',
+        boxShadow: hasDue ? '0 0 16px rgba(16,185,129,0.12)' : 'none',
       }}
     >
       {/* Color strip */}
@@ -77,7 +77,7 @@ export default function SceneCard({ scene }: SceneCardProps) {
       <div style={{ padding: '16px 16px 0' }}>
         <div
           style={{
-            fontFamily: 'Cinzel, serif',
+            fontFamily: 'Public Sans, sans-serif',
             fontSize: '14px',
             fontWeight: 600,
             color: 'var(--moon)',
@@ -88,7 +88,7 @@ export default function SceneCard({ scene }: SceneCardProps) {
         </div>
         <div
           style={{
-            fontFamily: 'Crimson Pro, serif',
+            fontFamily: 'Public Sans, sans-serif',
             fontSize: '11px',
             fontStyle: 'italic',
             color: 'var(--muted)',
@@ -105,7 +105,7 @@ export default function SceneCard({ scene }: SceneCardProps) {
               color: lvl.color,
               borderRadius: '20px',
               padding: '3px 10px',
-              fontFamily: 'Cinzel, serif',
+              fontFamily: 'Public Sans, sans-serif',
               fontSize: '8px',
               textTransform: 'uppercase',
               letterSpacing: '0.08em',
@@ -115,7 +115,7 @@ export default function SceneCard({ scene }: SceneCardProps) {
           </span>
           <span
             style={{
-              fontFamily: 'Crimson Pro, serif',
+              fontFamily: 'Public Sans, sans-serif',
               fontSize: '10px',
               fontStyle: 'italic',
               color: 'var(--muted)',
@@ -135,7 +135,7 @@ export default function SceneCard({ scene }: SceneCardProps) {
         >
           <div
             style={{
-              fontFamily: 'Crimson Pro, serif',
+              fontFamily: 'Public Sans, sans-serif',
               fontSize: '10px',
               fontStyle: 'italic',
               color: 'var(--lapis-bright)',
@@ -153,7 +153,7 @@ export default function SceneCard({ scene }: SceneCardProps) {
             <div
               style={{
                 height: '3px',
-                background: 'rgba(232,238,245,0.1)',
+                background: 'rgba(226,232,240,0.1)',
                 borderRadius: '2px',
                 overflow: 'hidden',
               }}
@@ -169,7 +169,7 @@ export default function SceneCard({ scene }: SceneCardProps) {
             </div>
             <div
               style={{
-                fontFamily: 'Crimson Pro, serif',
+                fontFamily: 'Public Sans, sans-serif',
                 fontSize: '9px',
                 fontStyle: 'italic',
                 color: 'var(--muted)',
@@ -182,11 +182,11 @@ export default function SceneCard({ scene }: SceneCardProps) {
         ) : (
           <span
             style={{
-              background: 'rgba(42,82,152,0.15)',
-              border: '1px solid rgba(91,143,214,0.2)',
+              background: 'rgba(16,185,129,0.15)',
+              border: '1px solid rgba(52,211,153,0.2)',
               borderRadius: '8px',
               padding: '3px 10px',
-              fontFamily: 'Cinzel, serif',
+              fontFamily: 'Public Sans, sans-serif',
               fontSize: '8px',
               textTransform: 'uppercase',
               letterSpacing: '0.08em',

@@ -25,7 +25,7 @@ export default function PracticeScreen() {
           position: 'absolute',
           inset: 0,
           background:
-            'radial-gradient(ellipse 60% 50% at 50% 50%, rgba(42,82,152,0.07) 0%, transparent 70%)',
+            'radial-gradient(ellipse 60% 50% at 50% 50%, rgba(16,185,129,0.07) 0%, transparent 70%)',
           pointerEvents: 'none',
         }}
       />
@@ -40,14 +40,14 @@ export default function PracticeScreen() {
           style={{
             fontSize: '48px',
             marginBottom: '24px',
-            filter: 'drop-shadow(0 0 24px rgba(91,143,214,0.3))',
+            filter: 'drop-shadow(0 0 24px rgba(52,211,153,0.3))',
           }}
         >
           ⚡
         </div>
         <h1
           style={{
-            fontFamily: 'Cinzel, serif',
+            fontFamily: 'Public Sans, sans-serif',
             fontSize: '28px',
             fontWeight: 700,
             color: 'var(--moon-bright)',
@@ -59,7 +59,7 @@ export default function PracticeScreen() {
         </h1>
         <p
           style={{
-            fontFamily: 'Crimson Pro, serif',
+            fontFamily: 'Public Sans, sans-serif',
             fontSize: '16px',
             fontStyle: 'italic',
             color: 'var(--lapis-bright)',
@@ -70,7 +70,7 @@ export default function PracticeScreen() {
         </p>
         <p
           style={{
-            fontFamily: 'Crimson Pro, serif',
+            fontFamily: 'Public Sans, sans-serif',
             fontSize: '13px',
             fontStyle: 'italic',
             color: 'var(--muted)',

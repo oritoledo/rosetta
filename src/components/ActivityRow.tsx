@@ -8,23 +8,23 @@ interface ActivityRowProps {
 function scoreBadgeStyle(score: number, status: ActivityItem['status']) {
   if (status === 'in-progress') {
     return {
-      background: 'rgba(91,143,214,0.15)',
+      background: 'rgba(52,211,153,0.15)',
       color: 'var(--lapis-bright)',
-      border: '1px solid rgba(91,143,214,0.25)',
+      border: '1px solid rgba(52,211,153,0.25)',
     }
   }
   if (score >= 80) {
     return {
-      background: 'rgba(42,82,152,0.2)',
+      background: 'rgba(16,185,129,0.2)',
       color: 'var(--lapis-bright)',
-      border: '1px solid rgba(42,82,152,0.3)',
+      border: '1px solid rgba(16,185,129,0.3)',
     }
   }
   if (score >= 60) {
     return {
-      background: 'rgba(232,238,245,0.08)',
+      background: 'rgba(226,232,240,0.08)',
       color: 'var(--moon-dim)',
-      border: '1px solid rgba(232,238,245,0.12)',
+      border: '1px solid rgba(226,232,240,0.12)',
     }
   }
   return {
@@ -44,7 +44,7 @@ export default function ActivityRow({ item }: ActivityRowProps) {
     <div
       style={{
         background: 'white',
-        border: '1px solid rgba(139,115,85,0.12)',
+        border: '1px solid rgba(16,185,129,0.1)',
         borderRadius: '14px',
         padding: '16px 20px',
         marginBottom: '8px',
@@ -59,8 +59,8 @@ export default function ActivityRow({ item }: ActivityRowProps) {
           style={{
             width: '40px',
             height: '40px',
-            background: '#f0ece4',
-            border: '1px solid rgba(139,115,85,0.2)',
+            background: '#e2e8f0',
+            border: '1px solid rgba(16,185,129,0.15)',
             borderRadius: '10px',
             display: 'flex',
             alignItems: 'center',
@@ -96,9 +96,9 @@ export default function ActivityRow({ item }: ActivityRowProps) {
       <div style={{ flex: 1 }}>
         <div
           style={{
-            fontFamily: 'Cinzel, serif',
+            fontFamily: 'Public Sans, sans-serif',
             fontSize: '13px',
-            color: '#1a1612',
+            color: '#0d1117',
             marginBottom: '3px',
           }}
         >
@@ -106,10 +106,10 @@ export default function ActivityRow({ item }: ActivityRowProps) {
         </div>
         <div
           style={{
-            fontFamily: 'Crimson Pro, serif',
+            fontFamily: 'Public Sans, sans-serif',
             fontSize: '11px',
             fontStyle: 'italic',
-            color: '#8a7a68',
+            color: '#64748b',
           }}
         >
           {item.timeAgo} · {item.language}
@@ -123,7 +123,7 @@ export default function ActivityRow({ item }: ActivityRowProps) {
           ...badgeStyle,
           borderRadius: '8px',
           padding: '4px 10px',
-          fontFamily: 'Cinzel, serif',
+          fontFamily: 'Public Sans, sans-serif',
           fontSize: '11px',
           flexShrink: 0,
         }}

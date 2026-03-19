@@ -24,7 +24,7 @@ export default function PersonaPicker({
       {/* Section label */}
       <div
         style={{
-          fontFamily: 'Cinzel, serif',
+          fontFamily: 'Public Sans, sans-serif',
           fontSize: '9px',
           textTransform: 'uppercase',
           letterSpacing: '0.22em',
@@ -64,7 +64,7 @@ export default function PersonaPicker({
           transition={{ duration: 0.2 }}
           style={{
             background: 'var(--basalt-raised)',
-            border: '1px solid rgba(232,238,245,0.06)',
+            border: '1px solid rgba(226,232,240,0.06)',
             borderRadius: '12px',
             padding: '12px 14px',
             marginTop: '10px',
@@ -96,7 +96,7 @@ export default function PersonaPicker({
             {firstMessage && (
               <p
                 style={{
-                  fontFamily: 'Crimson Pro, serif',
+                  fontFamily: 'Public Sans, sans-serif',
                   fontSize: '14px',
                   fontStyle: 'italic',
                   color: 'var(--moon-dim)',
@@ -119,7 +119,7 @@ export default function PersonaPicker({
             >
               <span
                 style={{
-                  fontFamily: 'Cinzel, serif',
+                  fontFamily: 'Public Sans, sans-serif',
                   fontSize: '8px',
                   textTransform: 'uppercase',
                   letterSpacing: '0.1em',
@@ -133,13 +133,13 @@ export default function PersonaPicker({
                 <span
                   key={tag}
                   style={{
-                    fontFamily: 'Cinzel, serif',
+                    fontFamily: 'Public Sans, sans-serif',
                     fontSize: '7px',
                     textTransform: 'uppercase',
                     letterSpacing: '0.08em',
                     color: 'var(--moon-dim)',
-                    background: 'rgba(232,238,245,0.06)',
-                    border: '1px solid rgba(232,238,245,0.08)',
+                    background: 'rgba(226,232,240,0.06)',
+                    border: '1px solid rgba(226,232,240,0.08)',
                     borderRadius: '20px',
                     padding: '2px 7px',
                   }}

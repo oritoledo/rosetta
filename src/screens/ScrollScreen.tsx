@@ -65,13 +65,13 @@ function TrendBadge({ trend }: { trend: ErrorPattern['trend'] }) {
   const map = {
     improving: { label: '↑ Improving', color: '#52d48a', bg: 'rgba(82,212,138,0.1)',  border: 'rgba(82,212,138,0.25)' },
     recurring: { label: '↻ Recurring', color: '#c9a84c', bg: 'rgba(201,168,76,0.1)',  border: 'rgba(201,168,76,0.25)' },
-    new:       { label: '● New',       color: 'var(--lapis-bright)', bg: 'rgba(42,82,152,0.12)', border: 'rgba(91,143,214,0.25)' },
+    new:       { label: '● New',       color: 'var(--lapis-bright)', bg: 'rgba(16,185,129,0.12)', border: 'rgba(52,211,153,0.25)' },
   }
   const t = map[trend]
   return (
     <span
       style={{
-        fontFamily: 'Cinzel, serif',
+        fontFamily: 'Public Sans, sans-serif',
         fontSize: '9px',
         fontWeight: 700,
         color: t.color,
@@ -101,13 +101,13 @@ function CategoryBadge({ category }: { category: ErrorCategory }) {
   return (
     <span
       style={{
-        fontFamily: 'Cinzel, serif',
+        fontFamily: 'Public Sans, sans-serif',
         fontSize: '9px',
         textTransform: 'uppercase',
         letterSpacing: '0.1em',
         color: colorMap[category] ?? 'var(--lapis-bright)',
         background: 'rgba(255,255,255,0.06)',
-        border: '1px solid rgba(139,115,85,0.15)',
+        border: '1px solid rgba(16,185,129,0.12)',
         borderRadius: '20px',
         padding: '3px 10px',
       }}
@@ -142,19 +142,19 @@ function TrendDots({ category, errors }: { category: ErrorCategory; errors: Retu
               width: '10px',
               height: '10px',
               borderRadius: '50%',
-              background: hasError ? 'var(--lapis-bright)' : 'rgba(232,238,245,0.12)',
+              background: hasError ? 'var(--lapis-bright)' : 'rgba(226,232,240,0.12)',
               border: '1px solid',
-              borderColor: hasError ? 'rgba(91,143,214,0.5)' : 'rgba(232,238,245,0.06)',
+              borderColor: hasError ? 'rgba(52,211,153,0.5)' : 'rgba(226,232,240,0.06)',
             }}
           />
         ))}
       </div>
       <div
         style={{
-          fontFamily: 'Crimson Pro, serif',
+          fontFamily: 'Public Sans, sans-serif',
           fontSize: '10px',
           fontStyle: 'italic',
-          color: '#8a7a68',
+          color: '#64748b',
         }}
       >
         Last 7 sessions
@@ -171,8 +171,8 @@ function PatternCard({ pattern, errors }: { pattern: ErrorPattern; errors: Retur
   return (
     <div
       style={{
-        background: 'white',
-        border: '1px solid rgba(139,115,85,0.15)',
+        background: '#161b27',
+        border: '1px solid rgba(16,185,129,0.12)',
         borderRadius: '16px',
         padding: '20px',
         marginBottom: '12px',
@@ -193,9 +193,9 @@ function PatternCard({ pattern, errors }: { pattern: ErrorPattern; errors: Retur
         <TrendBadge trend={pattern.trend} />
         <span
           style={{
-            fontFamily: 'Cinzel, serif',
+            fontFamily: 'Public Sans, sans-serif',
             fontSize: '10px',
-            color: '#8a7a68',
+            color: '#64748b',
           }}
         >
           {pattern.count} error{pattern.count !== 1 ? 's' : ''}
@@ -205,10 +205,10 @@ function PatternCard({ pattern, errors }: { pattern: ErrorPattern; errors: Retur
       {/* Category label */}
       <div
         style={{
-          fontFamily: 'Cinzel, serif',
+          fontFamily: 'Public Sans, sans-serif',
           fontSize: '15px',
           fontWeight: 600,
-          color: '#1a1612',
+          color: '#e2e8f0',
           marginBottom: '12px',
         }}
       >
@@ -227,11 +227,11 @@ function PatternCard({ pattern, errors }: { pattern: ErrorPattern; errors: Retur
             border: 'none',
             padding: 0,
             cursor: 'pointer',
-            fontFamily: 'Cinzel, serif',
+            fontFamily: 'Public Sans, sans-serif',
             fontSize: '10px',
             textTransform: 'uppercase',
             letterSpacing: '0.1em',
-            color: '#8a7a68',
+            color: '#64748b',
           }}
         >
           {expanded ? '▲ Hide example' : '▼ Show example'}
@@ -246,13 +246,13 @@ function PatternCard({ pattern, errors }: { pattern: ErrorPattern; errors: Retur
               transition={{ duration: 0.2 }}
               style={{ overflow: 'hidden' }}
             >
-              <div style={{ marginTop: '12px', borderTop: '1px solid rgba(139,115,85,0.1)', paddingTop: '12px' }}>
+              <div style={{ marginTop: '12px', borderTop: '1px solid rgba(16,185,129,0.08)', paddingTop: '12px' }}>
                 <div
                   style={{
-                    fontFamily: 'Crimson Pro, serif',
+                    fontFamily: 'Public Sans, sans-serif',
                     fontSize: '13px',
                     fontStyle: 'italic',
-                    color: '#8a7a68',
+                    color: '#64748b',
                     marginBottom: '4px',
                   }}
                 >
@@ -261,10 +261,10 @@ function PatternCard({ pattern, errors }: { pattern: ErrorPattern; errors: Retur
                 </div>
                 <div
                   style={{
-                    fontFamily: 'Crimson Pro, serif',
+                    fontFamily: 'Public Sans, sans-serif',
                     fontSize: '13px',
                     fontStyle: 'italic',
-                    color: '#1a1612',
+                    color: '#e2e8f0',
                     marginBottom: '4px',
                   }}
                 >
@@ -273,10 +273,10 @@ function PatternCard({ pattern, errors }: { pattern: ErrorPattern; errors: Retur
                 </div>
                 <div
                   style={{
-                    fontFamily: 'Crimson Pro, serif',
+                    fontFamily: 'Public Sans, sans-serif',
                     fontSize: '12px',
                     fontStyle: 'italic',
-                    color: '#8a7a68',
+                    color: '#64748b',
                     lineHeight: 1.55,
                   }}
                 >
@@ -317,15 +317,15 @@ export default function ScrollScreen() {
           backgroundImage: `
             repeating-linear-gradient(
               45deg,
-              rgba(150,120,80,0.05) 0px,
-              rgba(150,120,80,0.05) 1px,
+              rgba(16,185,129,0.05) 0px,
+              rgba(16,185,129,0.05) 1px,
               transparent 1px,
               transparent 20px
             ),
             repeating-linear-gradient(
               -45deg,
-              rgba(150,120,80,0.05) 0px,
-              rgba(150,120,80,0.05) 1px,
+              rgba(16,185,129,0.05) 0px,
+              rgba(16,185,129,0.05) 1px,
               transparent 1px,
               transparent 20px
             )
@@ -339,7 +339,7 @@ export default function ScrollScreen() {
         {/* HEADER */}
         <div
           style={{
-            background: 'linear-gradient(180deg, #1a1612 0%, #f0ece4 100%)',
+            background: 'linear-gradient(180deg, #0d1117 0%, #1a1f2e 100%)',
             padding: '48px 64px 40px',
           }}
         >
@@ -354,11 +354,11 @@ export default function ScrollScreen() {
             <div>
               <div
                 style={{
-                  fontFamily: 'Cinzel, serif',
+                  fontFamily: 'Public Sans, sans-serif',
                   fontSize: '10px',
                   textTransform: 'uppercase',
                   letterSpacing: '0.22em',
-                  color: '#8a7a68',
+                  color: '#64748b',
                   marginBottom: '8px',
                 }}
               >
@@ -366,10 +366,10 @@ export default function ScrollScreen() {
               </div>
               <h1
                 style={{
-                  fontFamily: 'Cinzel, serif',
+                  fontFamily: 'Public Sans, sans-serif',
                   fontSize: '36px',
                   fontWeight: 700,
-                  color: '#1a1612',
+                  color: '#e2e8f0',
                   letterSpacing: '-0.01em',
                 }}
               >
@@ -377,10 +377,10 @@ export default function ScrollScreen() {
               </h1>
               <p
                 style={{
-                  fontFamily: 'Crimson Pro, serif',
+                  fontFamily: 'Public Sans, sans-serif',
                   fontSize: '16px',
                   fontStyle: 'italic',
-                  color: '#8a7a68',
+                  color: '#64748b',
                   marginTop: '6px',
                 }}
               >
@@ -392,8 +392,8 @@ export default function ScrollScreen() {
             <div style={{ display: 'flex', gap: '10px', alignItems: 'center' }}>
               <div
                 style={{
-                  background: '#1a1612',
-                  border: '1px solid rgba(91,143,214,0.2)',
+                  background: '#0d1117',
+                  border: '1px solid rgba(52,211,153,0.2)',
                   borderRadius: '14px',
                   padding: '12px 20px',
                   display: 'flex',
@@ -404,7 +404,7 @@ export default function ScrollScreen() {
                 <span style={{ fontSize: '20px' }}>🇮🇹</span>
                 <span
                   style={{
-                    fontFamily: 'Cinzel, serif',
+                    fontFamily: 'Public Sans, sans-serif',
                     fontSize: '14px',
                     color: 'var(--moon)',
                   }}
@@ -416,7 +416,7 @@ export default function ScrollScreen() {
                     background: 'var(--lapis)',
                     borderRadius: '8px',
                     padding: '3px 8px',
-                    fontFamily: 'Cinzel, serif',
+                    fontFamily: 'Public Sans, sans-serif',
                     fontSize: '10px',
                     color: 'var(--moon-bright)',
                     letterSpacing: '0.08em',
@@ -427,14 +427,14 @@ export default function ScrollScreen() {
               </div>
               <button
                 style={{
-                  border: '1px dashed rgba(139,115,85,0.3)',
+                  border: '1px dashed rgba(16,185,129,0.25)',
                   borderRadius: '14px',
                   padding: '12px 20px',
                   background: 'transparent',
                   cursor: 'pointer',
-                  fontFamily: 'Cinzel, serif',
+                  fontFamily: 'Public Sans, sans-serif',
                   fontSize: '11px',
-                  color: '#8a7a68',
+                  color: '#64748b',
                   transition: 'border-color 150ms ease',
                 }}
               >
@@ -459,11 +459,11 @@ export default function ScrollScreen() {
             {/* COMPETENCIES */}
             <div
               style={{
-                fontFamily: 'Cinzel, serif',
+                fontFamily: 'Public Sans, sans-serif',
                 fontSize: '10px',
                 textTransform: 'uppercase',
                 letterSpacing: '0.22em',
-                color: '#8a7a68',
+                color: '#64748b',
                 marginBottom: '14px',
               }}
             >
@@ -477,11 +477,11 @@ export default function ScrollScreen() {
             <div
               style={{
                 marginTop: '32px',
-                fontFamily: 'Cinzel, serif',
+                fontFamily: 'Public Sans, sans-serif',
                 fontSize: '10px',
                 textTransform: 'uppercase',
                 letterSpacing: '0.22em',
-                color: '#8a7a68',
+                color: '#64748b',
                 marginBottom: '14px',
               }}
             >
@@ -500,7 +500,7 @@ export default function ScrollScreen() {
                 display: 'flex',
                 gap: '0',
                 marginBottom: '20px',
-                borderBottom: '1px solid rgba(139,115,85,0.2)',
+                borderBottom: '1px solid rgba(16,185,129,0.15)',
               }}
             >
               {(['passport', 'patterns', 'badges'] as const).map((tab) => {
@@ -516,11 +516,11 @@ export default function ScrollScreen() {
                       border: 'none',
                       borderBottom: active ? '2px solid var(--lapis)' : '2px solid transparent',
                       cursor: 'pointer',
-                      fontFamily: 'Cinzel, serif',
+                      fontFamily: 'Public Sans, sans-serif',
                       fontSize: '11px',
                       textTransform: 'uppercase',
                       letterSpacing: '0.12em',
-                      color: active ? '#1a1612' : '#8a7a68',
+                      color: active ? '#0d1117' : '#64748b',
                       fontWeight: active ? 700 : 400,
                       transition: 'color 150ms ease',
                       marginBottom: '-1px',
@@ -546,8 +546,8 @@ export default function ScrollScreen() {
                   {/* SCENES PASSPORT */}
                   <div
                     style={{
-                      background: 'white',
-                      border: '1px solid rgba(139,115,85,0.15)',
+                      background: '#161b27',
+                      border: '1px solid rgba(16,185,129,0.12)',
                       borderRadius: '18px',
                       padding: '24px',
                       marginBottom: '24px',
@@ -562,19 +562,19 @@ export default function ScrollScreen() {
                     >
                       <span
                         style={{
-                          fontFamily: 'Cinzel, serif',
+                          fontFamily: 'Public Sans, sans-serif',
                           fontSize: '14px',
                           fontWeight: 600,
-                          color: '#1a1612',
+                          color: '#e2e8f0',
                         }}
                       >
                         Scenes Completed
                       </span>
                       <span
                         style={{
-                          fontFamily: 'Cinzel, serif',
+                          fontFamily: 'Public Sans, sans-serif',
                           fontSize: '11px',
-                          color: '#8a7a68',
+                          color: '#64748b',
                         }}
                       >
                         14 of 48
@@ -586,18 +586,18 @@ export default function ScrollScreen() {
                   {/* WEEKLY STREAK CHART */}
                   <div
                     style={{
-                      background: 'white',
-                      border: '1px solid rgba(139,115,85,0.15)',
+                      background: '#161b27',
+                      border: '1px solid rgba(16,185,129,0.12)',
                       borderRadius: '18px',
                       padding: '24px',
                     }}
                   >
                     <div
                       style={{
-                        fontFamily: 'Cinzel, serif',
+                        fontFamily: 'Public Sans, sans-serif',
                         fontSize: '14px',
                         fontWeight: 600,
-                        color: '#1a1612',
+                        color: '#e2e8f0',
                         marginBottom: '20px',
                       }}
                     >
@@ -635,10 +635,10 @@ export default function ScrollScreen() {
                           />
                           <span
                             style={{
-                              fontFamily: 'Cinzel, serif',
+                              fontFamily: 'Public Sans, sans-serif',
                               fontSize: '8px',
                               textTransform: 'uppercase',
-                              color: bar.isToday ? '#1a1612' : '#8a7a68',
+                              color: bar.isToday ? '#0d1117' : '#64748b',
                               fontWeight: bar.isToday ? 700 : 400,
                             }}
                           >
@@ -663,11 +663,11 @@ export default function ScrollScreen() {
                   {/* Section label */}
                   <div
                     style={{
-                      fontFamily: 'Cinzel, serif',
+                      fontFamily: 'Public Sans, sans-serif',
                       fontSize: '10px',
                       textTransform: 'uppercase',
                       letterSpacing: '0.22em',
-                      color: '#8a7a68',
+                      color: '#64748b',
                       marginBottom: '16px',
                     }}
                   >
@@ -677,15 +677,15 @@ export default function ScrollScreen() {
                   {patterns.length === 0 ? (
                     <div
                       style={{
-                        background: 'white',
-                        border: '1px solid rgba(139,115,85,0.15)',
+                        background: '#161b27',
+                        border: '1px solid rgba(16,185,129,0.12)',
                         borderRadius: '16px',
                         padding: '28px',
                         textAlign: 'center',
-                        fontFamily: 'Crimson Pro, serif',
+                        fontFamily: 'Public Sans, sans-serif',
                         fontSize: '15px',
                         fontStyle: 'italic',
-                        color: '#8a7a68',
+                        color: '#64748b',
                       }}
                     >
                       No recurring patterns yet — keep practising!
@@ -699,11 +699,11 @@ export default function ScrollScreen() {
                   {/* Accuracy chart */}
                   <div
                     style={{
-                      fontFamily: 'Cinzel, serif',
+                      fontFamily: 'Public Sans, sans-serif',
                       fontSize: '10px',
                       textTransform: 'uppercase',
                       letterSpacing: '0.22em',
-                      color: '#8a7a68',
+                      color: '#64748b',
                       margin: '24px 0 16px',
                     }}
                   >
@@ -712,8 +712,8 @@ export default function ScrollScreen() {
 
                   <div
                     style={{
-                      background: 'white',
-                      border: '1px solid rgba(139,115,85,0.15)',
+                      background: '#161b27',
+                      border: '1px solid rgba(16,185,129,0.12)',
                       borderRadius: '18px',
                       padding: '24px',
                       marginBottom: '24px',
@@ -779,10 +779,10 @@ export default function ScrollScreen() {
                           style={{
                             flex: 1,
                             textAlign: 'center',
-                            fontFamily: 'Cinzel, serif',
+                            fontFamily: 'Public Sans, sans-serif',
                             fontSize: '7px',
                             textTransform: 'uppercase',
-                            color: '#8a7a68',
+                            color: '#64748b',
                           }}
                         >
                           {label.replace('Mar ', '')}
@@ -796,11 +796,11 @@ export default function ScrollScreen() {
                     <>
                       <div
                         style={{
-                          fontFamily: 'Cinzel, serif',
+                          fontFamily: 'Public Sans, sans-serif',
                           fontSize: '10px',
                           textTransform: 'uppercase',
                           letterSpacing: '0.22em',
-                          color: '#8a7a68',
+                          color: '#64748b',
                           marginBottom: '12px',
                         }}
                       >
@@ -809,15 +809,15 @@ export default function ScrollScreen() {
 
                       <div
                         style={{
-                          background: '#1a1612',
-                          border: '1px solid rgba(91,143,214,0.2)',
+                          background: '#0d1117',
+                          border: '1px solid rgba(52,211,153,0.2)',
                           borderRadius: '16px',
                           padding: '20px',
                         }}
                       >
                         <div
                           style={{
-                            fontFamily: 'Cinzel, serif',
+                            fontFamily: 'Public Sans, sans-serif',
                             fontSize: '10px',
                             textTransform: 'uppercase',
                             letterSpacing: '0.12em',
@@ -829,7 +829,7 @@ export default function ScrollScreen() {
                         </div>
                         <div
                           style={{
-                            fontFamily: 'Cinzel, serif',
+                            fontFamily: 'Public Sans, sans-serif',
                             fontSize: '16px',
                             fontWeight: 600,
                             color: 'var(--moon)',
@@ -846,7 +846,7 @@ export default function ScrollScreen() {
                         </div>
                         <div
                           style={{
-                            fontFamily: 'Crimson Pro, serif',
+                            fontFamily: 'Public Sans, sans-serif',
                             fontSize: '13px',
                             fontStyle: 'italic',
                             color: 'var(--moon-dim)',
@@ -859,11 +859,11 @@ export default function ScrollScreen() {
                           onClick={() => navigate(`/drill/${topPattern.category}`)}
                           style={{
                             background: 'transparent',
-                            border: '1px solid rgba(232,238,245,0.25)',
+                            border: '1px solid rgba(226,232,240,0.25)',
                             borderRadius: '10px',
                             padding: '10px 20px',
                             cursor: 'pointer',
-                            fontFamily: 'Cinzel, serif',
+                            fontFamily: 'Public Sans, sans-serif',
                             fontSize: '11px',
                             fontWeight: 700,
                             textTransform: 'uppercase',
@@ -873,11 +873,11 @@ export default function ScrollScreen() {
                           }}
                           onMouseEnter={(e) => {
                             ;(e.currentTarget as HTMLButtonElement).style.borderColor =
-                              'rgba(91,143,214,0.4)'
+                              'rgba(52,211,153,0.4)'
                           }}
                           onMouseLeave={(e) => {
                             ;(e.currentTarget as HTMLButtonElement).style.borderColor =
-                              'rgba(232,238,245,0.25)'
+                              'rgba(226,232,240,0.25)'
                           }}
                         >
                           Start Drill →
@@ -899,11 +899,11 @@ export default function ScrollScreen() {
                 >
                   <div
                     style={{
-                      fontFamily: 'Cinzel, serif',
+                      fontFamily: 'Public Sans, sans-serif',
                       fontSize: '10px',
                       textTransform: 'uppercase',
                       letterSpacing: '0.22em',
-                      color: '#8a7a68',
+                      color: '#64748b',
                       marginBottom: '16px',
                     }}
                   >

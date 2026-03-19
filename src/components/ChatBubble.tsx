@@ -46,15 +46,15 @@ export default function ChatBubble({ message, tts, ttsLang = 'it-IT' }: ChatBubb
       <div style={{ alignSelf: 'center', display: 'flex', justifyContent: 'center' }}>
         <div
           style={{
-            background: 'rgba(42,82,152,0.12)',
-            border: '1px solid rgba(91,143,214,0.18)',
+            background: 'rgba(16,185,129,0.12)',
+            border: '1px solid rgba(52,211,153,0.18)',
             borderRadius: '20px',
             padding: '6px 18px',
           }}
         >
           <span
             style={{
-              fontFamily: 'Cinzel, serif',
+              fontFamily: 'Public Sans, sans-serif',
               fontSize: '9px',
               textTransform: 'uppercase',
               letterSpacing: '0.1em',
@@ -77,19 +77,19 @@ export default function ChatBubble({ message, tts, ttsLang = 'it-IT' }: ChatBubb
         <div
           style={{
             background: 'var(--basalt-mid)',
-            border: `1px solid ${isActivelySpeaking ? 'rgba(42,82,152,0.3)' : 'rgba(232,238,245,0.07)'}`,
+            border: `1px solid ${isActivelySpeaking ? 'rgba(16,185,129,0.3)' : 'rgba(226,232,240,0.07)'}`,
             borderRadius: '18px',
             borderBottomLeftRadius: '3px',
             padding: '14px 18px',
             boxShadow: isActivelySpeaking
-              ? '0 0 12px rgba(42,82,152,0.2)'
+              ? '0 0 12px rgba(16,185,129,0.2)'
               : 'none',
             transition: 'border-color 200ms, box-shadow 200ms',
           }}
         >
           <p
             style={{
-              fontFamily: 'Crimson Pro, serif',
+              fontFamily: 'Public Sans, sans-serif',
               fontSize: '14px',
               fontStyle: 'italic',
               color: 'var(--moon-dim)',
@@ -102,11 +102,11 @@ export default function ChatBubble({ message, tts, ttsLang = 'it-IT' }: ChatBubb
           {message.translation && (
             <p
               style={{
-                fontFamily: 'Crimson Pro, serif',
+                fontFamily: 'Public Sans, sans-serif',
                 fontSize: '12px',
                 fontStyle: 'italic',
                 color: 'var(--muted)',
-                borderTop: '1px solid rgba(232,238,245,0.05)',
+                borderTop: '1px solid rgba(226,232,240,0.05)',
                 paddingTop: '8px',
                 margin: 0,
                 marginTop: '8px',
@@ -168,7 +168,7 @@ export default function ChatBubble({ message, tts, ttsLang = 'it-IT' }: ChatBubb
                 height: '26px',
                 borderRadius: '50%',
                 background: isActivelySpeaking ? 'var(--lapis)' : 'var(--basalt-raised)',
-                border: '1px solid rgba(232,238,245,0.08)',
+                border: '1px solid rgba(226,232,240,0.08)',
                 display: 'flex',
                 alignItems: 'center',
                 justifyContent: 'center',
@@ -192,7 +192,7 @@ export default function ChatBubble({ message, tts, ttsLang = 'it-IT' }: ChatBubb
       <div
         style={{
           background: 'var(--lapis-deep)',
-          border: '1px solid rgba(91,143,214,0.2)',
+          border: '1px solid rgba(52,211,153,0.2)',
           borderRadius: '18px',
           borderBottomRightRadius: '3px',
           padding: '14px 18px',
@@ -201,7 +201,7 @@ export default function ChatBubble({ message, tts, ttsLang = 'it-IT' }: ChatBubb
       >
         <p
           style={{
-            fontFamily: 'Crimson Pro, serif',
+            fontFamily: 'Public Sans, sans-serif',
             fontSize: '14px',
             fontStyle: 'italic',
             color: 'var(--moon)',

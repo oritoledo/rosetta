@@ -94,10 +94,10 @@ export default function ReviewScreen() {
         }}
       >
         <div style={{ fontSize: '48px' }}>✨</div>
-        <div style={{ fontFamily: 'Cinzel, serif', fontSize: '22px', color: 'var(--moon)', fontWeight: 700 }}>
+        <div style={{ fontFamily: 'Public Sans, sans-serif', fontSize: '22px', color: 'var(--moon)', fontWeight: 700 }}>
           All caught up!
         </div>
-        <div style={{ fontFamily: 'Crimson Pro, serif', fontSize: '16px', fontStyle: 'italic', color: 'var(--muted)' }}>
+        <div style={{ fontFamily: 'Public Sans, sans-serif', fontSize: '16px', fontStyle: 'italic', color: 'var(--muted)' }}>
           No words due for review right now.
         </div>
         <button
@@ -106,10 +106,10 @@ export default function ReviewScreen() {
             marginTop: '8px',
             padding: '12px 28px',
             background: 'var(--lapis)',
-            border: '1px solid rgba(91,143,214,0.35)',
+            border: '1px solid rgba(52,211,153,0.35)',
             borderRadius: '14px',
             cursor: 'pointer',
-            fontFamily: 'Cinzel, serif',
+            fontFamily: 'Public Sans, sans-serif',
             fontSize: '12px',
             fontWeight: 700,
             textTransform: 'uppercase',
@@ -147,7 +147,7 @@ export default function ReviewScreen() {
 
         <div
           style={{
-            fontFamily: 'Cinzel, serif',
+            fontFamily: 'Public Sans, sans-serif',
             fontSize: '26px',
             fontWeight: 700,
             color: 'var(--moon-bright)',
@@ -159,7 +159,7 @@ export default function ReviewScreen() {
         </div>
         <div
           style={{
-            fontFamily: 'Crimson Pro, serif',
+            fontFamily: 'Public Sans, sans-serif',
             fontSize: '15px',
             fontStyle: 'italic',
             color: 'var(--muted)',
@@ -173,7 +173,7 @@ export default function ReviewScreen() {
           {[
             { value: mastered, label: 'Mastered', color: '#52d48a', bg: 'rgba(82,212,138,0.1)', border: 'rgba(82,212,138,0.25)' },
             { value: needsWork, label: 'Needs Work', color: '#e8504c', bg: 'rgba(232,80,60,0.1)', border: 'rgba(232,80,60,0.25)' },
-            { value: totalWords, label: 'Total Reviewed', color: 'var(--lapis-bright)', bg: 'rgba(42,82,152,0.12)', border: 'rgba(91,143,214,0.25)' },
+            { value: totalWords, label: 'Total Reviewed', color: 'var(--lapis-bright)', bg: 'rgba(16,185,129,0.12)', border: 'rgba(52,211,153,0.25)' },
           ].map(({ value, label, color, bg, border }) => (
             <div
               key={label}
@@ -185,10 +185,10 @@ export default function ReviewScreen() {
                 minWidth: '100px',
               }}
             >
-              <div style={{ fontFamily: 'Cinzel, serif', fontSize: '28px', fontWeight: 700, color, lineHeight: 1 }}>
+              <div style={{ fontFamily: 'Public Sans, sans-serif', fontSize: '28px', fontWeight: 700, color, lineHeight: 1 }}>
                 {value}
               </div>
-              <div style={{ fontFamily: 'Cinzel, serif', fontSize: '9px', textTransform: 'uppercase', letterSpacing: '0.1em', color: 'var(--muted)', marginTop: '6px' }}>
+              <div style={{ fontFamily: 'Public Sans, sans-serif', fontSize: '9px', textTransform: 'uppercase', letterSpacing: '0.1em', color: 'var(--muted)', marginTop: '6px' }}>
                 {label}
               </div>
             </div>
@@ -197,22 +197,22 @@ export default function ReviewScreen() {
 
         <motion.button
           onClick={() => navigate('/')}
-          whileHover={{ backgroundColor: 'var(--lapis-mid)', boxShadow: '0 0 48px rgba(42,82,152,0.5)' }}
+          whileHover={{ backgroundColor: 'var(--lapis-mid)', boxShadow: '0 0 48px rgba(16,185,129,0.5)' }}
           transition={{ duration: 0.15 }}
           style={{
             padding: '0 40px',
             height: '56px',
             background: 'var(--lapis)',
-            border: '1px solid rgba(91,143,214,0.35)',
+            border: '1px solid rgba(52,211,153,0.35)',
             borderRadius: '16px',
             cursor: 'pointer',
-            fontFamily: 'Cinzel, serif',
+            fontFamily: 'Public Sans, sans-serif',
             fontSize: '13px',
             fontWeight: 700,
             textTransform: 'uppercase',
             letterSpacing: '0.14em',
             color: 'var(--moon-bright)',
-            boxShadow: '0 0 32px rgba(42,82,152,0.3)',
+            boxShadow: '0 0 32px rgba(16,185,129,0.3)',
           }}
         >
           Back to Learning →
@@ -241,7 +241,7 @@ export default function ReviewScreen() {
         {/* ── LEFT PANEL ─────────────────────────────────────────────────────── */}
         <div
           style={{
-            background: 'linear-gradient(170deg, #0d1e38, #060e1a)',
+            background: 'linear-gradient(170deg, #0d1117, #0a0d14)',
             padding: '60px',
             display: 'flex',
             flexDirection: 'column',
@@ -258,7 +258,7 @@ export default function ReviewScreen() {
           >
             <div
               style={{
-                fontFamily: 'Cinzel, serif',
+                fontFamily: 'Public Sans, sans-serif',
                 fontSize: '10px',
                 textTransform: 'uppercase',
                 letterSpacing: '0.2em',
@@ -300,7 +300,7 @@ export default function ReviewScreen() {
                 {/* Word in target language */}
                 <div
                   style={{
-                    fontFamily: 'Cinzel, serif',
+                    fontFamily: 'Public Sans, sans-serif',
                     fontSize: '52px',
                     fontWeight: 700,
                     color: 'var(--moon-bright)',
@@ -315,7 +315,7 @@ export default function ReviewScreen() {
                 {currentWord?.pronunciation && (
                   <div
                     style={{
-                      fontFamily: 'Crimson Pro, serif',
+                      fontFamily: 'Public Sans, sans-serif',
                       fontSize: '18px',
                       fontStyle: 'italic',
                       color: 'var(--muted)',
@@ -330,11 +330,11 @@ export default function ReviewScreen() {
                 <div
                   style={{
                     display: 'inline-block',
-                    background: 'rgba(42,82,152,0.2)',
-                    border: '1px solid rgba(91,143,214,0.25)',
+                    background: 'rgba(16,185,129,0.2)',
+                    border: '1px solid rgba(52,211,153,0.25)',
                     borderRadius: '20px',
                     padding: '4px 14px',
-                    fontFamily: 'Cinzel, serif',
+                    fontFamily: 'Public Sans, sans-serif',
                     fontSize: '9px',
                     textTransform: 'uppercase',
                     letterSpacing: '0.1em',
@@ -358,10 +358,10 @@ export default function ReviewScreen() {
               style={{
                 padding: '10px 28px',
                 background: 'transparent',
-                border: '1px solid rgba(232,238,245,0.2)',
+                border: '1px solid rgba(226,232,240,0.2)',
                 borderRadius: '20px',
                 cursor: 'pointer',
-                fontFamily: 'Cinzel, serif',
+                fontFamily: 'Public Sans, sans-serif',
                 fontSize: '12px',
                 textTransform: 'uppercase',
                 letterSpacing: '0.12em',
@@ -369,10 +369,10 @@ export default function ReviewScreen() {
                 transition: 'border-color 150ms ease',
               }}
               onMouseEnter={(e) => {
-                ;(e.currentTarget as HTMLButtonElement).style.borderColor = 'rgba(91,143,214,0.4)'
+                ;(e.currentTarget as HTMLButtonElement).style.borderColor = 'rgba(52,211,153,0.4)'
               }}
               onMouseLeave={(e) => {
-                ;(e.currentTarget as HTMLButtonElement).style.borderColor = 'rgba(232,238,245,0.2)'
+                ;(e.currentTarget as HTMLButtonElement).style.borderColor = 'rgba(226,232,240,0.2)'
               }}
             >
               Reveal translation
@@ -384,7 +384,7 @@ export default function ReviewScreen() {
         <div
           style={{
             background: 'var(--basalt)',
-            borderLeft: '1px solid rgba(232,238,245,0.06)',
+            borderLeft: '1px solid rgba(226,232,240,0.06)',
             padding: '60px',
             display: 'flex',
             flexDirection: 'column',
@@ -402,7 +402,7 @@ export default function ReviewScreen() {
               >
                 <div
                   style={{
-                    fontFamily: 'Crimson Pro, serif',
+                    fontFamily: 'Public Sans, sans-serif',
                     fontSize: '18px',
                     fontStyle: 'italic',
                     color: 'var(--muted)',
@@ -423,7 +423,7 @@ export default function ReviewScreen() {
                 {/* Translation */}
                 <div
                   style={{
-                    fontFamily: 'Cinzel, serif',
+                    fontFamily: 'Public Sans, sans-serif',
                     fontSize: '28px',
                     fontWeight: 700,
                     color: 'var(--moon)',
@@ -437,7 +437,7 @@ export default function ReviewScreen() {
                 {currentWord?.exampleSentence && (
                   <div
                     style={{
-                      fontFamily: 'Crimson Pro, serif',
+                      fontFamily: 'Public Sans, sans-serif',
                       fontSize: '16px',
                       fontStyle: 'italic',
                       color: 'var(--muted)',
@@ -452,7 +452,7 @@ export default function ReviewScreen() {
                 {/* Rating prompt */}
                 <div
                   style={{
-                    fontFamily: 'Cinzel, serif',
+                    fontFamily: 'Public Sans, sans-serif',
                     fontSize: '11px',
                     textTransform: 'uppercase',
                     letterSpacing: '0.15em',
@@ -468,7 +468,7 @@ export default function ReviewScreen() {
                   {([
                     { label: 'Again', score: 0 as RatingScore, bg: 'rgba(232,80,60,0.15)',  border: 'rgba(232,80,60,0.3)',   color: '#e8504c' },
                     { label: 'Hard',  score: 3 as RatingScore, bg: 'rgba(201,168,76,0.12)', border: 'rgba(201,168,76,0.25)', color: '#c9a84c' },
-                    { label: 'Good',  score: 4 as RatingScore, bg: 'rgba(42,82,152,0.2)',   border: 'rgba(91,143,214,0.3)',  color: 'var(--lapis-bright)' },
+                    { label: 'Good',  score: 4 as RatingScore, bg: 'rgba(16,185,129,0.2)',   border: 'rgba(52,211,153,0.3)',  color: 'var(--lapis-bright)' },
                     { label: 'Easy',  score: 5 as RatingScore, bg: 'rgba(82,212,138,0.12)', border: 'rgba(82,212,138,0.25)', color: '#52d48a' },
                   ] as const).map(({ label, score, bg, border, color }) => (
                     <motion.button
@@ -483,7 +483,7 @@ export default function ReviewScreen() {
                         border: `1px solid ${border}`,
                         borderRadius: '14px',
                         cursor: 'pointer',
-                        fontFamily: 'Cinzel, serif',
+                        fontFamily: 'Public Sans, sans-serif',
                         fontSize: '13px',
                         fontWeight: 700,
                         textTransform: 'uppercase',

@@ -57,7 +57,7 @@ export default function BadgeToast({ badge, onDismiss }: BadgeToastProps) {
           <div
             style={{
               position: 'relative',
-              background: 'linear-gradient(145deg, #1a1612 0%, #0d0b08 100%)',
+              background: 'linear-gradient(145deg, #0d1117 0%, #0a0d14 100%)',
               border: `1px solid ${cfg.border}`,
               borderRadius: '20px',
               padding: '20px 22px',
@@ -92,7 +92,7 @@ export default function BadgeToast({ badge, onDismiss }: BadgeToastProps) {
               {/* Rarity pill */}
               <span
                 style={{
-                  fontFamily: 'Cinzel, serif',
+                  fontFamily: 'Public Sans, sans-serif',
                   fontSize: '9px',
                   fontWeight: 700,
                   textTransform: 'uppercase',
@@ -112,9 +112,9 @@ export default function BadgeToast({ badge, onDismiss }: BadgeToastProps) {
               {/* Dismiss hint */}
               <span
                 style={{
-                  fontFamily: 'Cinzel, serif',
+                  fontFamily: 'Public Sans, sans-serif',
                   fontSize: '8px',
-                  color: '#4a4035',
+                  color: '#475569',
                   textTransform: 'uppercase',
                   letterSpacing: '0.1em',
                 }}
@@ -152,7 +152,7 @@ export default function BadgeToast({ badge, onDismiss }: BadgeToastProps) {
                 {/* "Badge Unlocked" eyebrow */}
                 <div
                   style={{
-                    fontFamily: 'Cinzel, serif',
+                    fontFamily: 'Public Sans, sans-serif',
                     fontSize: '9px',
                     textTransform: 'uppercase',
                     letterSpacing: '0.2em',
@@ -167,10 +167,10 @@ export default function BadgeToast({ badge, onDismiss }: BadgeToastProps) {
                 {/* Badge name */}
                 <div
                   style={{
-                    fontFamily: 'Cinzel, serif',
+                    fontFamily: 'Public Sans, sans-serif',
                     fontSize: '18px',
                     fontWeight: 700,
-                    color: '#f0ece4',
+                    color: '#e2e8f0',
                     lineHeight: 1.1,
                     marginBottom: '5px',
                   }}
@@ -181,10 +181,10 @@ export default function BadgeToast({ badge, onDismiss }: BadgeToastProps) {
                 {/* Description */}
                 <div
                   style={{
-                    fontFamily: 'Crimson Pro, serif',
+                    fontFamily: 'Public Sans, sans-serif',
                     fontSize: '13px',
                     fontStyle: 'italic',
-                    color: '#8a7a68',
+                    color: '#64748b',
                     lineHeight: 1.4,
                   }}
                 >
@@ -198,8 +198,8 @@ export default function BadgeToast({ badge, onDismiss }: BadgeToastProps) {
               style={{
                 marginTop: '14px',
                 paddingTop: '12px',
-                borderTop: '1px solid rgba(139,115,85,0.12)',
-                fontFamily: 'Crimson Pro, serif',
+                borderTop: '1px solid rgba(16,185,129,0.1)',
+                fontFamily: 'Public Sans, sans-serif',
                 fontSize: '11px',
                 fontStyle: 'italic',
                 color: cfg.color,

@@ -61,7 +61,7 @@ export default function Sidebar() {
         width: '240px',
         height: '100dvh',
         background: 'var(--basalt)',
-        borderRight: '1px solid rgba(232,238,245,0.06)',
+        borderRight: '1px solid rgba(226,232,240,0.06)',
         display: 'flex',
         flexDirection: 'column',
         flexShrink: 0,
@@ -72,7 +72,7 @@ export default function Sidebar() {
       <div
         style={{
           padding: '28px 24px 24px',
-          borderBottom: '1px solid rgba(232,238,245,0.06)',
+          borderBottom: '1px solid rgba(226,232,240,0.06)',
         }}
       >
         <div
@@ -87,7 +87,7 @@ export default function Sidebar() {
         </div>
         <div
           style={{
-            fontFamily: 'Cinzel, serif',
+            fontFamily: 'Public Sans, sans-serif',
             fontSize: '20px',
             fontWeight: 900,
             color: 'var(--moon-bright)',
@@ -98,7 +98,7 @@ export default function Sidebar() {
         </div>
         <div
           style={{
-            fontFamily: 'Crimson Pro, serif',
+            fontFamily: 'Public Sans, sans-serif',
             fontSize: '11px',
             fontStyle: 'italic',
             color: 'var(--muted)',
@@ -129,10 +129,10 @@ export default function Sidebar() {
                 cursor: 'pointer',
                 background: active ? 'var(--lapis-deep)' : 'transparent',
                 border: active
-                  ? '1px solid rgba(91,143,214,0.2)'
+                  ? '1px solid rgba(52,211,153,0.2)'
                   : '1px solid transparent',
                 boxShadow: active
-                  ? '0 0 16px rgba(42,82,152,0.25)'
+                  ? '0 0 16px rgba(16,185,129,0.25)'
                   : 'none',
                 width: '100%',
                 textAlign: 'left',
@@ -154,7 +154,7 @@ export default function Sidebar() {
               <span style={{ fontSize: '20px', flexShrink: 0 }}>{item.icon}</span>
               <span
                 style={{
-                  fontFamily: 'Cinzel, serif',
+                  fontFamily: 'Public Sans, sans-serif',
                   fontSize: '12px',
                   fontWeight: 600,
                   letterSpacing: '0.08em',
@@ -186,7 +186,7 @@ export default function Sidebar() {
                   />
                   <span
                     style={{
-                      fontFamily: 'Cinzel, serif',
+                      fontFamily: 'Public Sans, sans-serif',
                       fontSize: '9px',
                       fontWeight: 700,
                       color: '#c9a84c',
@@ -229,7 +229,7 @@ export default function Sidebar() {
               />
               <span
                 style={{
-                  fontFamily: 'Cinzel, serif',
+                  fontFamily: 'Public Sans, sans-serif',
                   fontSize: '10px',
                   color: 'var(--moon)',
                   flex: 1,
@@ -239,7 +239,7 @@ export default function Sidebar() {
               </span>
               <span
                 style={{
-                  fontFamily: 'Cinzel, serif',
+                  fontFamily: 'Public Sans, sans-serif',
                   fontSize: '9px',
                   color: 'var(--lapis-bright)',
                 }}
@@ -258,7 +258,7 @@ export default function Sidebar() {
             >
               <div
                 style={{
-                  fontFamily: 'Cinzel, serif',
+                  fontFamily: 'Public Sans, sans-serif',
                   fontSize: '8px',
                   textTransform: 'uppercase',
                   letterSpacing: '0.14em',
@@ -271,7 +271,7 @@ export default function Sidebar() {
               <div style={{ display: 'flex', alignItems: 'baseline', gap: '4px', marginBottom: '10px' }}>
                 <span
                   style={{
-                    fontFamily: 'Cinzel, serif',
+                    fontFamily: 'Public Sans, sans-serif',
                     fontSize: '20px',
                     fontWeight: 700,
                     color: 'var(--moon-bright)',
@@ -282,7 +282,7 @@ export default function Sidebar() {
                 </span>
                 <span
                   style={{
-                    fontFamily: 'Cinzel, serif',
+                    fontFamily: 'Public Sans, sans-serif',
                     fontSize: '10px',
                     color: 'var(--muted)',
                   }}
@@ -299,7 +299,7 @@ export default function Sidebar() {
                   border: '1px solid rgba(201,168,76,0.35)',
                   borderRadius: '8px',
                   cursor: 'pointer',
-                  fontFamily: 'Cinzel, serif',
+                  fontFamily: 'Public Sans, sans-serif',
                   fontSize: '9px',
                   fontWeight: 700,
                   textTransform: 'uppercase',
@@ -330,7 +330,7 @@ export default function Sidebar() {
             style={{
               width: '100%',
               background: 'var(--lapis-deep)',
-              border: '1px solid rgba(91,143,214,0.2)',
+              border: '1px solid rgba(52,211,153,0.2)',
               borderRadius: '12px',
               padding: '10px 12px',
               cursor: 'pointer',
@@ -339,7 +339,7 @@ export default function Sidebar() {
           >
             <div
               style={{
-                fontFamily: 'Cinzel, serif',
+                fontFamily: 'Public Sans, sans-serif',
                 fontSize: '7px',
                 textTransform: 'uppercase',
                 letterSpacing: '0.14em',
@@ -361,7 +361,7 @@ export default function Sidebar() {
               <span style={{ fontSize: '16px' }}>{todayPlan.scene.emoji}</span>
               <span
                 style={{
-                  fontFamily: 'Cinzel, serif',
+                  fontFamily: 'Public Sans, sans-serif',
                   fontSize: '11px',
                   fontWeight: 600,
                   color: 'var(--moon)',
@@ -372,7 +372,7 @@ export default function Sidebar() {
             </div>
             <div
               style={{
-                fontFamily: 'Crimson Pro, serif',
+                fontFamily: 'Public Sans, sans-serif',
                 fontSize: '10px',
                 fontStyle: 'italic',
                 color: 'var(--moon-dim)',
@@ -389,7 +389,7 @@ export default function Sidebar() {
         style={{
           marginTop: 'auto',
           padding: '16px 12px',
-          borderTop: '1px solid rgba(232,238,245,0.06)',
+          borderTop: '1px solid rgba(226,232,240,0.06)',
           display: 'flex',
           alignItems: 'center',
           gap: '12px',
@@ -401,7 +401,7 @@ export default function Sidebar() {
             height: '36px',
             borderRadius: '50%',
             background: 'var(--lapis-deep)',
-            border: '1px solid rgba(91,143,214,0.3)',
+            border: '1px solid rgba(52,211,153,0.3)',
             display: 'flex',
             alignItems: 'center',
             justifyContent: 'center',
@@ -410,7 +410,7 @@ export default function Sidebar() {
         >
           <span
             style={{
-              fontFamily: 'Cinzel, serif',
+              fontFamily: 'Public Sans, sans-serif',
               fontSize: '14px',
               fontWeight: 700,
               color: 'var(--moon-bright)',
@@ -422,7 +422,7 @@ export default function Sidebar() {
         <div>
           <div
             style={{
-              fontFamily: 'Cinzel, serif',
+              fontFamily: 'Public Sans, sans-serif',
               fontSize: '12px',
               color: 'var(--moon)',
             }}
@@ -431,7 +431,7 @@ export default function Sidebar() {
           </div>
           <div
             style={{
-              fontFamily: 'Crimson Pro, serif',
+              fontFamily: 'Public Sans, sans-serif',
               fontSize: '10px',
               fontStyle: 'italic',
               color: 'var(--lapis-bright)',

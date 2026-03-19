@@ -3,21 +3,28 @@
 @tailwind utilities;
 
 :root {
-  --basalt:        #181818;
-  --basalt-mid:    #212120;
-  --basalt-raised: #2a2a28;
-  --basalt-edge:   #333330;
-  --lapis-deep:    #1b3a5c;
-  --lapis:         #2a5298;
-  --lapis-mid:     #3a6abf;
-  --lapis-bright:  #5b8fd6;
-  --moon:          #e8eef5;
-  --moon-bright:   #f4f7fa;
-  --moon-dim:      #9aaabb;
-  --muted:         #5a5a58;
-  --faint:         #3a3a38;
-  --papyrus:       #f0ece4;
-  --papyrus-dark:  #e0d9ce;
+  /* ── Obsidian surfaces ─────────────────────────────────────────── */
+  --basalt:        #0d1117;
+  --basalt-mid:    #161b27;
+  --basalt-raised: #1a1f2e;
+  --basalt-edge:   #1e2d3d;
+
+  /* ── Emerald accents ───────────────────────────────────────────── */
+  --lapis-deep:    #064e3b;
+  --lapis:         #059669;
+  --lapis-mid:     #10b981;
+  --lapis-bright:  #34d399;
+
+  /* ── Text ──────────────────────────────────────────────────────── */
+  --moon:          #e2e8f0;
+  --moon-bright:   #f1f5f9;
+  --moon-dim:      #94a3b8;
+  --muted:         #475569;
+  --faint:         #1e2d3d;
+
+  /* ── Surfaces (formerly papyrus — now dark to match theme) ─────── */
+  --papyrus:       #0d1117;
+  --papyrus-dark:  #1a1f2e;
 }
 
 *,
@@ -26,6 +33,7 @@
   box-sizing: border-box;
   margin: 0;
   padding: 0;
+  font-family: 'Public Sans', sans-serif;
 }
 
 html,
@@ -36,8 +44,8 @@ body,
 }
 
 body {
-  background: #101010;
-  font-family: 'Crimson Pro', serif;
+  background: linear-gradient(135deg, #0d1117 0%, #1a1f2e 50%, #064e3b 100%);
+  font-family: 'Public Sans', sans-serif;
   color: var(--moon);
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
@@ -55,8 +63,8 @@ body {
 
 /* Mic pulse animation */
 @keyframes micPulse {
-  0%, 100% { box-shadow: 0 0 24px rgba(42, 82, 152, 0.4); }
-  50%       { box-shadow: 0 0 48px rgba(42, 82, 152, 0.8), 0 0 72px rgba(91, 143, 214, 0.4); }
+  0%, 100% { box-shadow: 0 0 24px rgba(16, 185, 129, 0.4); }
+  50%       { box-shadow: 0 0 48px rgba(16, 185, 129, 0.8), 0 0 72px rgba(52, 211, 153, 0.4); }
 }
 .mic-recording {
   animation: micPulse 1.2s ease-in-out infinite;

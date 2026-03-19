@@ -61,7 +61,7 @@ export default function PlanScreen() {
           </div>
           <p
             style={{
-              fontFamily: 'Cinzel, serif',
+              fontFamily: 'Public Sans, sans-serif',
               fontSize: '12px',
               textTransform: 'uppercase',
               letterSpacing: '0.16em',
@@ -114,7 +114,7 @@ export default function PlanScreen() {
           </div>
           <div
             style={{
-              fontFamily: 'Cinzel, serif',
+              fontFamily: 'Public Sans, sans-serif',
               fontSize: '13px',
               textTransform: 'uppercase',
               letterSpacing: '0.16em',
@@ -150,7 +150,7 @@ export default function PlanScreen() {
               <div>
                 <div
                   style={{
-                    fontFamily: 'Cinzel, serif',
+                    fontFamily: 'Public Sans, sans-serif',
                     fontSize: '9px',
                     textTransform: 'uppercase',
                     letterSpacing: '0.22em',
@@ -161,7 +161,7 @@ export default function PlanScreen() {
                 </div>
                 <h1
                   style={{
-                    fontFamily: 'Cinzel, serif',
+                    fontFamily: 'Public Sans, sans-serif',
                     fontSize: '32px',
                     fontWeight: 700,
                     color: 'var(--moon-bright)',
@@ -174,7 +174,7 @@ export default function PlanScreen() {
                 </h1>
                 <p
                   style={{
-                    fontFamily: 'Crimson Pro, serif',
+                    fontFamily: 'Public Sans, sans-serif',
                     fontSize: '14px',
                     fontStyle: 'italic',
                     color: 'var(--muted)',
@@ -191,11 +191,11 @@ export default function PlanScreen() {
                 disabled={regenerating}
                 style={{
                   background: 'transparent',
-                  border: '1px solid rgba(232,238,245,0.1)',
+                  border: '1px solid rgba(226,232,240,0.1)',
                   borderRadius: '12px',
                   padding: '10px 20px',
                   cursor: regenerating ? 'not-allowed' : 'pointer',
-                  fontFamily: 'Cinzel, serif',
+                  fontFamily: 'Public Sans, sans-serif',
                   fontSize: '11px',
                   textTransform: 'uppercase',
                   letterSpacing: '0.1em',
@@ -207,12 +207,12 @@ export default function PlanScreen() {
                 onMouseEnter={(e) => {
                   if (!regenerating) {
                     (e.currentTarget as HTMLButtonElement).style.borderColor =
-                      'rgba(91,143,214,0.3)'
+                      'rgba(52,211,153,0.3)'
                   }
                 }}
                 onMouseLeave={(e) => {
                   ;(e.currentTarget as HTMLButtonElement).style.borderColor =
-                    'rgba(232,238,245,0.1)'
+                    'rgba(226,232,240,0.1)'
                 }}
               >
                 ↻ Regenerate Plan
@@ -226,7 +226,7 @@ export default function PlanScreen() {
                 background: 'none',
                 border: 'none',
                 cursor: 'pointer',
-                fontFamily: 'Cinzel, serif',
+                fontFamily: 'Public Sans, sans-serif',
                 fontSize: '9px',
                 textTransform: 'uppercase',
                 letterSpacing: '0.12em',

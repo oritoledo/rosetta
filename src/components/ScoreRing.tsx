@@ -63,7 +63,7 @@ export default function ScoreRing({ score, size = 120 }: ScoreRingProps) {
       >
         <span
           style={{
-            fontFamily: 'Cinzel, serif',
+            fontFamily: 'Public Sans, sans-serif',
             fontSize: '28px',
             fontWeight: 700,
             color: 'var(--moon-bright)',
@@ -74,7 +74,7 @@ export default function ScoreRing({ score, size = 120 }: ScoreRingProps) {
         </span>
         <span
           style={{
-            fontFamily: 'Cinzel, serif',
+            fontFamily: 'Public Sans, sans-serif',
             fontSize: '8px',
             textTransform: 'uppercase',
             letterSpacing: '0.1em',

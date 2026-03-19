@@ -150,7 +150,7 @@ export default function ConversationScreen() {
               >
                 <span
                   style={{
-                    fontFamily: 'Crimson Pro, serif',
+                    fontFamily: 'Public Sans, sans-serif',
                     fontSize: '12px',
                     fontStyle: 'italic',
                     color: 'var(--moon-dim)',
@@ -184,7 +184,7 @@ export default function ConversationScreen() {
           <div
             style={{
               padding: '24px 32px',
-              borderBottom: '1px solid rgba(232,238,245,0.06)',
+              borderBottom: '1px solid rgba(226,232,240,0.06)',
               display: 'flex',
               alignItems: 'center',
               gap: '16px',
@@ -226,7 +226,7 @@ export default function ConversationScreen() {
             <div style={{ flex: 1 }}>
               <div
                 style={{
-                  fontFamily: 'Cinzel, serif',
+                  fontFamily: 'Public Sans, sans-serif',
                   fontSize: '15px',
                   fontWeight: 600,
                   color: 'var(--moon)',
@@ -237,7 +237,7 @@ export default function ConversationScreen() {
               </div>
               <div
                 style={{
-                  fontFamily: 'Crimson Pro, serif',
+                  fontFamily: 'Public Sans, sans-serif',
                   fontSize: '12px',
                   fontStyle: 'italic',
                   color: 'var(--lapis-bright)',
@@ -252,12 +252,12 @@ export default function ConversationScreen() {
               <button
                 onClick={() => setCheatSheetOpen((o) => !o)}
                 style={{
-                  background: cheatSheetOpen ? 'rgba(42,82,152,0.25)' : 'none',
-                  border: `1px solid ${cheatSheetOpen ? 'rgba(91,143,214,0.45)' : 'rgba(232,238,245,0.15)'}`,
+                  background: cheatSheetOpen ? 'rgba(16,185,129,0.25)' : 'none',
+                  border: `1px solid ${cheatSheetOpen ? 'rgba(52,211,153,0.45)' : 'rgba(226,232,240,0.15)'}`,
                   borderRadius: '20px',
                   padding: '7px 16px',
                   cursor: 'pointer',
-                  fontFamily: 'Cinzel, serif',
+                  fontFamily: 'Public Sans, sans-serif',
                   fontSize: '10px',
                   textTransform: 'uppercase',
                   letterSpacing: '0.1em',
@@ -288,11 +288,11 @@ export default function ConversationScreen() {
                 onClick={() => navigate('/debrief')}
                 style={{
                   background: 'none',
-                  border: '1px solid rgba(232,238,245,0.15)',
+                  border: '1px solid rgba(226,232,240,0.15)',
                   borderRadius: '20px',
                   padding: '7px 16px',
                   cursor: 'pointer',
-                  fontFamily: 'Cinzel, serif',
+                  fontFamily: 'Public Sans, sans-serif',
                   fontSize: '10px',
                   textTransform: 'uppercase',
                   letterSpacing: '0.1em',
@@ -330,7 +330,7 @@ export default function ConversationScreen() {
           <div
             style={{
               padding: '20px 32px',
-              borderTop: '1px solid rgba(232,238,245,0.06)',
+              borderTop: '1px solid rgba(226,232,240,0.06)',
               flexShrink: 0,
             }}
           >
@@ -352,7 +352,7 @@ export default function ConversationScreen() {
                 >
                   <span
                     style={{
-                      fontFamily: 'Cinzel, serif',
+                      fontFamily: 'Public Sans, sans-serif',
                       fontSize: '9px',
                       textTransform: 'uppercase',
                       letterSpacing: '0.1em',
@@ -414,10 +414,10 @@ export default function ConversationScreen() {
                     background: speech.isListening
                       ? 'rgba(232,80,60,0.8)'
                       : 'var(--lapis)',
-                    border: `1px solid ${speech.isListening ? 'rgba(232,80,60,0.5)' : 'rgba(91,143,214,0.4)'}`,
+                    border: `1px solid ${speech.isListening ? 'rgba(232,80,60,0.5)' : 'rgba(52,211,153,0.4)'}`,
                     boxShadow: speech.isListening
                       ? '0 0 24px rgba(232,80,60,0.4)'
-                      : '0 0 24px rgba(42,82,152,0.4)',
+                      : '0 0 24px rgba(16,185,129,0.4)',
                     display: 'flex',
                     alignItems: 'center',
                     justifyContent: 'center',
@@ -445,10 +445,10 @@ export default function ConversationScreen() {
                   flex: 1,
                   height: '48px',
                   background: 'var(--basalt-mid)',
-                  border: '1px solid rgba(232,238,245,0.07)',
+                  border: '1px solid rgba(226,232,240,0.07)',
                   borderRadius: '28px',
                   padding: '0 20px',
-                  fontFamily: 'Crimson Pro, serif',
+                  fontFamily: 'Public Sans, sans-serif',
                   fontSize: '13px',
                   fontStyle: 'italic',
                   color: 'var(--moon)',
@@ -464,7 +464,7 @@ export default function ConversationScreen() {
                   height: '48px',
                   borderRadius: '50%',
                   background: 'var(--basalt-raised)',
-                  border: '1px solid rgba(232,238,245,0.07)',
+                  border: '1px solid rgba(226,232,240,0.07)',
                   display: 'flex',
                   alignItems: 'center',
                   justifyContent: 'center',
@@ -483,7 +483,7 @@ export default function ConversationScreen() {
             {speech.isListening ? (
               <div
                 style={{
-                  fontFamily: 'Crimson Pro, serif',
+                  fontFamily: 'Public Sans, sans-serif',
                   fontSize: '10px',
                   fontStyle: 'italic',
                   color: 'rgba(232,80,60,0.8)',
@@ -496,7 +496,7 @@ export default function ConversationScreen() {
             ) : suggestedPrompt && !inputValue ? (
               <div
                 style={{
-                  fontFamily: 'Crimson Pro, serif',
+                  fontFamily: 'Public Sans, sans-serif',
                   fontSize: '10px',
                   fontStyle: 'italic',
                   color: 'var(--muted)',
@@ -509,7 +509,7 @@ export default function ConversationScreen() {
             ) : (
               <div
                 style={{
-                  fontFamily: 'Crimson Pro, serif',
+                  fontFamily: 'Public Sans, sans-serif',
                   fontSize: '10px',
                   fontStyle: 'italic',
                   color: 'var(--muted)',
@@ -539,7 +539,7 @@ export default function ConversationScreen() {
                 width: '300px',
                 height: '100%',
                 background: 'var(--basalt-mid)',
-                borderLeft: '1px solid rgba(91,143,214,0.2)',
+                borderLeft: '1px solid rgba(52,211,153,0.2)',
                 zIndex: 20,
                 display: 'flex',
                 flexDirection: 'column',
@@ -550,13 +550,13 @@ export default function ConversationScreen() {
               <div
                 style={{
                   padding: '20px 20px 16px',
-                  borderBottom: '1px solid rgba(232,238,245,0.06)',
+                  borderBottom: '1px solid rgba(226,232,240,0.06)',
                   flexShrink: 0,
                 }}
               >
                 <div
                   style={{
-                    fontFamily: 'Cinzel, serif',
+                    fontFamily: 'Public Sans, sans-serif',
                     fontSize: '10px',
                     textTransform: 'uppercase',
                     letterSpacing: '0.22em',
@@ -569,7 +569,7 @@ export default function ConversationScreen() {
                 </div>
                 <div
                   style={{
-                    fontFamily: 'Crimson Pro, serif',
+                    fontFamily: 'Public Sans, sans-serif',
                     fontSize: '11px',
                     fontStyle: 'italic',
                     color: 'var(--muted)',
@@ -597,7 +597,7 @@ export default function ConversationScreen() {
                     <div style={{ fontSize: '32px', opacity: 0.4 }}>📋</div>
                     <div
                       style={{
-                        fontFamily: 'Crimson Pro, serif',
+                        fontFamily: 'Public Sans, sans-serif',
                         fontSize: '12px',
                         fontStyle: 'italic',
                         color: 'var(--muted)',
@@ -616,7 +616,7 @@ export default function ConversationScreen() {
                       <div key={type} style={{ marginBottom: '20px' }}>
                         <div
                           style={{
-                            fontFamily: 'Cinzel, serif',
+                            fontFamily: 'Public Sans, sans-serif',
                             fontSize: '9px',
                             textTransform: 'uppercase',
                             letterSpacing: '0.16em',
@@ -632,7 +632,7 @@ export default function ConversationScreen() {
                             key={item.id}
                             style={{
                               background: 'var(--basalt-raised)',
-                              border: '1px solid rgba(232,238,245,0.06)',
+                              border: '1px solid rgba(226,232,240,0.06)',
                               borderRadius: '10px',
                               padding: '10px 12px',
                               marginBottom: '6px',
@@ -640,7 +640,7 @@ export default function ConversationScreen() {
                           >
                             <div
                               style={{
-                                fontFamily: 'Crimson Pro, serif',
+                                fontFamily: 'Public Sans, sans-serif',
                                 fontSize: '14px',
                                 fontStyle: 'italic',
                                 color: 'var(--moon)',
@@ -651,7 +651,7 @@ export default function ConversationScreen() {
                             </div>
                             <div
                               style={{
-                                fontFamily: 'Crimson Pro, serif',
+                                fontFamily: 'Public Sans, sans-serif',
                                 fontSize: '11px',
                                 fontStyle: 'italic',
                                 color: 'var(--muted)',
@@ -672,13 +672,13 @@ export default function ConversationScreen() {
                 <div
                   style={{
                     padding: '12px 20px',
-                    borderTop: '1px solid rgba(232,238,245,0.06)',
+                    borderTop: '1px solid rgba(226,232,240,0.06)',
                     flexShrink: 0,
                   }}
                 >
                   <div
                     style={{
-                      fontFamily: 'Crimson Pro, serif',
+                      fontFamily: 'Public Sans, sans-serif',
                       fontSize: '10px',
                       fontStyle: 'italic',
                       color: 'var(--muted)',
@@ -696,7 +696,7 @@ export default function ConversationScreen() {
         <div
           style={{
             background: 'var(--basalt-mid)',
-            borderLeft: '1px solid rgba(232,238,245,0.06)',
+            borderLeft: '1px solid rgba(226,232,240,0.06)',
             display: 'flex',
             flexDirection: 'column',
             overflowY: 'auto',
@@ -706,7 +706,7 @@ export default function ConversationScreen() {
           {/* Current scene */}
           <div
             style={{
-              fontFamily: 'Cinzel, serif',
+              fontFamily: 'Public Sans, sans-serif',
               fontSize: '9px',
               textTransform: 'uppercase',
               letterSpacing: '0.18em',
@@ -720,7 +720,7 @@ export default function ConversationScreen() {
           <div
             style={{
               background: 'var(--basalt-raised)',
-              border: '1px solid rgba(232,238,245,0.07)',
+              border: '1px solid rgba(226,232,240,0.07)',
               borderRadius: '14px',
               padding: '16px',
             }}
@@ -736,7 +736,7 @@ export default function ConversationScreen() {
               <span style={{ fontSize: '24px' }}>{scene.emoji}</span>
               <div
                 style={{
-                  fontFamily: 'Cinzel, serif',
+                  fontFamily: 'Public Sans, sans-serif',
                   fontSize: '13px',
                   fontWeight: 600,
                   color: 'var(--moon)',
@@ -747,7 +747,7 @@ export default function ConversationScreen() {
             </div>
             <div
               style={{
-                fontFamily: 'Crimson Pro, serif',
+                fontFamily: 'Public Sans, sans-serif',
                 fontSize: '11px',
                 fontStyle: 'italic',
                 color: 'var(--muted)',
@@ -759,7 +759,7 @@ export default function ConversationScreen() {
             <div
               style={{
                 height: '4px',
-                background: 'rgba(232,238,245,0.07)',
+                background: 'rgba(226,232,240,0.07)',
                 borderRadius: '2px',
                 overflow: 'hidden',
               }}
@@ -779,7 +779,7 @@ export default function ConversationScreen() {
           <div style={{ marginTop: '20px' }}>
             <div
               style={{
-                fontFamily: 'Cinzel, serif',
+                fontFamily: 'Public Sans, sans-serif',
                 fontSize: '9px',
                 textTransform: 'uppercase',
                 letterSpacing: '0.18em',
@@ -793,7 +793,7 @@ export default function ConversationScreen() {
             <div
               style={{
                 background: 'var(--basalt-raised)',
-                border: '1px solid rgba(232,238,245,0.07)',
+                border: '1px solid rgba(226,232,240,0.07)',
                 borderRadius: '12px',
                 padding: '12px',
                 display: 'flex',
@@ -820,7 +820,7 @@ export default function ConversationScreen() {
               <div style={{ flex: 1, minWidth: 0 }}>
                 <div
                   style={{
-                    fontFamily: 'Cinzel, serif',
+                    fontFamily: 'Public Sans, sans-serif',
                     fontSize: '12px',
                     fontWeight: 600,
                     color: 'var(--moon)',
@@ -831,7 +831,7 @@ export default function ConversationScreen() {
                 </div>
                 <div
                   style={{
-                    fontFamily: 'Crimson Pro, serif',
+                    fontFamily: 'Public Sans, sans-serif',
                     fontSize: '11px',
                     fontStyle: 'italic',
                     color: 'var(--muted)',
@@ -850,7 +850,7 @@ export default function ConversationScreen() {
           <div style={{ marginTop: '24px' }}>
             <div
               style={{
-                fontFamily: 'Cinzel, serif',
+                fontFamily: 'Public Sans, sans-serif',
                 fontSize: '9px',
                 textTransform: 'uppercase',
                 letterSpacing: '0.18em',
@@ -866,7 +866,7 @@ export default function ConversationScreen() {
                 key={i}
                 style={{
                   background: 'var(--basalt-raised)',
-                  border: '1px solid rgba(232,238,245,0.07)',
+                  border: '1px solid rgba(226,232,240,0.07)',
                   borderRadius: '12px',
                   padding: '14px',
                   marginBottom: '8px',
@@ -874,7 +874,7 @@ export default function ConversationScreen() {
               >
                 <div
                   style={{
-                    fontFamily: 'Cinzel, serif',
+                    fontFamily: 'Public Sans, sans-serif',
                     fontSize: '9px',
                     textTransform: 'uppercase',
                     letterSpacing: '0.1em',
@@ -886,7 +886,7 @@ export default function ConversationScreen() {
                 </div>
                 <div
                   style={{
-                    fontFamily: 'Crimson Pro, serif',
+                    fontFamily: 'Public Sans, sans-serif',
                     fontSize: '12px',
                     fontStyle: 'italic',
                     color: 'var(--moon-dim)',
@@ -903,7 +903,7 @@ export default function ConversationScreen() {
           <div style={{ marginTop: '24px' }}>
             <div
               style={{
-                fontFamily: 'Cinzel, serif',
+                fontFamily: 'Public Sans, sans-serif',
                 fontSize: '9px',
                 textTransform: 'uppercase',
                 letterSpacing: '0.18em',
@@ -923,14 +923,14 @@ export default function ConversationScreen() {
                   alignItems: 'center',
                   borderBottom:
                     i < vocabWords.length - 1
-                      ? '1px solid rgba(232,238,245,0.05)'
+                      ? '1px solid rgba(226,232,240,0.05)'
                       : 'none',
                   padding: '8px 0',
                 }}
               >
                 <span
                   style={{
-                    fontFamily: 'Crimson Pro, serif',
+                    fontFamily: 'Public Sans, sans-serif',
                     fontSize: '13px',
                     fontStyle: 'italic',
                     color: 'var(--moon)',
@@ -940,7 +940,7 @@ export default function ConversationScreen() {
                 </span>
                 <span
                   style={{
-                    fontFamily: 'Crimson Pro, serif',
+                    fontFamily: 'Public Sans, sans-serif',
                     fontSize: '11px',
                     fontStyle: 'italic',
                     color: 'var(--muted)',

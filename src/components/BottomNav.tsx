@@ -39,8 +39,8 @@ export default function BottomNav() {
     : 'rgba(16,16,16,0.97)'
   const navBorder = isScroll
     ? '1px solid rgba(100,80,60,0.15)'
-    : '1px solid rgba(232,238,245,0.06)'
-  const inactiveColor = isScroll ? '#8a7a68' : 'var(--muted)'
+    : '1px solid rgba(226,232,240,0.06)'
+  const inactiveColor = isScroll ? '#64748b' : 'var(--muted)'
   const activeIconBg = isScroll ? 'var(--basalt)' : 'var(--lapis-deep)'
   const activeLabelColor = isScroll ? 'var(--basalt)' : 'var(--lapis-bright)'
 
@@ -90,13 +90,13 @@ export default function BottomNav() {
                 background: active ? activeIconBg : 'transparent',
                 border: active
                   ? isScroll
-                    ? '1px solid rgba(91,143,214,0.2)'
-                    : '1px solid rgba(91,143,214,0.25)'
+                    ? '1px solid rgba(52,211,153,0.2)'
+                    : '1px solid rgba(52,211,153,0.25)'
                   : '1px solid transparent',
                 boxShadow: active
                   ? isScroll
                     ? 'none'
-                    : '0 0 14px rgba(42,82,152,0.3)'
+                    : '0 0 14px rgba(16,185,129,0.3)'
                   : 'none',
                 transition: 'all 150ms ease',
               }}
@@ -105,7 +105,7 @@ export default function BottomNav() {
             </span>
             <span
               style={{
-                fontFamily: 'Cinzel, serif',
+                fontFamily: 'Public Sans, sans-serif',
                 fontSize: '7px',
                 textTransform: 'uppercase',
                 letterSpacing: '0.12em',

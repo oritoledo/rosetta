@@ -24,7 +24,7 @@ export default function SettingsScreen() {
           position: 'absolute',
           inset: 0,
           background:
-            'radial-gradient(ellipse 60% 50% at 50% 50%, rgba(42,82,152,0.05) 0%, transparent 70%)',
+            'radial-gradient(ellipse 60% 50% at 50% 50%, rgba(16,185,129,0.05) 0%, transparent 70%)',
           pointerEvents: 'none',
         }}
       />
@@ -32,7 +32,7 @@ export default function SettingsScreen() {
         <div style={{ fontSize: '48px', marginBottom: '24px' }}>⚙️</div>
         <h1
           style={{
-            fontFamily: 'Cinzel, serif',
+            fontFamily: 'Public Sans, sans-serif',
             fontSize: '28px',
             fontWeight: 700,
             color: 'var(--moon-bright)',
@@ -44,7 +44,7 @@ export default function SettingsScreen() {
         </h1>
         <p
           style={{
-            fontFamily: 'Crimson Pro, serif',
+            fontFamily: 'Public Sans, sans-serif',
             fontSize: '16px',
             fontStyle: 'italic',
             color: 'var(--lapis-bright)',

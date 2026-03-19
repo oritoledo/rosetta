@@ -4,7 +4,9 @@
       "Bash(npx tsc:*)",
       "Bash(npm run:*)",
       "Read(//opt/homebrew/bin/**)",
-      "Read(//usr/local/bin/**)"
+      "Read(//usr/local/bin/**)",
+      "Bash(/usr/local/bin/gh auth:*)",
+      "Bash(/usr/local/bin/gh repo:*)"
     ]
   }
 }

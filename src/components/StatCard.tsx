@@ -9,14 +9,14 @@ export default function StatCard({ value, label, trend }: StatCardProps) {
     <div
       style={{
         background: 'var(--basalt-mid)',
-        border: '1px solid rgba(232,238,245,0.07)',
+        border: '1px solid rgba(226,232,240,0.07)',
         borderRadius: '16px',
         padding: '20px 24px',
       }}
     >
       <div
         style={{
-          fontFamily: 'Cinzel, serif',
+          fontFamily: 'Public Sans, sans-serif',
           fontSize: '32px',
           fontWeight: 700,
           color: 'var(--moon-bright)',
@@ -27,7 +27,7 @@ export default function StatCard({ value, label, trend }: StatCardProps) {
       </div>
       <div
         style={{
-          fontFamily: 'Cinzel, serif',
+          fontFamily: 'Public Sans, sans-serif',
           fontSize: '9px',
           textTransform: 'uppercase',
           letterSpacing: '0.15em',
@@ -40,7 +40,7 @@ export default function StatCard({ value, label, trend }: StatCardProps) {
       {trend && (
         <div
           style={{
-            fontFamily: 'Crimson Pro, serif',
+            fontFamily: 'Public Sans, sans-serif',
             fontSize: '11px',
             fontStyle: 'italic',
             color: 'var(--lapis-bright)',

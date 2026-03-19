@@ -28,9 +28,9 @@ function BadgeCard({ badge, isUnlocked, storeView }: {
         borderRadius: '16px',
         padding: '16px',
         background: isUnlocked
-          ? `linear-gradient(145deg, #1a1612 0%, #0d0b08 100%)`
-          : 'rgba(26,22,18,0.6)',
-        border: `1px solid ${isUnlocked ? cfg.border : 'rgba(139,115,85,0.12)'}`,
+          ? `linear-gradient(145deg, #0d1117 0%, #0a0d14 100%)`
+          : 'rgba(13,17,23,0.6)',
+        border: `1px solid ${isUnlocked ? cfg.border : 'rgba(16,185,129,0.1)'}`,
         boxShadow: isUnlocked && hovered ? `0 0 24px ${cfg.glow}` : 'none',
         transition: 'border-color 200ms ease, box-shadow 200ms ease',
         cursor: 'default',
@@ -59,8 +59,8 @@ function BadgeCard({ badge, isUnlocked, storeView }: {
           borderRadius: '12px',
           background: isUnlocked
             ? `radial-gradient(circle at 35% 35%, ${cfg.color}28, ${cfg.bg})`
-            : 'rgba(139,115,85,0.06)',
-          border: `1px solid ${isUnlocked ? cfg.border : 'rgba(139,115,85,0.1)'}`,
+            : 'rgba(16,185,129,0.05)',
+          border: `1px solid ${isUnlocked ? cfg.border : 'rgba(16,185,129,0.08)'}`,
           display: 'flex',
           alignItems: 'center',
           justifyContent: 'center',
@@ -75,10 +75,10 @@ function BadgeCard({ badge, isUnlocked, storeView }: {
       {/* Name */}
       <div
         style={{
-          fontFamily: 'Cinzel, serif',
+          fontFamily: 'Public Sans, sans-serif',
           fontSize: '12px',
           fontWeight: 700,
-          color: isUnlocked ? '#f0ece4' : '#4a4035',
+          color: isUnlocked ? '#e2e8f0' : '#475569',
           marginBottom: '4px',
           lineHeight: 1.2,
         }}
@@ -89,10 +89,10 @@ function BadgeCard({ badge, isUnlocked, storeView }: {
       {/* Description */}
       <div
         style={{
-          fontFamily: 'Crimson Pro, serif',
+          fontFamily: 'Public Sans, sans-serif',
           fontSize: '11px',
           fontStyle: 'italic',
-          color: isUnlocked ? '#8a7a68' : '#3a3028',
+          color: isUnlocked ? '#64748b' : '#334155',
           lineHeight: 1.4,
           marginBottom: '10px',
         }}
@@ -104,14 +104,14 @@ function BadgeCard({ badge, isUnlocked, storeView }: {
       {!isHidden && (
         <span
           style={{
-            fontFamily: 'Cinzel, serif',
+            fontFamily: 'Public Sans, sans-serif',
             fontSize: '8px',
             fontWeight: 700,
             textTransform: 'uppercase',
             letterSpacing: '0.12em',
-            color: isUnlocked ? cfg.color : '#4a4035',
-            background: isUnlocked ? cfg.bg : 'rgba(139,115,85,0.06)',
-            border: `1px solid ${isUnlocked ? cfg.border : 'rgba(139,115,85,0.1)'}`,
+            color: isUnlocked ? cfg.color : '#475569',
+            background: isUnlocked ? cfg.bg : 'rgba(16,185,129,0.05)',
+            border: `1px solid ${isUnlocked ? cfg.border : 'rgba(16,185,129,0.08)'}`,
             borderRadius: '20px',
             padding: '2px 8px',
           }}
@@ -126,7 +126,7 @@ function BadgeCard({ badge, isUnlocked, storeView }: {
           <div
             style={{
               height: '3px',
-              background: 'rgba(139,115,85,0.12)',
+              background: 'rgba(16,185,129,0.1)',
               borderRadius: '2px',
               overflow: 'hidden',
             }}
@@ -145,9 +145,9 @@ function BadgeCard({ badge, isUnlocked, storeView }: {
           </div>
           <div
             style={{
-              fontFamily: 'Cinzel, serif',
+              fontFamily: 'Public Sans, sans-serif',
               fontSize: '8px',
-              color: '#4a4035',
+              color: '#475569',
               marginTop: '4px',
               textAlign: 'right',
             }}
@@ -213,8 +213,8 @@ export default function BadgeShowcase() {
       {/* Header stats */}
       <div
         style={{
-          background: 'linear-gradient(135deg, #1a1612 0%, #0d0b08 100%)',
-          border: '1px solid rgba(139,115,85,0.15)',
+          background: 'linear-gradient(135deg, #0d1117 0%, #0a0d14 100%)',
+          border: '1px solid rgba(16,185,129,0.12)',
           borderRadius: '18px',
           padding: '20px 24px',
           marginBottom: '20px',
@@ -226,7 +226,7 @@ export default function BadgeShowcase() {
         <div>
           <div
             style={{
-              fontFamily: 'Cinzel, serif',
+              fontFamily: 'Public Sans, sans-serif',
               fontSize: '32px',
               fontWeight: 700,
               color: '#c9a84c',
@@ -237,11 +237,11 @@ export default function BadgeShowcase() {
           </div>
           <div
             style={{
-              fontFamily: 'Cinzel, serif',
+              fontFamily: 'Public Sans, sans-serif',
               fontSize: '9px',
               textTransform: 'uppercase',
               letterSpacing: '0.15em',
-              color: '#8a7a68',
+              color: '#64748b',
               marginTop: '4px',
             }}
           >
@@ -250,7 +250,7 @@ export default function BadgeShowcase() {
         </div>
 
         <div style={{ flex: 1 }}>
-          <div style={{ height: '4px', background: 'rgba(139,115,85,0.15)', borderRadius: '3px', overflow: 'hidden' }}>
+          <div style={{ height: '4px', background: 'rgba(16,185,129,0.12)', borderRadius: '3px', overflow: 'hidden' }}>
             <motion.div
               initial={{ width: 0 }}
               animate={{ width: `${(unlockedCount / totalCount) * 100}%` }}
@@ -264,10 +264,10 @@ export default function BadgeShowcase() {
           </div>
           <div
             style={{
-              fontFamily: 'Crimson Pro, serif',
+              fontFamily: 'Public Sans, sans-serif',
               fontSize: '11px',
               fontStyle: 'italic',
-              color: '#4a4035',
+              color: '#475569',
               marginTop: '6px',
             }}
           >
@@ -277,9 +277,9 @@ export default function BadgeShowcase() {
 
         <div
           style={{
-            fontFamily: 'Cinzel, serif',
+            fontFamily: 'Public Sans, sans-serif',
             fontSize: '11px',
-            color: '#8a7a68',
+            color: '#64748b',
           }}
         >
           {totalCount - unlockedCount} remaining
@@ -304,15 +304,15 @@ export default function BadgeShowcase() {
               onClick={() => setActiveCategory(cat)}
               style={{
                 padding: '5px 12px',
-                background: active ? '#1a1612' : 'transparent',
-                border: `1px solid ${active ? 'rgba(139,115,85,0.35)' : 'rgba(139,115,85,0.12)'}`,
+                background: active ? '#0d1117' : 'transparent',
+                border: `1px solid ${active ? 'rgba(16,185,129,0.3)' : 'rgba(16,185,129,0.1)'}`,
                 borderRadius: '20px',
                 cursor: 'pointer',
-                fontFamily: 'Cinzel, serif',
+                fontFamily: 'Public Sans, sans-serif',
                 fontSize: '9px',
                 textTransform: 'uppercase',
                 letterSpacing: '0.1em',
-                color: active ? '#f0ece4' : '#8a7a68',
+                color: active ? '#e2e8f0' : '#64748b',
                 transition: 'all 150ms ease',
               }}
             >

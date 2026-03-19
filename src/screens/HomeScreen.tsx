@@ -41,7 +41,7 @@ export default function HomeScreen() {
             height: '500px',
             borderRadius: '50%',
             background:
-              'radial-gradient(circle, rgba(42,82,152,0.08) 0%, transparent 70%)',
+              'radial-gradient(circle, rgba(16,185,129,0.08) 0%, transparent 70%)',
             pointerEvents: 'none',
             zIndex: 0,
           }}
@@ -52,7 +52,7 @@ export default function HomeScreen() {
             position: 'fixed',
             inset: 0,
             backgroundImage:
-              'repeating-linear-gradient(0deg, transparent, transparent 39px, rgba(232,238,245,0.018) 39px, rgba(232,238,245,0.018) 40px)',
+              'repeating-linear-gradient(0deg, transparent, transparent 39px, rgba(226,232,240,0.018) 39px, rgba(226,232,240,0.018) 40px)',
             pointerEvents: 'none',
             zIndex: 0,
           }}
@@ -72,7 +72,7 @@ export default function HomeScreen() {
             <div>
               <div
                 style={{
-                  fontFamily: 'Cinzel, serif',
+                  fontFamily: 'Public Sans, sans-serif',
                   fontSize: '11px',
                   textTransform: 'uppercase',
                   letterSpacing: '0.22em',
@@ -85,7 +85,7 @@ export default function HomeScreen() {
               </div>
               <h1
                 style={{
-                  fontFamily: 'Cinzel, serif',
+                  fontFamily: 'Public Sans, sans-serif',
                   fontSize: '32px',
                   fontWeight: 700,
                   color: 'var(--moon-bright)',
@@ -101,7 +101,7 @@ export default function HomeScreen() {
             <div
               style={{
                 background: 'var(--basalt-mid)',
-                border: '1px solid rgba(232,238,245,0.07)',
+                border: '1px solid rgba(226,232,240,0.07)',
                 borderRadius: '16px',
                 padding: '16px 20px',
                 minWidth: '220px',
@@ -118,7 +118,7 @@ export default function HomeScreen() {
                 <div>
                   <div
                     style={{
-                      fontFamily: 'Cinzel, serif',
+                      fontFamily: 'Public Sans, sans-serif',
                       fontSize: '14px',
                       color: 'var(--moon)',
                     }}
@@ -127,7 +127,7 @@ export default function HomeScreen() {
                   </div>
                   <div
                     style={{
-                      fontFamily: 'Crimson Pro, serif',
+                      fontFamily: 'Public Sans, sans-serif',
                       fontSize: '11px',
                       fontStyle: 'italic',
                       color: 'var(--muted)',
@@ -167,11 +167,11 @@ export default function HomeScreen() {
           <div
             style={{
               background: 'var(--lapis-deep)',
-              border: '1px solid rgba(91,143,214,0.2)',
+              border: '1px solid rgba(52,211,153,0.2)',
               borderRadius: '18px',
               padding: '20px 28px',
               boxShadow:
-                '0 4px 32px rgba(27,58,92,0.5), inset 0 1px 0 rgba(91,143,214,0.1)',
+                '0 4px 32px rgba(27,58,92,0.5), inset 0 1px 0 rgba(52,211,153,0.1)',
               display: 'flex',
               alignItems: 'center',
               gap: '20px',
@@ -202,7 +202,7 @@ export default function HomeScreen() {
             <div style={{ flex: 1 }}>
               <div
                 style={{
-                  fontFamily: 'Cinzel, serif',
+                  fontFamily: 'Public Sans, sans-serif',
                   fontSize: '9px',
                   textTransform: 'uppercase',
                   letterSpacing: '0.2em',
@@ -214,7 +214,7 @@ export default function HomeScreen() {
               </div>
               <div
                 style={{
-                  fontFamily: 'Cinzel, serif',
+                  fontFamily: 'Public Sans, sans-serif',
                   fontSize: '22px',
                   fontWeight: 700,
                   color: 'var(--moon-bright)',
@@ -225,7 +225,7 @@ export default function HomeScreen() {
               </div>
               <div
                 style={{
-                  fontFamily: 'Crimson Pro, serif',
+                  fontFamily: 'Public Sans, sans-serif',
                   fontSize: '13px',
                   fontStyle: 'italic',
                   color: 'var(--moon-dim)',
@@ -239,7 +239,7 @@ export default function HomeScreen() {
                 style={{
                   marginTop: '10px',
                   height: '4px',
-                  background: 'rgba(232,238,245,0.1)',
+                  background: 'rgba(226,232,240,0.1)',
                   borderRadius: '2px',
                   overflow: 'hidden',
                   maxWidth: '360px',
@@ -260,12 +260,12 @@ export default function HomeScreen() {
             <button
               onClick={() => navigate('/scene/cafe')}
               style={{
-                background: 'rgba(232,238,245,0.1)',
-                border: '1px solid rgba(232,238,245,0.2)',
+                background: 'rgba(226,232,240,0.1)',
+                border: '1px solid rgba(226,232,240,0.2)',
                 borderRadius: '12px',
                 padding: '12px 24px',
                 cursor: 'pointer',
-                fontFamily: 'Cinzel, serif',
+                fontFamily: 'Public Sans, sans-serif',
                 fontSize: '12px',
                 textTransform: 'uppercase',
                 letterSpacing: '0.1em',
@@ -276,11 +276,11 @@ export default function HomeScreen() {
               }}
               onMouseEnter={(e) => {
                 ;(e.currentTarget as HTMLButtonElement).style.background =
-                  'rgba(232,238,245,0.18)'
+                  'rgba(226,232,240,0.18)'
               }}
               onMouseLeave={(e) => {
                 ;(e.currentTarget as HTMLButtonElement).style.background =
-                  'rgba(232,238,245,0.1)'
+                  'rgba(226,232,240,0.1)'
               }}
             >
               Resume Scene →

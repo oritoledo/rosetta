@@ -26,7 +26,7 @@ const DIFFICULTY_COLORS = {
 }
 
 const SLOT_COLORS: Record<GrammarSlot['type'], { bg: string; border: string; color: string }> = {
-  subject:   { bg: 'rgba(91,143,214,0.15)',  border: 'rgba(91,143,214,0.3)',   color: 'var(--lapis-bright)' },
+  subject:   { bg: 'rgba(52,211,153,0.15)',  border: 'rgba(52,211,153,0.3)',   color: 'var(--lapis-bright)' },
   verb:      { bg: 'rgba(82,212,138,0.12)',  border: 'rgba(82,212,138,0.25)',  color: '#52d48a' },
   object:    { bg: 'rgba(201,168,76,0.12)',  border: 'rgba(201,168,76,0.25)', color: '#c9a84c' },
   connector: { bg: 'transparent',            border: 'transparent',           color: 'var(--muted)' },
@@ -117,21 +117,21 @@ function VocabCard({ item, onAdd, isInSheet, tts, lang }: {
       onClick={() => onAdd(item)}
       style={{
         background: 'var(--basalt-mid)',
-        border: `1px solid ${isPlaying ? 'rgba(91,143,214,0.4)' : isInSheet ? 'rgba(91,143,214,0.25)' : 'rgba(232,238,245,0.07)'}`,
+        border: `1px solid ${isPlaying ? 'rgba(52,211,153,0.4)' : isInSheet ? 'rgba(52,211,153,0.25)' : 'rgba(226,232,240,0.07)'}`,
         borderRadius: 16,
         padding: 20,
         cursor: 'pointer',
         boxShadow: isPlaying
-          ? '0 0 12px rgba(42,82,152,0.2)'
+          ? '0 0 12px rgba(16,185,129,0.2)'
           : isInSheet
-          ? '0 0 12px rgba(42,82,152,0.1)'
+          ? '0 0 12px rgba(16,185,129,0.1)'
           : 'none',
         transition: 'border-color 200ms, box-shadow 200ms',
       }}
     >
       {/* Top row: word + audio btn */}
       <div style={{ display: 'flex', alignItems: 'flex-start', justifyContent: 'space-between', gap: 8 }}>
-        <div style={{ fontFamily: 'Cinzel, serif', fontSize: 22, fontWeight: 700, color: 'var(--moon-bright)', flex: 1 }}>
+        <div style={{ fontFamily: 'Public Sans, sans-serif', fontSize: 22, fontWeight: 700, color: 'var(--moon-bright)', flex: 1 }}>
           {item.word}
         </div>
         <button
@@ -139,7 +139,7 @@ function VocabCard({ item, onAdd, isInSheet, tts, lang }: {
           style={{
             width: 32, height: 32, borderRadius: '50%',
             background: isPlaying ? 'var(--lapis)' : 'transparent',
-            border: '1px solid rgba(232,238,245,0.1)',
+            border: '1px solid rgba(226,232,240,0.1)',
             cursor: 'pointer', fontSize: 14,
             color: isPlaying ? 'var(--moon-bright)' : 'var(--moon-dim)',
             display: 'flex', alignItems: 'center', justifyContent: 'center',
@@ -153,7 +153,7 @@ function VocabCard({ item, onAdd, isInSheet, tts, lang }: {
 
       {/* Phonetic */}
       <div style={{
-        fontFamily: 'Crimson Pro, serif', fontSize: 13, fontStyle: 'italic',
+        fontFamily: 'Public Sans, sans-serif', fontSize: 13, fontStyle: 'italic',
         color: isPlaying ? 'var(--lapis-bright)' : 'var(--muted)',
         marginTop: 2,
         transform: isPlaying ? 'scale(1.02)' : 'scale(1)',
@@ -174,15 +174,15 @@ function VocabCard({ item, onAdd, isInSheet, tts, lang }: {
         </motion.div>
       )}
 
-      <div style={{ height: 1, background: 'rgba(232,238,245,0.06)', margin: '12px 0' }} />
+      <div style={{ height: 1, background: 'rgba(226,232,240,0.06)', margin: '12px 0' }} />
 
       {/* Translation */}
-      <div style={{ fontFamily: 'Crimson Pro, serif', fontSize: 16, fontStyle: 'italic', color: 'var(--moon)', marginBottom: 8 }}>
+      <div style={{ fontFamily: 'Public Sans, sans-serif', fontSize: 16, fontStyle: 'italic', color: 'var(--moon)', marginBottom: 8 }}>
         {item.translation}
       </div>
 
       {/* Example sentence with word bolded */}
-      <div style={{ fontFamily: 'Crimson Pro, serif', fontSize: 13, fontStyle: 'italic', color: 'var(--muted)', lineHeight: 1.6 }}>
+      <div style={{ fontFamily: 'Public Sans, sans-serif', fontSize: 13, fontStyle: 'italic', color: 'var(--muted)', lineHeight: 1.6 }}>
         {item.example.split(item.word).map((part, i, arr) =>
           i < arr.length - 1 ? (
             <span key={i}>
@@ -196,9 +196,9 @@ function VocabCard({ item, onAdd, isInSheet, tts, lang }: {
       {/* Bottom row */}
       <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', marginTop: 12 }}>
         <span style={{
-          fontFamily: 'Cinzel, serif', fontSize: 8, textTransform: 'uppercase',
+          fontFamily: 'Public Sans, sans-serif', fontSize: 8, textTransform: 'uppercase',
           letterSpacing: '0.1em', color: 'var(--lapis-bright)',
-          background: 'rgba(42,82,152,0.12)', borderRadius: 20, padding: '3px 10px',
+          background: 'rgba(16,185,129,0.12)', borderRadius: 20, padding: '3px 10px',
         }}>
           {item.difficulty}
         </span>
@@ -206,7 +206,7 @@ function VocabCard({ item, onAdd, isInSheet, tts, lang }: {
       </div>
 
       {isInSheet && (
-        <div style={{ marginTop: 8, fontFamily: 'Cinzel, serif', fontSize: 8, textTransform: 'uppercase', letterSpacing: '0.1em', color: 'var(--lapis-bright)', opacity: 0.7 }}>
+        <div style={{ marginTop: 8, fontFamily: 'Public Sans, sans-serif', fontSize: 8, textTransform: 'uppercase', letterSpacing: '0.1em', color: 'var(--lapis-bright)', opacity: 0.7 }}>
           ✓ added to cheat sheet
         </div>
       )}
@@ -225,16 +225,16 @@ function GrammarCard({ item, onAdd, isInSheet }: {
     <div
       style={{
         background: 'var(--basalt-mid)',
-        border: `1px solid ${isInSheet ? 'rgba(91,143,214,0.25)' : 'rgba(232,238,245,0.07)'}`,
+        border: `1px solid ${isInSheet ? 'rgba(52,211,153,0.25)' : 'rgba(226,232,240,0.07)'}`,
         borderRadius: 18, padding: 24, marginBottom: 24,
         cursor: 'pointer',
       }}
       onClick={() => onAdd(item)}
     >
-      <div style={{ fontFamily: 'Cinzel, serif', fontSize: 14, textTransform: 'uppercase', letterSpacing: '0.15em', color: 'var(--lapis-bright)', marginBottom: 4 }}>
+      <div style={{ fontFamily: 'Public Sans, sans-serif', fontSize: 14, textTransform: 'uppercase', letterSpacing: '0.15em', color: 'var(--lapis-bright)', marginBottom: 4 }}>
         {item.name}
       </div>
-      <div style={{ fontFamily: 'Cinzel, serif', fontSize: 20, fontWeight: 700, color: 'var(--moon)', marginBottom: 20 }}>
+      <div style={{ fontFamily: 'Public Sans, sans-serif', fontSize: 20, fontWeight: 700, color: 'var(--moon)', marginBottom: 20 }}>
         {item.title}
       </div>
 
@@ -244,7 +244,7 @@ function GrammarCard({ item, onAdd, isInSheet }: {
           const sc = SLOT_COLORS[slot.type]
           if (slot.type === 'connector') {
             return (
-              <span key={i} style={{ fontFamily: 'Crimson Pro, serif', fontSize: 16, fontStyle: 'italic', color: 'var(--muted)' }}>
+              <span key={i} style={{ fontFamily: 'Public Sans, sans-serif', fontSize: 16, fontStyle: 'italic', color: 'var(--muted)' }}>
                 {slot.text}
               </span>
             )
@@ -255,7 +255,7 @@ function GrammarCard({ item, onAdd, isInSheet }: {
               title={slot.note}
               style={{
                 background: sc.bg, border: `1px solid ${sc.border}`, color: sc.color,
-                fontFamily: 'Cinzel, serif', fontSize: 14, fontWeight: 600,
+                fontFamily: 'Public Sans, sans-serif', fontSize: 14, fontWeight: 600,
                 padding: '8px 16px', borderRadius: 24,
               }}
             >
@@ -269,13 +269,13 @@ function GrammarCard({ item, onAdd, isInSheet }: {
       {item.examples.map((ex, i) => (
         <div key={i} style={{
           display: 'flex', gap: 12, alignItems: 'flex-start',
-          padding: '10px 0', borderBottom: i < item.examples.length - 1 ? '1px solid rgba(232,238,245,0.05)' : 'none',
+          padding: '10px 0', borderBottom: i < item.examples.length - 1 ? '1px solid rgba(226,232,240,0.05)' : 'none',
         }}>
           <div style={{ width: 5, height: 5, borderRadius: '50%', background: 'var(--lapis-mid)', flexShrink: 0, marginTop: 6 }} />
           <div style={{ flex: 1 }}>
-            <span style={{ fontFamily: 'Crimson Pro, serif', fontSize: 14, fontStyle: 'italic', color: 'var(--moon)' }}>{ex.it}</span>
+            <span style={{ fontFamily: 'Public Sans, sans-serif', fontSize: 14, fontStyle: 'italic', color: 'var(--moon)' }}>{ex.it}</span>
           </div>
-          <div style={{ fontFamily: 'Crimson Pro, serif', fontSize: 13, fontStyle: 'italic', color: 'var(--muted)', textAlign: 'right', maxWidth: '40%' }}>
+          <div style={{ fontFamily: 'Public Sans, sans-serif', fontSize: 13, fontStyle: 'italic', color: 'var(--muted)', textAlign: 'right', maxWidth: '40%' }}>
             {ex.en}
           </div>
         </div>
@@ -284,21 +284,21 @@ function GrammarCard({ item, onAdd, isInSheet }: {
       {/* When to use */}
       <div style={{
         marginTop: 16,
-        background: 'rgba(42,82,152,0.08)',
+        background: 'rgba(16,185,129,0.08)',
         borderLeft: '3px solid var(--lapis-mid)',
         borderRadius: '0 8px 8px 0',
         padding: '12px 16px',
       }}>
-        <div style={{ fontFamily: 'Cinzel, serif', fontSize: 9, textTransform: 'uppercase', letterSpacing: '0.15em', color: 'var(--lapis-bright)', marginBottom: 4 }}>
+        <div style={{ fontFamily: 'Public Sans, sans-serif', fontSize: 9, textTransform: 'uppercase', letterSpacing: '0.15em', color: 'var(--lapis-bright)', marginBottom: 4 }}>
           When to use
         </div>
-        <div style={{ fontFamily: 'Crimson Pro, serif', fontSize: 13, fontStyle: 'italic', color: 'var(--moon-dim)', lineHeight: 1.55 }}>
+        <div style={{ fontFamily: 'Public Sans, sans-serif', fontSize: 13, fontStyle: 'italic', color: 'var(--moon-dim)', lineHeight: 1.55 }}>
           {item.whenToUse}
         </div>
       </div>
 
       {isInSheet && (
-        <div style={{ marginTop: 10, fontFamily: 'Cinzel, serif', fontSize: 8, textTransform: 'uppercase', letterSpacing: '0.1em', color: 'var(--lapis-bright)', opacity: 0.7 }}>
+        <div style={{ marginTop: 10, fontFamily: 'Public Sans, sans-serif', fontSize: 8, textTransform: 'uppercase', letterSpacing: '0.1em', color: 'var(--lapis-bright)', opacity: 0.7 }}>
           ✓ added to cheat sheet
         </div>
       )}
@@ -335,7 +335,7 @@ function PronunciationCard({ item, onAdd, isInSheet, tts, lang }: {
     <div
       style={{
         background: 'var(--basalt-mid)',
-        border: `1px solid ${isInSheet ? 'rgba(91,143,214,0.25)' : 'rgba(232,238,245,0.07)'}`,
+        border: `1px solid ${isInSheet ? 'rgba(52,211,153,0.25)' : 'rgba(226,232,240,0.07)'}`,
         borderRadius: 16, padding: 22, marginBottom: 16,
         cursor: 'pointer',
       }}
@@ -343,7 +343,7 @@ function PronunciationCard({ item, onAdd, isInSheet, tts, lang }: {
     >
       {/* Top row */}
       <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: 14 }}>
-        <div style={{ fontFamily: 'Cinzel, serif', fontSize: 28, fontWeight: 700, color: 'var(--moon-bright)' }}>
+        <div style={{ fontFamily: 'Public Sans, sans-serif', fontSize: 28, fontWeight: 700, color: 'var(--moon-bright)' }}>
           {item.word}
         </div>
         <div style={{ display: 'flex', alignItems: 'center', gap: 10 }}>
@@ -352,7 +352,7 @@ function PronunciationCard({ item, onAdd, isInSheet, tts, lang }: {
             style={{
               width: 32, height: 32, borderRadius: '50%',
               background: isPlaying ? 'var(--lapis)' : 'transparent',
-              border: '1px solid rgba(232,238,245,0.1)',
+              border: '1px solid rgba(226,232,240,0.1)',
               cursor: 'pointer', fontSize: 14,
               color: isPlaying ? 'var(--moon-bright)' : 'var(--moon-dim)',
               display: 'flex', alignItems: 'center', justifyContent: 'center',
@@ -362,7 +362,7 @@ function PronunciationCard({ item, onAdd, isInSheet, tts, lang }: {
             {isPlaying ? '⏹' : '🔊'}
           </button>
           <span style={{
-            fontFamily: 'Cinzel, serif', fontSize: 8, textTransform: 'uppercase', letterSpacing: '0.1em',
+            fontFamily: 'Public Sans, sans-serif', fontSize: 8, textTransform: 'uppercase', letterSpacing: '0.1em',
             color: diff.text, background: diff.bg, border: `1px solid ${diff.border}`,
             borderRadius: 20, padding: '3px 10px',
           }}>
@@ -380,7 +380,7 @@ function PronunciationCard({ item, onAdd, isInSheet, tts, lang }: {
               {isStressed && (
                 <div style={{
                   position: 'absolute', top: -10, left: '50%', transform: 'translateX(-50%)',
-                  fontFamily: 'Cinzel, serif', fontSize: 10, color: 'var(--lapis-bright)',
+                  fontFamily: 'Public Sans, sans-serif', fontSize: 10, color: 'var(--lapis-bright)',
                 }}>
                   ′
                 </div>
@@ -391,14 +391,14 @@ function PronunciationCard({ item, onAdd, isInSheet, tts, lang }: {
                 transition={isStressed ? { duration: 0.4, delay: 0.2 } : undefined}
                 style={{
                   background: isStressed ? 'var(--lapis-deep)' : 'var(--basalt-raised)',
-                  border: `1px solid ${isStressed ? 'rgba(91,143,214,0.35)' : 'rgba(232,238,245,0.07)'}`,
+                  border: `1px solid ${isStressed ? 'rgba(52,211,153,0.35)' : 'rgba(226,232,240,0.07)'}`,
                   borderRadius: 8,
                   padding: '8px 14px',
-                  fontFamily: 'Cinzel, serif',
+                  fontFamily: 'Public Sans, sans-serif',
                   fontSize: isStressed ? 18 : 16,
                   fontWeight: isStressed ? 700 : 400,
                   color: isStressed ? 'var(--moon-bright)' : 'var(--moon)',
-                  boxShadow: isStressed ? '0 0 12px rgba(42,82,152,0.3)' : 'none',
+                  boxShadow: isStressed ? '0 0 12px rgba(16,185,129,0.3)' : 'none',
                 }}
               >
                 {syl}
@@ -409,7 +409,7 @@ function PronunciationCard({ item, onAdd, isInSheet, tts, lang }: {
       </div>
 
       {/* IPA */}
-      <div style={{ fontFamily: 'Crimson Pro, serif', fontSize: 16, fontStyle: 'italic', color: 'var(--muted)', marginBottom: 14 }}>
+      <div style={{ fontFamily: 'Public Sans, sans-serif', fontSize: 16, fontStyle: 'italic', color: 'var(--muted)', marginBottom: 14 }}>
         {item.ipa}
       </div>
 
@@ -452,10 +452,10 @@ function PronunciationCard({ item, onAdd, isInSheet, tts, lang }: {
             key={mode}
             onClick={(e) => { e.stopPropagation(); setSpeedMode(mode) }}
             style={{
-              fontFamily: 'Cinzel, serif', fontSize: 9, textTransform: 'uppercase', letterSpacing: '0.1em',
+              fontFamily: 'Public Sans, sans-serif', fontSize: 9, textTransform: 'uppercase', letterSpacing: '0.1em',
               padding: '4px 12px', borderRadius: 20,
               background: speedMode === mode ? 'var(--lapis)' : 'transparent',
-              border: `1px solid ${speedMode === mode ? 'rgba(91,143,214,0.4)' : 'rgba(232,238,245,0.12)'}`,
+              border: `1px solid ${speedMode === mode ? 'rgba(52,211,153,0.4)' : 'rgba(226,232,240,0.12)'}`,
               color: speedMode === mode ? 'var(--moon-bright)' : 'var(--muted)',
               cursor: 'pointer',
               transition: 'all 150ms ease',
@@ -467,12 +467,12 @@ function PronunciationCard({ item, onAdd, isInSheet, tts, lang }: {
       </div>
 
       {/* Mistake note */}
-      <div style={{ fontFamily: 'Crimson Pro, serif', fontSize: 13, fontStyle: 'italic', color: 'rgba(232,144,120,0.85)', lineHeight: 1.5 }}>
+      <div style={{ fontFamily: 'Public Sans, sans-serif', fontSize: 13, fontStyle: 'italic', color: 'rgba(232,144,120,0.85)', lineHeight: 1.5 }}>
         ⚠ {item.mistake}
       </div>
 
       {isInSheet && (
-        <div style={{ marginTop: 10, fontFamily: 'Cinzel, serif', fontSize: 8, textTransform: 'uppercase', letterSpacing: '0.1em', color: 'var(--lapis-bright)', opacity: 0.7 }}>
+        <div style={{ marginTop: 10, fontFamily: 'Public Sans, sans-serif', fontSize: 8, textTransform: 'uppercase', letterSpacing: '0.1em', color: 'var(--lapis-bright)', opacity: 0.7 }}>
           ✓ added to cheat sheet
         </div>
       )}
@@ -573,7 +573,7 @@ export default function BriefScreen() {
       {/* Horizontal line texture */}
       <div style={{
         position: 'absolute', inset: 0,
-        backgroundImage: 'repeating-linear-gradient(0deg, transparent, transparent 39px, rgba(232,238,245,0.018) 39px, rgba(232,238,245,0.018) 40px)',
+        backgroundImage: 'repeating-linear-gradient(0deg, transparent, transparent 39px, rgba(226,232,240,0.018) 39px, rgba(226,232,240,0.018) 40px)',
         pointerEvents: 'none', zIndex: 0,
       }} />
 
@@ -590,7 +590,7 @@ export default function BriefScreen() {
         {/* ── LEFT SIDEBAR ────────────────────────────────────────────────────── */}
         <div style={{
           background: 'var(--basalt-mid)',
-          borderRight: '1px solid rgba(232,238,245,0.06)',
+          borderRight: '1px solid rgba(226,232,240,0.06)',
           padding: '32px 20px',
           display: 'flex',
           flexDirection: 'column',
@@ -598,18 +598,18 @@ export default function BriefScreen() {
         }}>
           {/* Scene identity */}
           <div style={{ marginBottom: 20 }}>
-            <div style={{ fontSize: 36, filter: 'drop-shadow(0 0 20px rgba(91,143,214,0.35))', marginBottom: 10 }}>
+            <div style={{ fontSize: 36, filter: 'drop-shadow(0 0 20px rgba(52,211,153,0.35))', marginBottom: 10 }}>
               {scene.emoji}
             </div>
-            <div style={{ fontFamily: 'Cinzel, serif', fontSize: 15, fontWeight: 700, color: 'var(--moon)', marginBottom: 8, lineHeight: 1.2 }}>
+            <div style={{ fontFamily: 'Public Sans, sans-serif', fontSize: 15, fontWeight: 700, color: 'var(--moon)', marginBottom: 8, lineHeight: 1.2 }}>
               {scene.title}
             </div>
-            <div style={{ display: 'inline-block', fontFamily: 'Cinzel, serif', fontSize: 9, color: 'var(--lapis-bright)', background: 'rgba(42,82,152,0.15)', border: '1px solid rgba(91,143,214,0.2)', borderRadius: 20, padding: '4px 12px', marginBottom: 8 }}>
+            <div style={{ display: 'inline-block', fontFamily: 'Public Sans, sans-serif', fontSize: 9, color: 'var(--lapis-bright)', background: 'rgba(16,185,129,0.15)', border: '1px solid rgba(52,211,153,0.2)', borderRadius: 20, padding: '4px 12px', marginBottom: 8 }}>
               {scene.location}
             </div>
             <div style={{ display: 'flex', gap: 6, flexWrap: 'wrap' }}>
               {[scene.duration, scene.level].map((chip) => (
-                <span key={chip} style={{ fontFamily: 'Cinzel, serif', fontSize: 8, textTransform: 'uppercase', letterSpacing: '0.1em', color: 'var(--moon-dim)', background: 'rgba(232,238,245,0.06)', border: '1px solid rgba(232,238,245,0.08)', borderRadius: 20, padding: '3px 10px' }}>
+                <span key={chip} style={{ fontFamily: 'Public Sans, sans-serif', fontSize: 8, textTransform: 'uppercase', letterSpacing: '0.1em', color: 'var(--moon-dim)', background: 'rgba(226,232,240,0.06)', border: '1px solid rgba(226,232,240,0.08)', borderRadius: 20, padding: '3px 10px' }}>
                   {chip}
                 </span>
               ))}
@@ -620,7 +620,7 @@ export default function BriefScreen() {
           <div
             style={{
               background: 'var(--basalt-raised)',
-              border: '1px solid rgba(232,238,245,0.07)',
+              border: '1px solid rgba(226,232,240,0.07)',
               borderRadius: 12,
               padding: '10px 12px',
               marginBottom: 20,
@@ -641,11 +641,11 @@ export default function BriefScreen() {
               {persona.emoji}
             </div>
             <div style={{ flex: 1, minWidth: 0 }}>
-              <div style={{ fontFamily: 'Cinzel, serif', fontSize: 11, fontWeight: 600, color: 'var(--moon)', marginBottom: 2 }}>
+              <div style={{ fontFamily: 'Public Sans, sans-serif', fontSize: 11, fontWeight: 600, color: 'var(--moon)', marginBottom: 2 }}>
                 {persona.name}
               </div>
               <div style={{
-                fontFamily: 'Crimson Pro, serif', fontSize: 10, fontStyle: 'italic',
+                fontFamily: 'Public Sans, sans-serif', fontSize: 10, fontStyle: 'italic',
                 color: 'var(--muted)',
                 overflow: 'hidden', textOverflow: 'ellipsis', whiteSpace: 'nowrap',
               }}>
@@ -655,7 +655,7 @@ export default function BriefScreen() {
           </div>
 
           {/* Section label */}
-          <div style={{ fontFamily: 'Cinzel, serif', fontSize: 8, textTransform: 'uppercase', letterSpacing: '0.2em', color: 'var(--muted)', marginBottom: 10 }}>
+          <div style={{ fontFamily: 'Public Sans, sans-serif', fontSize: 8, textTransform: 'uppercase', letterSpacing: '0.2em', color: 'var(--muted)', marginBottom: 10 }}>
             Briefing
           </div>
 
@@ -674,7 +674,7 @@ export default function BriefScreen() {
                     padding: '10px 12px', borderRadius: 12,
                     cursor: 'pointer', width: '100%', textAlign: 'left',
                     background: active ? 'var(--lapis-deep)' : 'transparent',
-                    border: active ? '1px solid rgba(91,143,214,0.2)' : '1px solid transparent',
+                    border: active ? '1px solid rgba(52,211,153,0.2)' : '1px solid transparent',
                     transition: 'background 150ms, border-color 150ms',
                   }}
                   onMouseEnter={(e) => { if (!active) (e.currentTarget as HTMLButtonElement).style.background = 'var(--basalt-raised)' }}
@@ -683,7 +683,7 @@ export default function BriefScreen() {
                   <div style={{
                     width: 32, height: 32, flexShrink: 0,
                     background: active ? 'var(--lapis)' : 'var(--basalt-raised)',
-                    border: '1px solid rgba(232,238,245,0.07)',
+                    border: '1px solid rgba(226,232,240,0.07)',
                     borderRadius: 8,
                     display: 'flex', alignItems: 'center', justifyContent: 'center',
                     fontSize: 16,
@@ -691,15 +691,15 @@ export default function BriefScreen() {
                     {meta.icon}
                   </div>
                   <div style={{ flex: 1, minWidth: 0 }}>
-                    <div style={{ fontFamily: 'Cinzel, serif', fontSize: 12, fontWeight: 600, color: active ? 'var(--lapis-bright)' : 'var(--moon)', whiteSpace: 'nowrap', overflow: 'hidden', textOverflow: 'ellipsis' }}>
+                    <div style={{ fontFamily: 'Public Sans, sans-serif', fontSize: 12, fontWeight: 600, color: active ? 'var(--lapis-bright)' : 'var(--moon)', whiteSpace: 'nowrap', overflow: 'hidden', textOverflow: 'ellipsis' }}>
                       {meta.label}
                     </div>
-                    <div style={{ fontFamily: 'Crimson Pro, serif', fontSize: 10, fontStyle: 'italic', color: 'var(--muted)' }}>
+                    <div style={{ fontFamily: 'Public Sans, sans-serif', fontSize: 10, fontStyle: 'italic', color: 'var(--muted)' }}>
                       {meta.subtitle}
                     </div>
                   </div>
                   {visited && (
-                    <span style={{ fontFamily: 'Cinzel, serif', fontSize: 10, color: 'var(--lapis-bright)', flexShrink: 0 }}>✓</span>
+                    <span style={{ fontFamily: 'Public Sans, sans-serif', fontSize: 10, color: 'var(--lapis-bright)', flexShrink: 0 }}>✓</span>
                   )}
                 </button>
               )
@@ -708,7 +708,7 @@ export default function BriefScreen() {
 
           {/* Progress tracker */}
           <div style={{ marginTop: 'auto', paddingTop: 24 }}>
-            <div style={{ fontFamily: 'Cinzel, serif', fontSize: 8, textTransform: 'uppercase', letterSpacing: '0.2em', color: 'var(--muted)', marginBottom: 10 }}>
+            <div style={{ fontFamily: 'Public Sans, sans-serif', fontSize: 8, textTransform: 'uppercase', letterSpacing: '0.2em', color: 'var(--muted)', marginBottom: 10 }}>
               Briefing Progress
             </div>
             <div style={{ display: 'flex', gap: 8, marginBottom: 6 }}>
@@ -729,7 +729,7 @@ export default function BriefScreen() {
                 )
               })}
             </div>
-            <div style={{ fontFamily: 'Crimson Pro, serif', fontSize: 10, fontStyle: 'italic', color: 'var(--muted)' }}>
+            <div style={{ fontFamily: 'Public Sans, sans-serif', fontSize: 10, fontStyle: 'italic', color: 'var(--muted)' }}>
               {tabCount} of 4 sections reviewed
             </div>
           </div>
@@ -749,8 +749,8 @@ export default function BriefScreen() {
               {/* ── TAB 1: VOCABULARY ── */}
               {activeTab === 'vocabulary' && (
                 <div>
-                  <div style={{ fontFamily: 'Cinzel, serif', fontSize: 28, fontWeight: 700, color: 'var(--moon-bright)', marginBottom: 6 }}>Key Vocabulary</div>
-                  <div style={{ fontFamily: 'Crimson Pro, serif', fontSize: 16, fontStyle: 'italic', color: 'var(--muted)', marginBottom: 20 }}>
+                  <div style={{ fontFamily: 'Public Sans, sans-serif', fontSize: 28, fontWeight: 700, color: 'var(--moon-bright)', marginBottom: 6 }}>Key Vocabulary</div>
+                  <div style={{ fontFamily: 'Public Sans, sans-serif', fontSize: 16, fontStyle: 'italic', color: 'var(--muted)', marginBottom: 20 }}>
                     Words you'll hear and need in this scene
                   </div>
                   <div style={{ height: 1, background: 'var(--lapis)', opacity: 0.3, marginBottom: 24 }} />
@@ -772,8 +772,8 @@ export default function BriefScreen() {
               {/* ── TAB 2: GRAMMAR ── */}
               {activeTab === 'grammar' && (
                 <div>
-                  <div style={{ fontFamily: 'Cinzel, serif', fontSize: 28, fontWeight: 700, color: 'var(--moon-bright)', marginBottom: 6 }}>Grammar Structures</div>
-                  <div style={{ fontFamily: 'Crimson Pro, serif', fontSize: 16, fontStyle: 'italic', color: 'var(--muted)', marginBottom: 20 }}>
+                  <div style={{ fontFamily: 'Public Sans, sans-serif', fontSize: 28, fontWeight: 700, color: 'var(--moon-bright)', marginBottom: 6 }}>Grammar Structures</div>
+                  <div style={{ fontFamily: 'Public Sans, sans-serif', fontSize: 16, fontStyle: 'italic', color: 'var(--muted)', marginBottom: 20 }}>
                     The exact patterns you'll use in this scene
                   </div>
                   <div style={{ height: 1, background: 'var(--lapis)', opacity: 0.3, marginBottom: 24 }} />
@@ -791,8 +791,8 @@ export default function BriefScreen() {
               {/* ── TAB 3: PRONUNCIATION ── */}
               {activeTab === 'pronunciation' && (
                 <div>
-                  <div style={{ fontFamily: 'Cinzel, serif', fontSize: 28, fontWeight: 700, color: 'var(--moon-bright)', marginBottom: 6 }}>Pronunciation Guide</div>
-                  <div style={{ fontFamily: 'Crimson Pro, serif', fontSize: 16, fontStyle: 'italic', color: 'var(--muted)', marginBottom: 20 }}>
+                  <div style={{ fontFamily: 'Public Sans, sans-serif', fontSize: 28, fontWeight: 700, color: 'var(--moon-bright)', marginBottom: 6 }}>Pronunciation Guide</div>
+                  <div style={{ fontFamily: 'Public Sans, sans-serif', fontSize: 16, fontStyle: 'italic', color: 'var(--muted)', marginBottom: 20 }}>
                     Master these before the scene — they trip everyone up
                   </div>
                   <div style={{ height: 1, background: 'var(--lapis)', opacity: 0.3, marginBottom: 24 }} />
@@ -812,25 +812,25 @@ export default function BriefScreen() {
               {/* ── TAB 4: CULTURE ── */}
               {activeTab === 'culture' && (
                 <div>
-                  <div style={{ fontFamily: 'Cinzel, serif', fontSize: 28, fontWeight: 700, color: 'var(--moon-bright)', marginBottom: 6 }}>Cultural Intelligence</div>
-                  <div style={{ fontFamily: 'Crimson Pro, serif', fontSize: 16, fontStyle: 'italic', color: 'var(--muted)', marginBottom: 24 }}>
+                  <div style={{ fontFamily: 'Public Sans, sans-serif', fontSize: 28, fontWeight: 700, color: 'var(--moon-bright)', marginBottom: 6 }}>Cultural Intelligence</div>
+                  <div style={{ fontFamily: 'Public Sans, sans-serif', fontSize: 16, fontStyle: 'italic', color: 'var(--muted)', marginBottom: 24 }}>
                     {brief.culture.tagline}
                   </div>
 
                   {/* Insider tip */}
                   <div style={{
                     background: 'var(--lapis-deep)',
-                    border: '1px solid rgba(91,143,214,0.25)',
+                    border: '1px solid rgba(52,211,153,0.25)',
                     borderRadius: 18, padding: 24, marginBottom: 28,
                     boxShadow: '0 4px 32px rgba(27,58,92,0.5)',
                   }}>
-                    <div style={{ fontFamily: 'Cinzel, serif', fontSize: 9, textTransform: 'uppercase', letterSpacing: '0.2em', color: 'var(--lapis-bright)', opacity: 0.8, marginBottom: 10 }}>
+                    <div style={{ fontFamily: 'Public Sans, sans-serif', fontSize: 9, textTransform: 'uppercase', letterSpacing: '0.2em', color: 'var(--lapis-bright)', opacity: 0.8, marginBottom: 10 }}>
                       𓂀 Local Insider Tip
                     </div>
-                    <div style={{ fontFamily: 'Crimson Pro, serif', fontSize: 18, fontStyle: 'italic', color: 'var(--moon)', lineHeight: 1.6 }}>
+                    <div style={{ fontFamily: 'Public Sans, sans-serif', fontSize: 18, fontStyle: 'italic', color: 'var(--moon)', lineHeight: 1.6 }}>
                       {brief.culture.insiderTip}
                     </div>
-                    <div style={{ fontFamily: 'Crimson Pro, serif', fontSize: 12, fontStyle: 'italic', color: 'var(--muted)', marginTop: 12, textAlign: 'right' }}>
+                    <div style={{ fontFamily: 'Public Sans, sans-serif', fontSize: 12, fontStyle: 'italic', color: 'var(--muted)', marginTop: 12, textAlign: 'right' }}>
                       {brief.culture.insiderSource}
                     </div>
                   </div>
@@ -839,26 +839,26 @@ export default function BriefScreen() {
                   <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: 16, marginBottom: 28 }}>
                     {/* Do's */}
                     <div style={{ background: 'rgba(82,212,138,0.06)', border: '1px solid rgba(82,212,138,0.18)', borderRadius: 16, padding: 20 }}>
-                      <div style={{ fontFamily: 'Cinzel, serif', fontSize: 12, textTransform: 'uppercase', letterSpacing: '0.12em', color: '#52d48a', marginBottom: 14 }}>
+                      <div style={{ fontFamily: 'Public Sans, sans-serif', fontSize: 12, textTransform: 'uppercase', letterSpacing: '0.12em', color: '#52d48a', marginBottom: 14 }}>
                         ✓ Do
                       </div>
                       {brief.culture.dos.map((item, i) => (
                         <div key={i} style={{ display: 'flex', gap: 12, alignItems: 'flex-start', padding: '8px 0', borderBottom: i < brief.culture.dos.length - 1 ? '1px solid rgba(82,212,138,0.08)' : 'none' }}>
                           <div style={{ width: 18, height: 18, borderRadius: '50%', background: 'rgba(82,212,138,0.15)', border: '1px solid rgba(82,212,138,0.3)', display: 'flex', alignItems: 'center', justifyContent: 'center', fontSize: 10, color: '#52d48a', flexShrink: 0, marginTop: 1 }}>✓</div>
-                          <span style={{ fontFamily: 'Crimson Pro, serif', fontSize: 14, fontStyle: 'italic', color: 'var(--moon-dim)', lineHeight: 1.5 }}>{item}</span>
+                          <span style={{ fontFamily: 'Public Sans, sans-serif', fontSize: 14, fontStyle: 'italic', color: 'var(--moon-dim)', lineHeight: 1.5 }}>{item}</span>
                         </div>
                       ))}
                     </div>
 
                     {/* Don'ts */}
                     <div style={{ background: 'rgba(232,80,60,0.06)', border: '1px solid rgba(232,80,60,0.15)', borderRadius: 16, padding: 20 }}>
-                      <div style={{ fontFamily: 'Cinzel, serif', fontSize: 12, textTransform: 'uppercase', letterSpacing: '0.12em', color: '#e8504c', marginBottom: 14 }}>
+                      <div style={{ fontFamily: 'Public Sans, sans-serif', fontSize: 12, textTransform: 'uppercase', letterSpacing: '0.12em', color: '#e8504c', marginBottom: 14 }}>
                         ✗ Don't
                       </div>
                       {brief.culture.donts.map((item, i) => (
                         <div key={i} style={{ display: 'flex', gap: 12, alignItems: 'flex-start', padding: '8px 0', borderBottom: i < brief.culture.donts.length - 1 ? '1px solid rgba(232,80,60,0.08)' : 'none' }}>
                           <div style={{ width: 18, height: 18, borderRadius: '50%', background: 'rgba(232,80,60,0.12)', border: '1px solid rgba(232,80,60,0.3)', display: 'flex', alignItems: 'center', justifyContent: 'center', fontSize: 10, color: '#e8504c', flexShrink: 0, marginTop: 1 }}>✗</div>
-                          <span style={{ fontFamily: 'Crimson Pro, serif', fontSize: 14, fontStyle: 'italic', color: 'var(--moon-dim)', lineHeight: 1.5 }}>{item}</span>
+                          <span style={{ fontFamily: 'Public Sans, sans-serif', fontSize: 14, fontStyle: 'italic', color: 'var(--moon-dim)', lineHeight: 1.5 }}>{item}</span>
                         </div>
                       ))}
                     </div>
@@ -867,12 +867,12 @@ export default function BriefScreen() {
                   {/* Context cards */}
                   <div style={{ display: 'grid', gridTemplateColumns: 'repeat(3, 1fr)', gap: 12 }}>
                     {brief.culture.contextCards.map((card) => (
-                      <div key={card.title} style={{ background: 'var(--basalt-mid)', border: '1px solid rgba(232,238,245,0.07)', borderRadius: 14, padding: 16 }}>
-                        <div style={{ width: 36, height: 36, background: 'var(--lapis-deep)', border: '1px solid rgba(91,143,214,0.2)', borderRadius: 10, display: 'flex', alignItems: 'center', justifyContent: 'center', fontSize: 18, marginBottom: 10 }}>
+                      <div key={card.title} style={{ background: 'var(--basalt-mid)', border: '1px solid rgba(226,232,240,0.07)', borderRadius: 14, padding: 16 }}>
+                        <div style={{ width: 36, height: 36, background: 'var(--lapis-deep)', border: '1px solid rgba(52,211,153,0.2)', borderRadius: 10, display: 'flex', alignItems: 'center', justifyContent: 'center', fontSize: 18, marginBottom: 10 }}>
                           {card.icon}
                         </div>
-                        <div style={{ fontFamily: 'Cinzel, serif', fontSize: 12, fontWeight: 600, color: 'var(--moon)', marginBottom: 4 }}>{card.title}</div>
-                        <div style={{ fontFamily: 'Crimson Pro, serif', fontSize: 12, fontStyle: 'italic', color: 'var(--muted)', lineHeight: 1.5 }}>{card.body}</div>
+                        <div style={{ fontFamily: 'Public Sans, sans-serif', fontSize: 12, fontWeight: 600, color: 'var(--moon)', marginBottom: 4 }}>{card.title}</div>
+                        <div style={{ fontFamily: 'Public Sans, sans-serif', fontSize: 12, fontStyle: 'italic', color: 'var(--muted)', lineHeight: 1.5 }}>{card.body}</div>
                       </div>
                     ))}
                   </div>
@@ -898,7 +898,7 @@ export default function BriefScreen() {
         position: 'absolute', bottom: 0, left: 220, right: 0,
         height: 80,
         background: 'rgba(16,16,16,0.97)',
-        borderTop: '1px solid rgba(232,238,245,0.06)',
+        borderTop: '1px solid rgba(226,232,240,0.06)',
         backdropFilter: 'blur(20px)',
         display: 'flex', alignItems: 'center', justifyContent: 'space-between',
         padding: '0 48px',
@@ -908,16 +908,16 @@ export default function BriefScreen() {
         <div>
           {allVisited ? (
             <div style={{ display: 'flex', flexDirection: 'column', gap: 2 }}>
-              <div style={{ fontFamily: 'Cinzel, serif', fontSize: 12, textTransform: 'uppercase', letterSpacing: '0.14em', color: '#52d48a' }}>
+              <div style={{ fontFamily: 'Public Sans, sans-serif', fontSize: 12, textTransform: 'uppercase', letterSpacing: '0.14em', color: '#52d48a' }}>
                 ✓ Briefing complete
               </div>
-              <div style={{ fontFamily: 'Crimson Pro, serif', fontSize: 12, fontStyle: 'italic', color: 'var(--muted)' }}>
+              <div style={{ fontFamily: 'Public Sans, sans-serif', fontSize: 12, fontStyle: 'italic', color: 'var(--muted)' }}>
                 You're ready for this scene
               </div>
             </div>
           ) : (
             <div style={{ display: 'flex', flexDirection: 'column', gap: 6 }}>
-              <div style={{ fontFamily: 'Crimson Pro, serif', fontSize: 13, fontStyle: 'italic', color: 'var(--muted)' }}>
+              <div style={{ fontFamily: 'Public Sans, sans-serif', fontSize: 13, fontStyle: 'italic', color: 'var(--muted)' }}>
                 Review all 4 sections to continue
               </div>
               <div style={{ display: 'flex', gap: 6 }}>
@@ -943,16 +943,16 @@ export default function BriefScreen() {
           style={{
             height: 52, padding: '0 36px',
             background: allVisited ? 'var(--lapis)' : 'var(--basalt-raised)',
-            border: `1px solid ${allVisited ? 'rgba(91,143,214,0.35)' : 'rgba(232,238,245,0.1)'}`,
+            border: `1px solid ${allVisited ? 'rgba(52,211,153,0.35)' : 'rgba(226,232,240,0.1)'}`,
             borderRadius: 16,
-            boxShadow: allVisited ? '0 0 24px rgba(42,82,152,0.3)' : 'none',
+            boxShadow: allVisited ? '0 0 24px rgba(16,185,129,0.3)' : 'none',
             cursor: allVisited ? 'pointer' : 'not-allowed',
-            fontFamily: 'Cinzel, serif', fontSize: 13, fontWeight: 700,
+            fontFamily: 'Public Sans, sans-serif', fontSize: 13, fontWeight: 700,
             textTransform: 'uppercase', letterSpacing: '0.14em',
             color: allVisited ? 'var(--moon-bright)' : 'var(--muted)',
             transition: 'background 300ms, border-color 300ms, box-shadow 300ms, color 300ms',
           }}
-          whileHover={allVisited ? { backgroundColor: 'var(--lapis-mid)', boxShadow: '0 0 40px rgba(42,82,152,0.5)' } : undefined}
+          whileHover={allVisited ? { backgroundColor: 'var(--lapis-mid)', boxShadow: '0 0 40px rgba(16,185,129,0.5)' } : undefined}
         >
           I'm Ready →
         </motion.button>
@@ -994,16 +994,16 @@ function RightPanel({
   return (
     <div style={{
       background: 'var(--basalt-mid)',
-      borderLeft: '1px solid rgba(232,238,245,0.06)',
+      borderLeft: '1px solid rgba(226,232,240,0.06)',
       padding: '32px 22px',
       overflowY: 'auto',
       display: 'flex', flexDirection: 'column',
     }}>
       {/* Cheat sheet builder */}
-      <div style={{ fontFamily: 'Cinzel, serif', fontSize: 9, textTransform: 'uppercase', letterSpacing: '0.2em', color: 'var(--lapis-bright)', marginBottom: 4 }}>
+      <div style={{ fontFamily: 'Public Sans, sans-serif', fontSize: 9, textTransform: 'uppercase', letterSpacing: '0.2em', color: 'var(--lapis-bright)', marginBottom: 4 }}>
         Your Cheat Sheet
       </div>
-      <div style={{ fontFamily: 'Crimson Pro, serif', fontSize: 10, fontStyle: 'italic', color: 'var(--muted)', marginBottom: 14 }}>
+      <div style={{ fontFamily: 'Public Sans, sans-serif', fontSize: 10, fontStyle: 'italic', color: 'var(--muted)', marginBottom: 14 }}>
         Tap any word or structure to add it
       </div>
 
@@ -1013,7 +1013,7 @@ function RightPanel({
           <div style={{
             border: '1px dashed var(--basalt-edge)',
             borderRadius: 12, padding: 18, textAlign: 'center',
-            fontFamily: 'Crimson Pro, serif', fontSize: 12, fontStyle: 'italic', color: 'var(--muted)',
+            fontFamily: 'Public Sans, sans-serif', fontSize: 12, fontStyle: 'italic', color: 'var(--muted)',
           }}>
             Tap vocab or grammar to add to your cheat sheet
           </div>
@@ -1029,7 +1029,7 @@ function RightPanel({
                 transition={{ type: 'spring', stiffness: 300, damping: 25 }}
                 style={{
                   background: 'var(--basalt-raised)',
-                  border: '1px solid rgba(232,238,245,0.07)',
+                  border: '1px solid rgba(226,232,240,0.07)',
                   borderRadius: 10,
                   padding: '10px 12px',
                   display: 'flex', alignItems: 'center', gap: 10,
@@ -1037,16 +1037,16 @@ function RightPanel({
               >
                 <div style={{ width: 8, height: 8, borderRadius: '50%', background: TYPE_COLORS[item.type] ?? 'var(--lapis-bright)', flexShrink: 0 }} />
                 <div style={{ flex: 1, minWidth: 0 }}>
-                  <div style={{ fontFamily: 'Cinzel, serif', fontSize: 12, color: 'var(--moon)', whiteSpace: 'nowrap', overflow: 'hidden', textOverflow: 'ellipsis' }}>
+                  <div style={{ fontFamily: 'Public Sans, sans-serif', fontSize: 12, color: 'var(--moon)', whiteSpace: 'nowrap', overflow: 'hidden', textOverflow: 'ellipsis' }}>
                     {item.word}
                   </div>
-                  <div style={{ fontFamily: 'Crimson Pro, serif', fontSize: 10, fontStyle: 'italic', color: 'var(--muted)', whiteSpace: 'nowrap', overflow: 'hidden', textOverflow: 'ellipsis' }}>
+                  <div style={{ fontFamily: 'Public Sans, sans-serif', fontSize: 10, fontStyle: 'italic', color: 'var(--muted)', whiteSpace: 'nowrap', overflow: 'hidden', textOverflow: 'ellipsis' }}>
                     {item.translation}
                   </div>
                 </div>
                 <button
                   onClick={() => onRemove(item.id)}
-                  style={{ background: 'none', border: 'none', cursor: 'pointer', fontFamily: 'Cinzel, serif', fontSize: 12, color: 'var(--muted)', padding: 0, flexShrink: 0 }}
+                  style={{ background: 'none', border: 'none', cursor: 'pointer', fontFamily: 'Public Sans, sans-serif', fontSize: 12, color: 'var(--muted)', padding: 0, flexShrink: 0 }}
                 >
                   ×
                 </button>
@@ -1058,7 +1058,7 @@ function RightPanel({
 
       {/* Available during scene label + toggle */}
       <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', marginBottom: 4 }}>
-        <div style={{ fontFamily: 'Cinzel, serif', fontSize: 8, textTransform: 'uppercase', letterSpacing: '0.12em', color: 'var(--muted)' }}>
+        <div style={{ fontFamily: 'Public Sans, sans-serif', fontSize: 8, textTransform: 'uppercase', letterSpacing: '0.12em', color: 'var(--muted)' }}>
           Available during scene
         </div>
         <button
@@ -1080,17 +1080,17 @@ function RightPanel({
         </button>
       </div>
 
-      <div style={{ height: 1, background: 'rgba(232,238,245,0.06)', margin: '20px 0' }} />
+      <div style={{ height: 1, background: 'rgba(226,232,240,0.06)', margin: '20px 0' }} />
 
       {/* Difficulty forecast */}
-      <div style={{ fontFamily: 'Cinzel, serif', fontSize: 9, textTransform: 'uppercase', letterSpacing: '0.2em', color: 'var(--lapis-bright)', marginBottom: 14 }}>
+      <div style={{ fontFamily: 'Public Sans, sans-serif', fontSize: 9, textTransform: 'uppercase', letterSpacing: '0.2em', color: 'var(--lapis-bright)', marginBottom: 14 }}>
         Difficulty Forecast
       </div>
       {DIFFICULTY_FORECAST.map(({ label, value }) => (
         <div key={label} style={{ marginBottom: 12 }}>
           <div style={{ display: 'flex', justifyContent: 'space-between', marginBottom: 4 }}>
-            <span style={{ fontFamily: 'Crimson Pro, serif', fontSize: 11, fontStyle: 'italic', color: 'var(--moon-dim)' }}>{label}</span>
-            <span style={{ fontFamily: 'Cinzel, serif', fontSize: 10, color: 'var(--muted)' }}>{value}%</span>
+            <span style={{ fontFamily: 'Public Sans, sans-serif', fontSize: 11, fontStyle: 'italic', color: 'var(--moon-dim)' }}>{label}</span>
+            <span style={{ fontFamily: 'Public Sans, sans-serif', fontSize: 10, color: 'var(--muted)' }}>{value}%</span>
           </div>
           <div style={{ height: 6, background: 'var(--basalt-edge)', borderRadius: 3, overflow: 'hidden' }}>
             <motion.div
@@ -1103,42 +1103,42 @@ function RightPanel({
         </div>
       ))}
 
-      <div style={{ height: 1, background: 'rgba(232,238,245,0.06)', margin: '20px 0' }} />
+      <div style={{ height: 1, background: 'rgba(226,232,240,0.06)', margin: '20px 0' }} />
 
       {/* Readiness check */}
-      <div style={{ fontFamily: 'Cinzel, serif', fontSize: 9, textTransform: 'uppercase', letterSpacing: '0.2em', color: 'var(--lapis-bright)', marginBottom: 14 }}>
+      <div style={{ fontFamily: 'Public Sans, sans-serif', fontSize: 9, textTransform: 'uppercase', letterSpacing: '0.2em', color: 'var(--lapis-bright)', marginBottom: 14 }}>
         Readiness Check
       </div>
       <div style={{ display: 'flex', flexDirection: 'column', gap: 8, marginBottom: 12 }}>
         <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
-          <span style={{ fontFamily: 'Crimson Pro, serif', fontSize: 12, fontStyle: 'italic', color: 'var(--moon-dim)' }}>Your level</span>
-          <span style={{ fontFamily: 'Cinzel, serif', fontSize: 11, color: 'var(--moon-bright)', background: 'var(--lapis)', borderRadius: 8, padding: '3px 10px' }}>B1</span>
+          <span style={{ fontFamily: 'Public Sans, sans-serif', fontSize: 12, fontStyle: 'italic', color: 'var(--moon-dim)' }}>Your level</span>
+          <span style={{ fontFamily: 'Public Sans, sans-serif', fontSize: 11, color: 'var(--moon-bright)', background: 'var(--lapis)', borderRadius: 8, padding: '3px 10px' }}>B1</span>
         </div>
         <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
-          <span style={{ fontFamily: 'Crimson Pro, serif', fontSize: 12, fontStyle: 'italic', color: 'var(--moon-dim)' }}>Scene level</span>
-          <span style={{ fontFamily: 'Crimson Pro, serif', fontSize: 12, fontStyle: 'italic', color: 'var(--moon)' }}>{scene.level}</span>
+          <span style={{ fontFamily: 'Public Sans, sans-serif', fontSize: 12, fontStyle: 'italic', color: 'var(--moon-dim)' }}>Scene level</span>
+          <span style={{ fontFamily: 'Public Sans, sans-serif', fontSize: 12, fontStyle: 'italic', color: 'var(--moon)' }}>{scene.level}</span>
         </div>
       </div>
       <div style={{ background: 'rgba(82,212,138,0.08)', border: '1px solid rgba(82,212,138,0.18)', borderRadius: 10, padding: '10px 12px' }}>
-        <div style={{ fontFamily: 'Crimson Pro, serif', fontSize: 12, fontStyle: 'italic', color: '#52d48a', lineHeight: 1.45 }}>
+        <div style={{ fontFamily: 'Public Sans, sans-serif', fontSize: 12, fontStyle: 'italic', color: '#52d48a', lineHeight: 1.45 }}>
           Well matched — you're ready for this scene
         </div>
       </div>
 
-      <div style={{ height: 1, background: 'rgba(232,238,245,0.06)', margin: '20px 0' }} />
+      <div style={{ height: 1, background: 'rgba(226,232,240,0.06)', margin: '20px 0' }} />
 
       {/* Quick tips */}
-      <div style={{ fontFamily: 'Cinzel, serif', fontSize: 9, textTransform: 'uppercase', letterSpacing: '0.2em', color: 'var(--lapis-bright)', marginBottom: 10 }}>
+      <div style={{ fontFamily: 'Public Sans, sans-serif', fontSize: 9, textTransform: 'uppercase', letterSpacing: '0.2em', color: 'var(--lapis-bright)', marginBottom: 10 }}>
         Tips for this scene
       </div>
       {brief.culture.tips.map((tip: string, i: number) => (
         <div key={i} style={{
           display: 'flex', gap: 10, padding: '8px 0',
-          borderBottom: i < brief.culture.tips.length - 1 ? '1px solid rgba(232,238,245,0.05)' : 'none',
+          borderBottom: i < brief.culture.tips.length - 1 ? '1px solid rgba(226,232,240,0.05)' : 'none',
           alignItems: 'flex-start',
         }}>
           <div style={{ width: 5, height: 5, borderRadius: '50%', background: 'var(--lapis-mid)', flexShrink: 0, marginTop: 5 }} />
-          <span style={{ fontFamily: 'Crimson Pro, serif', fontSize: 12, fontStyle: 'italic', color: 'var(--moon-dim)', lineHeight: 1.5 }}>{tip}</span>
+          <span style={{ fontFamily: 'Public Sans, sans-serif', fontSize: 12, fontStyle: 'italic', color: 'var(--moon-dim)', lineHeight: 1.5 }}>{tip}</span>
         </div>
       ))}
     </div>

@@ -30,12 +30,12 @@ export default function StampGrid({ stamps, columns = 4 }: StampGridProps) {
               gap: '6px',
               padding: '12px 6px',
               borderRadius: '12px',
-              background: isDone ? '#1a1612' : 'transparent',
+              background: isDone ? '#0d1117' : 'transparent',
               border: isDone
-                ? '1px solid rgba(91,143,214,0.2)'
+                ? '1px solid rgba(52,211,153,0.2)'
                 : isOpen
-                ? '1px dashed rgba(139,115,85,0.25)'
-                : '1px solid rgba(139,115,85,0.1)',
+                ? '1px dashed rgba(16,185,129,0.2)'
+                : '1px solid rgba(16,185,129,0.08)',
               cursor: isOpen ? 'pointer' : 'default',
             }}
           >
@@ -50,12 +50,12 @@ export default function StampGrid({ stamps, columns = 4 }: StampGridProps) {
             </span>
             <span
               style={{
-                fontFamily: 'Cinzel, serif',
+                fontFamily: 'Public Sans, sans-serif',
                 fontSize: '8px',
                 textTransform: 'uppercase',
                 letterSpacing: '0.06em',
                 color: isDone
-                  ? 'rgba(232,238,245,0.5)'
+                  ? 'rgba(226,232,240,0.5)'
                   : 'rgba(139,115,85,0.4)',
                 textAlign: 'center',
               }}

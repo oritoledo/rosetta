@@ -302,7 +302,7 @@ export default function DrillScreen() {
 
         <div
           style={{
-            fontFamily: 'Cinzel, serif',
+            fontFamily: 'Public Sans, sans-serif',
             fontSize: '26px',
             fontWeight: 700,
             color: 'var(--moon-bright)',
@@ -314,7 +314,7 @@ export default function DrillScreen() {
         </div>
         <div
           style={{
-            fontFamily: 'Crimson Pro, serif',
+            fontFamily: 'Public Sans, sans-serif',
             fontSize: '15px',
             fontStyle: 'italic',
             color: 'var(--muted)',
@@ -327,17 +327,17 @@ export default function DrillScreen() {
         <div style={{ display: 'flex', gap: '12px', marginBottom: '32px' }}>
           {[
             { value: sessionCorrect, label: 'Correct', color: '#52d48a', bg: 'rgba(82,212,138,0.1)', border: 'rgba(82,212,138,0.25)' },
-            { value: timeStr,        label: 'Time',    color: 'var(--lapis-bright)', bg: 'rgba(42,82,152,0.12)', border: 'rgba(91,143,214,0.25)' },
+            { value: timeStr,        label: 'Time',    color: 'var(--lapis-bright)', bg: 'rgba(16,185,129,0.12)', border: 'rgba(52,211,153,0.25)' },
             { value: '🔥',           label: 'Streak maintained', color: '#c9a84c', bg: 'rgba(201,168,76,0.1)', border: 'rgba(201,168,76,0.25)' },
           ].map(({ value, label, color, bg, border }) => (
             <div
               key={label}
               style={{ background: bg, border: `1px solid ${border}`, borderRadius: '16px', padding: '20px 24px', minWidth: '90px' }}
             >
-              <div style={{ fontFamily: 'Cinzel, serif', fontSize: '26px', fontWeight: 700, color, lineHeight: 1 }}>
+              <div style={{ fontFamily: 'Public Sans, sans-serif', fontSize: '26px', fontWeight: 700, color, lineHeight: 1 }}>
                 {value}
               </div>
-              <div style={{ fontFamily: 'Cinzel, serif', fontSize: '9px', textTransform: 'uppercase', letterSpacing: '0.1em', color: 'var(--muted)', marginTop: '6px' }}>
+              <div style={{ fontFamily: 'Public Sans, sans-serif', fontSize: '9px', textTransform: 'uppercase', letterSpacing: '0.1em', color: 'var(--muted)', marginTop: '6px' }}>
                 {label}
               </div>
             </div>
@@ -346,22 +346,22 @@ export default function DrillScreen() {
 
         <motion.button
           onClick={() => navigate('/')}
-          whileHover={{ backgroundColor: 'var(--lapis-mid)', boxShadow: '0 0 48px rgba(42,82,152,0.5)' }}
+          whileHover={{ backgroundColor: 'var(--lapis-mid)', boxShadow: '0 0 48px rgba(16,185,129,0.5)' }}
           transition={{ duration: 0.15 }}
           style={{
             padding: '0 40px',
             height: '56px',
             background: 'var(--lapis)',
-            border: '1px solid rgba(91,143,214,0.35)',
+            border: '1px solid rgba(52,211,153,0.35)',
             borderRadius: '16px',
             cursor: 'pointer',
-            fontFamily: 'Cinzel, serif',
+            fontFamily: 'Public Sans, sans-serif',
             fontSize: '13px',
             fontWeight: 700,
             textTransform: 'uppercase',
             letterSpacing: '0.14em',
             color: 'var(--moon-bright)',
-            boxShadow: '0 0 32px rgba(42,82,152,0.3)',
+            boxShadow: '0 0 32px rgba(16,185,129,0.3)',
           }}
         >
           Back to Practice →
@@ -394,7 +394,7 @@ export default function DrillScreen() {
           <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '8px' }}>
             <div
               style={{
-                fontFamily: 'Cinzel, serif',
+                fontFamily: 'Public Sans, sans-serif',
                 fontSize: '10px',
                 textTransform: 'uppercase',
                 letterSpacing: '0.2em',
@@ -405,7 +405,7 @@ export default function DrillScreen() {
             </div>
             <div
               style={{
-                fontFamily: 'Crimson Pro, serif',
+                fontFamily: 'Public Sans, sans-serif',
                 fontSize: '12px',
                 fontStyle: 'italic',
                 color: 'var(--muted)',
@@ -439,7 +439,7 @@ export default function DrillScreen() {
                 <div>
                   <div
                     style={{
-                      fontFamily: 'Cinzel, serif',
+                      fontFamily: 'Public Sans, sans-serif',
                       fontSize: '12px',
                       textTransform: 'uppercase',
                       letterSpacing: '0.15em',
@@ -452,7 +452,7 @@ export default function DrillScreen() {
 
                   <div
                     style={{
-                      fontFamily: 'Crimson Pro, serif',
+                      fontFamily: 'Public Sans, sans-serif',
                       fontSize: '20px',
                       fontStyle: 'italic',
                       color: 'var(--moon)',
@@ -484,7 +484,7 @@ export default function DrillScreen() {
                   <div style={{ display: 'flex', flexDirection: 'column', gap: '10px' }}>
                     {fixEx.options.map((opt, i) => {
                       let bg = 'var(--basalt-mid)'
-                      let border = 'rgba(232,238,245,0.08)'
+                      let border = 'rgba(226,232,240,0.08)'
                       let color = 'var(--moon)'
                       if (selectedOption === i) {
                         if (i === fixEx.correctIndex) {
@@ -504,7 +504,7 @@ export default function DrillScreen() {
                             border: `1px solid ${border}`,
                             borderRadius: '14px',
                             cursor: feedback !== 'none' ? 'default' : 'pointer',
-                            fontFamily: 'Cinzel, serif',
+                            fontFamily: 'Public Sans, sans-serif',
                             fontSize: '16px',
                             color,
                             textAlign: 'left',
@@ -512,12 +512,12 @@ export default function DrillScreen() {
                           }}
                           onMouseEnter={(e) => {
                             if (feedback === 'none') {
-                              ;(e.currentTarget as HTMLButtonElement).style.borderColor = 'rgba(91,143,214,0.3)'
+                              ;(e.currentTarget as HTMLButtonElement).style.borderColor = 'rgba(52,211,153,0.3)'
                             }
                           }}
                           onMouseLeave={(e) => {
                             if (feedback === 'none' && selectedOption !== i) {
-                              ;(e.currentTarget as HTMLButtonElement).style.borderColor = 'rgba(232,238,245,0.08)'
+                              ;(e.currentTarget as HTMLButtonElement).style.borderColor = 'rgba(226,232,240,0.08)'
                             }
                           }}
                         >
@@ -539,7 +539,7 @@ export default function DrillScreen() {
                 <div>
                   <div
                     style={{
-                      fontFamily: 'Crimson Pro, serif',
+                      fontFamily: 'Public Sans, sans-serif',
                       fontSize: '22px',
                       fontStyle: 'italic',
                       color: 'var(--moon)',
@@ -565,11 +565,11 @@ export default function DrillScreen() {
                         border: `1px solid ${
                           feedback === 'correct' ? 'rgba(82,212,138,0.4)'
                           : feedback === 'incorrect' ? 'rgba(232,80,60,0.4)'
-                          : 'rgba(232,238,245,0.1)'
+                          : 'rgba(226,232,240,0.1)'
                         }`,
                         borderRadius: '12px',
                         padding: '0 20px',
-                        fontFamily: 'Cinzel, serif',
+                        fontFamily: 'Public Sans, sans-serif',
                         fontSize: '16px',
                         color: 'var(--moon)',
                         outline: 'none',
@@ -583,10 +583,10 @@ export default function DrillScreen() {
                         padding: '0 28px',
                         height: '56px',
                         background: 'var(--lapis)',
-                        border: '1px solid rgba(91,143,214,0.3)',
+                        border: '1px solid rgba(52,211,153,0.3)',
                         borderRadius: '12px',
                         cursor: feedback !== 'none' ? 'default' : 'pointer',
-                        fontFamily: 'Cinzel, serif',
+                        fontFamily: 'Public Sans, sans-serif',
                         fontSize: '12px',
                         fontWeight: 700,
                         textTransform: 'uppercase',
@@ -611,7 +611,7 @@ export default function DrillScreen() {
                 <div>
                   <div
                     style={{
-                      fontFamily: 'Cinzel, serif',
+                      fontFamily: 'Public Sans, sans-serif',
                       fontSize: '12px',
                       textTransform: 'uppercase',
                       letterSpacing: '0.15em',
@@ -640,17 +640,17 @@ export default function DrillScreen() {
                                 : isWrong
                                 ? 'rgba(232,80,60,0.12)'
                                 : isSelected
-                                ? 'rgba(42,82,152,0.25)'
+                                ? 'rgba(16,185,129,0.25)'
                                 : 'var(--basalt-mid)',
                               border: `1px solid ${
                                 isMatched ? 'rgba(82,212,138,0.35)'
                                 : isWrong ? 'rgba(232,80,60,0.35)'
-                                : isSelected ? 'rgba(91,143,214,0.4)'
-                                : 'rgba(232,238,245,0.08)'
+                                : isSelected ? 'rgba(52,211,153,0.4)'
+                                : 'rgba(226,232,240,0.08)'
                               }`,
                               borderRadius: '12px',
                               cursor: isMatched ? 'default' : 'pointer',
-                              fontFamily: 'Crimson Pro, serif',
+                              fontFamily: 'Public Sans, sans-serif',
                               fontSize: '15px',
                               fontStyle: 'italic',
                               color: isMatched ? '#52d48a' : isWrong ? '#e8504c' : 'var(--moon)',
@@ -679,16 +679,16 @@ export default function DrillScreen() {
                               background: isMatched
                                 ? 'rgba(82,212,138,0.12)'
                                 : isSelected
-                                ? 'rgba(42,82,152,0.25)'
+                                ? 'rgba(16,185,129,0.25)'
                                 : 'var(--basalt-mid)',
                               border: `1px solid ${
                                 isMatched ? 'rgba(82,212,138,0.35)'
-                                : isSelected ? 'rgba(91,143,214,0.4)'
-                                : 'rgba(232,238,245,0.08)'
+                                : isSelected ? 'rgba(52,211,153,0.4)'
+                                : 'rgba(226,232,240,0.08)'
                               }`,
                               borderRadius: '12px',
                               cursor: isMatched ? 'default' : 'pointer',
-                              fontFamily: 'Crimson Pro, serif',
+                              fontFamily: 'Public Sans, sans-serif',
                               fontSize: '15px',
                               color: isMatched ? '#52d48a' : 'var(--moon)',
                               textAlign: 'left',
@@ -743,7 +743,7 @@ function FeedbackBlock({
         >
           <div
             style={{
-              fontFamily: 'Cinzel, serif',
+              fontFamily: 'Public Sans, sans-serif',
               fontSize: '11px',
               fontWeight: 700,
               textTransform: 'uppercase',
@@ -757,7 +757,7 @@ function FeedbackBlock({
           {correct && feedback === 'incorrect' && (
             <div
               style={{
-                fontFamily: 'Cinzel, serif',
+                fontFamily: 'Public Sans, sans-serif',
                 fontSize: '13px',
                 color: 'var(--moon)',
                 marginBottom: '6px',
@@ -768,7 +768,7 @@ function FeedbackBlock({
           )}
           <div
             style={{
-              fontFamily: 'Crimson Pro, serif',
+              fontFamily: 'Public Sans, sans-serif',
               fontSize: '13px',
               fontStyle: 'italic',
               color: 'var(--moon-dim)',

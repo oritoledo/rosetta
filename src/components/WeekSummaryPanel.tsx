@@ -61,14 +61,14 @@ export default function WeekSummaryPanel({ plan, vocab }: WeekSummaryPanelProps)
       <div
         style={{
           background: 'var(--basalt-mid)',
-          border: '1px solid rgba(232,238,245,0.07)',
+          border: '1px solid rgba(226,232,240,0.07)',
           borderRadius: '18px',
           padding: '24px',
         }}
       >
         <div
           style={{
-            fontFamily: 'Cinzel, serif',
+            fontFamily: 'Public Sans, sans-serif',
             fontSize: '9px',
             textTransform: 'uppercase',
             letterSpacing: '0.22em',
@@ -93,12 +93,12 @@ export default function WeekSummaryPanel({ plan, vocab }: WeekSummaryPanelProps)
               justifyContent: 'space-between',
               alignItems: 'center',
               padding: '8px 0',
-              borderBottom: i < arr.length - 1 ? '1px solid rgba(232,238,245,0.05)' : 'none',
+              borderBottom: i < arr.length - 1 ? '1px solid rgba(226,232,240,0.05)' : 'none',
             }}
           >
             <span
               style={{
-                fontFamily: 'Crimson Pro, serif',
+                fontFamily: 'Public Sans, sans-serif',
                 fontSize: '13px',
                 fontStyle: 'italic',
                 color: 'var(--muted)',
@@ -108,7 +108,7 @@ export default function WeekSummaryPanel({ plan, vocab }: WeekSummaryPanelProps)
             </span>
             <span
               style={{
-                fontFamily: 'Cinzel, serif',
+                fontFamily: 'Public Sans, sans-serif',
                 fontSize: '14px',
                 fontWeight: 600,
                 color: 'var(--moon-bright)',
@@ -123,7 +123,7 @@ export default function WeekSummaryPanel({ plan, vocab }: WeekSummaryPanelProps)
         <div style={{ marginTop: '16px' }}>
           <div
             style={{
-              fontFamily: 'Cinzel, serif',
+              fontFamily: 'Public Sans, sans-serif',
               fontSize: '8px',
               textTransform: 'uppercase',
               letterSpacing: '0.14em',
@@ -158,7 +158,7 @@ export default function WeekSummaryPanel({ plan, vocab }: WeekSummaryPanelProps)
                     overflow: 'hidden',
                     ...(isRest ? {
                       backgroundImage:
-                        'repeating-linear-gradient(45deg, transparent, transparent 2px, rgba(232,238,245,0.05) 2px, rgba(232,238,245,0.05) 4px)',
+                        'repeating-linear-gradient(45deg, transparent, transparent 2px, rgba(226,232,240,0.05) 2px, rgba(226,232,240,0.05) 4px)',
                     } : {}),
                   }}
                 >
@@ -190,7 +190,7 @@ export default function WeekSummaryPanel({ plan, vocab }: WeekSummaryPanelProps)
                 key={i}
                 style={{
                   flex: 1,
-                  fontFamily: 'Cinzel, serif',
+                  fontFamily: 'Public Sans, sans-serif',
                   fontSize: '6px',
                   textTransform: 'uppercase',
                   color: day.isToday ? 'var(--lapis-bright)' : 'var(--muted)',
@@ -209,14 +209,14 @@ export default function WeekSummaryPanel({ plan, vocab }: WeekSummaryPanelProps)
       <div
         style={{
           background: 'var(--basalt-mid)',
-          border: '1px solid rgba(232,238,245,0.07)',
+          border: '1px solid rgba(226,232,240,0.07)',
           borderRadius: '18px',
           padding: '24px',
         }}
       >
         <div
           style={{
-            fontFamily: 'Cinzel, serif',
+            fontFamily: 'Public Sans, sans-serif',
             fontSize: '9px',
             textTransform: 'uppercase',
             letterSpacing: '0.22em',
@@ -239,7 +239,7 @@ export default function WeekSummaryPanel({ plan, vocab }: WeekSummaryPanelProps)
                 padding: '8px 0',
                 borderBottom:
                   i < grammarEntries.length - 1
-                    ? '1px solid rgba(232,238,245,0.05)'
+                    ? '1px solid rgba(226,232,240,0.05)'
                     : 'none',
               }}
             >
@@ -254,7 +254,7 @@ export default function WeekSummaryPanel({ plan, vocab }: WeekSummaryPanelProps)
               />
               <span
                 style={{
-                  fontFamily: 'Cinzel, serif',
+                  fontFamily: 'Public Sans, sans-serif',
                   fontSize: '12px',
                   fontWeight: 600,
                   color: 'var(--moon)',
@@ -265,7 +265,7 @@ export default function WeekSummaryPanel({ plan, vocab }: WeekSummaryPanelProps)
               </span>
               <span
                 style={{
-                  fontFamily: 'Crimson Pro, serif',
+                  fontFamily: 'Public Sans, sans-serif',
                   fontSize: '11px',
                   fontStyle: 'italic',
                   color: 'var(--muted)',
@@ -281,8 +281,8 @@ export default function WeekSummaryPanel({ plan, vocab }: WeekSummaryPanelProps)
         {/* Insight box */}
         <div
           style={{
-            background: 'rgba(42,82,152,0.1)',
-            border: '1px solid rgba(91,143,214,0.15)',
+            background: 'rgba(16,185,129,0.1)',
+            border: '1px solid rgba(52,211,153,0.15)',
             borderRadius: '10px',
             padding: '10px 12px',
             marginTop: '12px',
@@ -290,7 +290,7 @@ export default function WeekSummaryPanel({ plan, vocab }: WeekSummaryPanelProps)
         >
           <p
             style={{
-              fontFamily: 'Crimson Pro, serif',
+              fontFamily: 'Public Sans, sans-serif',
               fontSize: '12px',
               fontStyle: 'italic',
               color: 'var(--moon-dim)',
@@ -307,14 +307,14 @@ export default function WeekSummaryPanel({ plan, vocab }: WeekSummaryPanelProps)
       <div
         style={{
           background: 'var(--basalt-mid)',
-          border: '1px solid rgba(232,238,245,0.07)',
+          border: '1px solid rgba(226,232,240,0.07)',
           borderRadius: '18px',
           padding: '24px',
         }}
       >
         <div
           style={{
-            fontFamily: 'Cinzel, serif',
+            fontFamily: 'Public Sans, sans-serif',
             fontSize: '9px',
             textTransform: 'uppercase',
             letterSpacing: '0.22em',
@@ -374,7 +374,7 @@ export default function WeekSummaryPanel({ plan, vocab }: WeekSummaryPanelProps)
               style={{
                 flex: 1,
                 textAlign: 'center',
-                fontFamily: 'Cinzel, serif',
+                fontFamily: 'Public Sans, sans-serif',
                 fontSize: '7px',
                 textTransform: 'uppercase',
                 color: i === 0 ? 'var(--lapis-bright)' : 'var(--muted)',
@@ -389,7 +389,7 @@ export default function WeekSummaryPanel({ plan, vocab }: WeekSummaryPanelProps)
         <div style={{ marginTop: '12px', display: 'flex', justifyContent: 'space-between', alignItems: 'baseline' }}>
           <span
             style={{
-              fontFamily: 'Cinzel, serif',
+              fontFamily: 'Public Sans, sans-serif',
               fontSize: '16px',
               fontWeight: 600,
               color: 'var(--moon-bright)',
@@ -399,7 +399,7 @@ export default function WeekSummaryPanel({ plan, vocab }: WeekSummaryPanelProps)
           </span>
           <span
             style={{
-              fontFamily: 'Crimson Pro, serif',
+              fontFamily: 'Public Sans, sans-serif',
               fontSize: '11px',
               fontStyle: 'italic',
               color: 'var(--muted)',

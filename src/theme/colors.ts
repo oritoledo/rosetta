@@ -1,19 +1,23 @@
 export const colors = {
-  basalt:       '#181818',
-  basaltMid:    '#212120',
-  basaltRaised: '#2a2a28',
-  basaltEdge:   '#333330',
-  lapisDeep:    '#1b3a5c',
-  lapis:        '#2a5298',
-  lapisMid:     '#3a6abf',
-  lapisBright:  '#5b8fd6',
-  moon:         '#e8eef5',
-  moonBright:   '#f4f7fa',
-  moonDim:      '#9aaabb',
-  muted:        '#5a5a58',
-  faint:        '#3a3a38',
-  papyrus:      '#f0ece4',
-  papyrusDark:  '#e0d9ce',
+  // Obsidian surfaces
+  basalt:       '#0d1117',
+  basaltMid:    '#161b27',
+  basaltRaised: '#1a1f2e',
+  basaltEdge:   '#1e2d3d',
+  // Emerald accents
+  lapisDeep:    '#064e3b',
+  lapis:        '#059669',
+  lapisMid:     '#10b981',
+  lapisBright:  '#34d399',
+  // Text
+  moon:         '#e2e8f0',
+  moonBright:   '#f1f5f9',
+  moonDim:      '#94a3b8',
+  muted:        '#475569',
+  faint:        '#1e2d3d',
+  // Surfaces (formerly papyrus)
+  papyrus:      '#0d1117',
+  papyrusDark:  '#1a1f2e',
 } as const
 
 export type ColorKey = keyof typeof colors

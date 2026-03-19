@@ -33,7 +33,7 @@ export default function SceneIntroScreen() {
         {/* LEFT HERO PANEL */}
         <div
           style={{
-            background: 'linear-gradient(170deg, #0a1628, #060e1a)',
+            background: 'linear-gradient(170deg, #0a1628, #0a0d14)',
             display: 'flex',
             flexDirection: 'column',
             justifyContent: 'center',
@@ -48,7 +48,7 @@ export default function SceneIntroScreen() {
               position: 'absolute',
               inset: 0,
               background:
-                'radial-gradient(ellipse 70% 60% at 50% 50%, rgba(42,82,152,0.15) 0%, transparent 70%)',
+                'radial-gradient(ellipse 70% 60% at 50% 50%, rgba(16,185,129,0.15) 0%, transparent 70%)',
               pointerEvents: 'none',
             }}
           />
@@ -61,7 +61,7 @@ export default function SceneIntroScreen() {
                 background: 'none',
                 border: 'none',
                 cursor: 'pointer',
-                fontFamily: 'Cinzel, serif',
+                fontFamily: 'Public Sans, sans-serif',
                 fontSize: '10px',
                 textTransform: 'uppercase',
                 letterSpacing: '0.12em',
@@ -94,7 +94,7 @@ export default function SceneIntroScreen() {
                 display: 'inline-flex',
                 alignItems: 'center',
                 background: 'rgba(9,15,24,0.7)',
-                border: '1px solid rgba(91,143,214,0.2)',
+                border: '1px solid rgba(52,211,153,0.2)',
                 borderRadius: '20px',
                 padding: '6px 16px',
                 marginBottom: '20px',
@@ -102,7 +102,7 @@ export default function SceneIntroScreen() {
             >
               <span
                 style={{
-                  fontFamily: 'Cinzel, serif',
+                  fontFamily: 'Public Sans, sans-serif',
                   fontSize: '10px',
                   letterSpacing: '0.1em',
                   color: 'var(--lapis-bright)',
@@ -115,7 +115,7 @@ export default function SceneIntroScreen() {
             {/* Title */}
             <h1
               style={{
-                fontFamily: 'Cinzel, serif',
+                fontFamily: 'Public Sans, sans-serif',
                 fontSize: '48px',
                 fontWeight: 700,
                 color: 'var(--moon-bright)',
@@ -133,11 +133,11 @@ export default function SceneIntroScreen() {
                 <span
                   key={chip}
                   style={{
-                    background: 'rgba(232,238,245,0.06)',
-                    border: '1px solid rgba(232,238,245,0.1)',
+                    background: 'rgba(226,232,240,0.06)',
+                    border: '1px solid rgba(226,232,240,0.1)',
                     borderRadius: '20px',
                     padding: '5px 14px',
-                    fontFamily: 'Cinzel, serif',
+                    fontFamily: 'Public Sans, sans-serif',
                     fontSize: '9px',
                     textTransform: 'uppercase',
                     letterSpacing: '0.1em',
@@ -149,11 +149,11 @@ export default function SceneIntroScreen() {
               ))}
               <span
                 style={{
-                  background: 'rgba(42,82,152,0.2)',
-                  border: '1px solid rgba(91,143,214,0.2)',
+                  background: 'rgba(16,185,129,0.2)',
+                  border: '1px solid rgba(52,211,153,0.2)',
                   borderRadius: '20px',
                   padding: '5px 14px',
-                  fontFamily: 'Cinzel, serif',
+                  fontFamily: 'Public Sans, sans-serif',
                   fontSize: '9px',
                   textTransform: 'uppercase',
                   letterSpacing: '0.1em',
@@ -170,7 +170,7 @@ export default function SceneIntroScreen() {
                 key={i}
                 style={{
                   height: '1px',
-                  background: 'rgba(91,143,214,0.08)',
+                  background: 'rgba(52,211,153,0.08)',
                   marginTop: i === 0 ? '32px' : '10px',
                 }}
               />
@@ -193,7 +193,7 @@ export default function SceneIntroScreen() {
           <div>
             <div
               style={{
-                fontFamily: 'Cinzel, serif',
+                fontFamily: 'Public Sans, sans-serif',
                 fontSize: '10px',
                 textTransform: 'uppercase',
                 letterSpacing: '0.22em',
@@ -207,7 +207,7 @@ export default function SceneIntroScreen() {
             <div
               style={{
                 background: 'var(--basalt-mid)',
-                border: '1px solid rgba(232,238,245,0.07)',
+                border: '1px solid rgba(226,232,240,0.07)',
                 borderRadius: '18px',
                 padding: '24px',
               }}
@@ -223,7 +223,7 @@ export default function SceneIntroScreen() {
                     marginBottom: i < scene.brief.length - 1 ? '16px' : 0,
                     borderBottom:
                       i < scene.brief.length - 1
-                        ? '1px solid rgba(232,238,245,0.05)'
+                        ? '1px solid rgba(226,232,240,0.05)'
                         : 'none',
                   }}
                 >
@@ -239,7 +239,7 @@ export default function SceneIntroScreen() {
                   />
                   <p
                     style={{
-                      fontFamily: 'Crimson Pro, serif',
+                      fontFamily: 'Public Sans, sans-serif',
                       fontSize: '14px',
                       fontStyle: 'italic',
                       color: 'var(--moon-dim)',
@@ -264,17 +264,17 @@ export default function SceneIntroScreen() {
           {/* CTA button */}
           <motion.button
             onClick={() => navigate(`/brief/${scene.id}`)}
-            whileHover={{ backgroundColor: 'var(--lapis-mid)', boxShadow: '0 0 56px rgba(42,82,152,0.5)' }}
+            whileHover={{ backgroundColor: 'var(--lapis-mid)', boxShadow: '0 0 56px rgba(16,185,129,0.5)' }}
             transition={{ duration: 0.15 }}
             style={{
               width: '100%',
               height: '60px',
               background: 'var(--lapis)',
-              border: '1px solid rgba(91,143,214,0.4)',
+              border: '1px solid rgba(52,211,153,0.4)',
               borderRadius: '16px',
-              boxShadow: '0 0 40px rgba(42,82,152,0.35)',
+              boxShadow: '0 0 40px rgba(16,185,129,0.35)',
               cursor: 'pointer',
-              fontFamily: 'Cinzel, serif',
+              fontFamily: 'Public Sans, sans-serif',
               fontSize: '14px',
               fontWeight: 700,
               textTransform: 'uppercase',

@@ -39,7 +39,7 @@ export default function CorrectionCard(props: CorrectionCardProps) {
       {/* Category label */}
       <div
         style={{
-          fontFamily: 'Cinzel, serif',
+          fontFamily: 'Public Sans, sans-serif',
           fontSize: '9px',
           textTransform: 'uppercase',
           letterSpacing: '0.14em',
@@ -73,7 +73,7 @@ export default function CorrectionCard(props: CorrectionCardProps) {
             >
               <div
                 style={{
-                  fontFamily: 'Cinzel, serif',
+                  fontFamily: 'Public Sans, sans-serif',
                   fontSize: '8px',
                   textTransform: 'uppercase',
                   letterSpacing: '0.1em',
@@ -85,7 +85,7 @@ export default function CorrectionCard(props: CorrectionCardProps) {
               </div>
               <div
                 style={{
-                  fontFamily: 'Crimson Pro, serif',
+                  fontFamily: 'Public Sans, sans-serif',
                   fontSize: '13px',
                   fontStyle: 'italic',
                   color: 'rgba(232,144,120,0.7)',
@@ -101,19 +101,19 @@ export default function CorrectionCard(props: CorrectionCardProps) {
             {/* Native form */}
             <div
               style={{
-                background: 'rgba(91,143,214,0.08)',
-                border: '1px solid rgba(91,143,214,0.15)',
+                background: 'rgba(52,211,153,0.08)',
+                border: '1px solid rgba(52,211,153,0.15)',
                 borderRadius: '10px',
                 padding: '10px 14px',
               }}
             >
               <div
                 style={{
-                  fontFamily: 'Cinzel, serif',
+                  fontFamily: 'Public Sans, sans-serif',
                   fontSize: '8px',
                   textTransform: 'uppercase',
                   letterSpacing: '0.1em',
-                  color: 'rgba(91,143,214,0.5)',
+                  color: 'rgba(52,211,153,0.5)',
                   marginBottom: '4px',
                 }}
               >
@@ -121,7 +121,7 @@ export default function CorrectionCard(props: CorrectionCardProps) {
               </div>
               <div
                 style={{
-                  fontFamily: 'Crimson Pro, serif',
+                  fontFamily: 'Public Sans, sans-serif',
                   fontSize: '13px',
                   fontStyle: 'italic',
                   color: 'var(--moon)',
@@ -135,9 +135,9 @@ export default function CorrectionCard(props: CorrectionCardProps) {
           {/* Rule */}
           <div
             style={{
-              borderTop: '1px solid rgba(232,238,245,0.06)',
+              borderTop: '1px solid rgba(226,232,240,0.06)',
               paddingTop: '10px',
-              fontFamily: 'Crimson Pro, serif',
+              fontFamily: 'Public Sans, sans-serif',
               fontSize: '12px',
               fontStyle: 'italic',
               color: 'var(--muted)',
@@ -150,7 +150,7 @@ export default function CorrectionCard(props: CorrectionCardProps) {
       ) : (
         <div
           style={{
-            fontFamily: 'Crimson Pro, serif',
+            fontFamily: 'Public Sans, sans-serif',
             fontSize: '13px',
             fontStyle: 'italic',
             color: 'var(--moon)',

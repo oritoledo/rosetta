@@ -195,7 +195,7 @@ export default function OnboardingScreen() {
       {/* ── LEFT PANEL ──────────────────────────────────────────────────────── */}
       <div
         style={{
-          background: 'linear-gradient(170deg, #0a1628, #060e1a)',
+          background: 'linear-gradient(170deg, #0a1628, #0a0d14)',
           padding: '60px',
           display: 'flex',
           flexDirection: 'column',
@@ -217,7 +217,7 @@ export default function OnboardingScreen() {
         {/* Logo */}
         <div
           style={{
-            fontFamily: 'Cinzel, serif',
+            fontFamily: 'Public Sans, sans-serif',
             fontSize: '48px',
             fontWeight: 900,
             color: 'var(--moon-bright)',
@@ -229,7 +229,7 @@ export default function OnboardingScreen() {
         </div>
         <div
           style={{
-            fontFamily: 'Crimson Pro, serif',
+            fontFamily: 'Public Sans, sans-serif',
             fontSize: '18px',
             fontStyle: 'italic',
             color: 'var(--muted)',
@@ -244,7 +244,7 @@ export default function OnboardingScreen() {
           style={{
             width: '60px',
             height: '1px',
-            background: 'rgba(91,143,214,0.3)',
+            background: 'rgba(52,211,153,0.3)',
             margin: '28px 0',
           }}
         />
@@ -252,7 +252,7 @@ export default function OnboardingScreen() {
         {/* Language selector */}
         <div
           style={{
-            fontFamily: 'Cinzel, serif',
+            fontFamily: 'Public Sans, sans-serif',
             fontSize: '10px',
             textTransform: 'uppercase',
             letterSpacing: '0.2em',
@@ -280,34 +280,34 @@ export default function OnboardingScreen() {
                 style={{
                   background: selected ? 'var(--lapis-deep)' : 'var(--basalt-mid)',
                   border: selected
-                    ? '1px solid rgba(91,143,214,0.35)'
-                    : '1px solid rgba(232,238,245,0.08)',
+                    ? '1px solid rgba(52,211,153,0.35)'
+                    : '1px solid rgba(226,232,240,0.08)',
                   borderRadius: '12px',
                   padding: '12px 16px',
                   display: 'flex',
                   alignItems: 'center',
                   gap: '10px',
                   cursor: 'pointer',
-                  boxShadow: selected ? '0 0 16px rgba(42,82,152,0.3)' : 'none',
+                  boxShadow: selected ? '0 0 16px rgba(16,185,129,0.3)' : 'none',
                   transition: 'all 150ms ease',
                 }}
                 onMouseEnter={(e) => {
                   if (!selected) {
                     ;(e.currentTarget as HTMLButtonElement).style.borderColor =
-                      'rgba(91,143,214,0.25)'
+                      'rgba(52,211,153,0.25)'
                   }
                 }}
                 onMouseLeave={(e) => {
                   if (!selected) {
                     ;(e.currentTarget as HTMLButtonElement).style.borderColor =
-                      'rgba(232,238,245,0.08)'
+                      'rgba(226,232,240,0.08)'
                   }
                 }}
               >
                 <span style={{ fontSize: '20px' }}>{LANGUAGE_FLAGS[lang]}</span>
                 <span
                   style={{
-                    fontFamily: 'Cinzel, serif',
+                    fontFamily: 'Public Sans, sans-serif',
                     fontSize: '13px',
                     fontWeight: 600,
                     color: 'var(--moon)',
@@ -345,7 +345,7 @@ export default function OnboardingScreen() {
             >
               <div
                 style={{
-                  fontFamily: 'Cinzel, serif',
+                  fontFamily: 'Public Sans, sans-serif',
                   fontSize: '24px',
                   fontWeight: 700,
                   color: 'var(--moon)',
@@ -356,7 +356,7 @@ export default function OnboardingScreen() {
               </div>
               <div
                 style={{
-                  fontFamily: 'Crimson Pro, serif',
+                  fontFamily: 'Public Sans, sans-serif',
                   fontSize: '16px',
                   fontStyle: 'italic',
                   color: 'var(--muted)',
@@ -397,7 +397,7 @@ export default function OnboardingScreen() {
                       width: '40px',
                       height: '40px',
                       background: 'var(--basalt-mid)',
-                      border: '1px solid rgba(232,238,245,0.07)',
+                      border: '1px solid rgba(226,232,240,0.07)',
                       borderRadius: '10px',
                       display: 'flex',
                       alignItems: 'center',
@@ -411,7 +411,7 @@ export default function OnboardingScreen() {
                   <div>
                     <div
                       style={{
-                        fontFamily: 'Cinzel, serif',
+                        fontFamily: 'Public Sans, sans-serif',
                         fontSize: '13px',
                         color: 'var(--moon)',
                         marginBottom: '2px',
@@ -421,7 +421,7 @@ export default function OnboardingScreen() {
                     </div>
                     <div
                       style={{
-                        fontFamily: 'Crimson Pro, serif',
+                        fontFamily: 'Public Sans, sans-serif',
                         fontSize: '12px',
                         fontStyle: 'italic',
                         color: 'var(--muted)',
@@ -437,7 +437,7 @@ export default function OnboardingScreen() {
                 onClick={() => setPhase('test')}
                 whileHover={{
                   backgroundColor: 'var(--lapis-mid)',
-                  boxShadow: '0 0 48px rgba(42,82,152,0.5)',
+                  boxShadow: '0 0 48px rgba(16,185,129,0.5)',
                 }}
                 transition={{ duration: 0.15 }}
                 style={{
@@ -445,16 +445,16 @@ export default function OnboardingScreen() {
                   width: '100%',
                   height: '56px',
                   background: 'var(--lapis)',
-                  border: '1px solid rgba(91,143,214,0.35)',
+                  border: '1px solid rgba(52,211,153,0.35)',
                   borderRadius: '16px',
                   cursor: 'pointer',
-                  fontFamily: 'Cinzel, serif',
+                  fontFamily: 'Public Sans, sans-serif',
                   fontSize: '13px',
                   fontWeight: 700,
                   textTransform: 'uppercase',
                   letterSpacing: '0.14em',
                   color: 'var(--moon-bright)',
-                  boxShadow: '0 0 32px rgba(42,82,152,0.3)',
+                  boxShadow: '0 0 32px rgba(16,185,129,0.3)',
                 }}
               >
                 Start Placement Test →
@@ -491,7 +491,7 @@ export default function OnboardingScreen() {
                   </div>
                   <div
                     style={{
-                      fontFamily: 'Cinzel, serif',
+                      fontFamily: 'Public Sans, sans-serif',
                       fontSize: '9px',
                       textTransform: 'uppercase',
                       letterSpacing: '0.12em',
@@ -513,7 +513,7 @@ export default function OnboardingScreen() {
                     height: '44px',
                     borderRadius: '50%',
                     background: 'var(--lapis-deep)',
-                    border: '1px solid rgba(91,143,214,0.3)',
+                    border: '1px solid rgba(52,211,153,0.3)',
                     display: 'flex',
                     alignItems: 'center',
                     justifyContent: 'center',
@@ -527,7 +527,7 @@ export default function OnboardingScreen() {
                   <div style={{ display: 'flex', alignItems: 'center', gap: '8px' }}>
                     <span
                       style={{
-                        fontFamily: 'Cinzel, serif',
+                        fontFamily: 'Public Sans, sans-serif',
                         fontSize: '14px',
                         color: 'var(--moon)',
                       }}
@@ -549,7 +549,7 @@ export default function OnboardingScreen() {
                   </div>
                   <div
                     style={{
-                      fontFamily: 'Crimson Pro, serif',
+                      fontFamily: 'Public Sans, sans-serif',
                       fontSize: '12px',
                       fontStyle: 'italic',
                       color: 'var(--lapis-bright)',
@@ -596,9 +596,9 @@ export default function OnboardingScreen() {
                             : 'var(--basalt-mid)',
                           border: '1px solid',
                           borderColor: msg.role === 'user'
-                            ? 'rgba(91,143,214,0.3)'
-                            : 'rgba(232,238,245,0.07)',
-                          fontFamily: 'Crimson Pro, serif',
+                            ? 'rgba(52,211,153,0.3)'
+                            : 'rgba(226,232,240,0.07)',
+                          fontFamily: 'Public Sans, sans-serif',
                           fontSize: '14px',
                           color: 'var(--moon)',
                           lineHeight: 1.55,
@@ -624,10 +624,10 @@ export default function OnboardingScreen() {
                     flex: 1,
                     height: '48px',
                     background: 'var(--basalt-mid)',
-                    border: '1px solid rgba(232,238,245,0.1)',
+                    border: '1px solid rgba(226,232,240,0.1)',
                     borderRadius: '12px',
                     padding: '0 16px',
-                    fontFamily: 'Crimson Pro, serif',
+                    fontFamily: 'Public Sans, sans-serif',
                     fontSize: '15px',
                     color: 'var(--moon)',
                     outline: 'none',
@@ -639,7 +639,7 @@ export default function OnboardingScreen() {
                     width: '48px',
                     height: '48px',
                     background: 'var(--lapis)',
-                    border: '1px solid rgba(91,143,214,0.3)',
+                    border: '1px solid rgba(52,211,153,0.3)',
                     borderRadius: '12px',
                     cursor: 'pointer',
                     fontSize: '18px',
@@ -683,7 +683,7 @@ export default function OnboardingScreen() {
 
               <div
                 style={{
-                  fontFamily: 'Cinzel, serif',
+                  fontFamily: 'Public Sans, sans-serif',
                   fontSize: '16px',
                   color: 'var(--moon)',
                   marginTop: '20px',
@@ -730,7 +730,7 @@ export default function OnboardingScreen() {
                 style={{
                   height: '80px',
                   background: 'var(--lapis-deep)',
-                  border: '1px solid rgba(91,143,214,0.3)',
+                  border: '1px solid rgba(52,211,153,0.3)',
                   borderRadius: '20px',
                   padding: '0 40px',
                   display: 'flex',
@@ -741,7 +741,7 @@ export default function OnboardingScreen() {
               >
                 <span
                   style={{
-                    fontFamily: 'Cinzel, serif',
+                    fontFamily: 'Public Sans, sans-serif',
                     fontSize: '48px',
                     fontWeight: 700,
                     color: 'var(--moon-bright)',
@@ -754,7 +754,7 @@ export default function OnboardingScreen() {
 
               <div
                 style={{
-                  fontFamily: 'Cinzel, serif',
+                  fontFamily: 'Public Sans, sans-serif',
                   fontSize: '18px',
                   color: 'var(--moon)',
                   marginBottom: '8px',
@@ -764,7 +764,7 @@ export default function OnboardingScreen() {
               </div>
               <div
                 style={{
-                  fontFamily: 'Crimson Pro, serif',
+                  fontFamily: 'Public Sans, sans-serif',
                   fontSize: '15px',
                   fontStyle: 'italic',
                   color: 'var(--muted)',
@@ -807,14 +807,14 @@ export default function OnboardingScreen() {
                     key={label}
                     style={{
                       background: 'var(--basalt-mid)',
-                      border: '1px solid rgba(232,238,245,0.07)',
+                      border: '1px solid rgba(226,232,240,0.07)',
                       borderRadius: '14px',
                       padding: '16px',
                     }}
                   >
                     <div
                       style={{
-                        fontFamily: 'Cinzel, serif',
+                        fontFamily: 'Public Sans, sans-serif',
                         fontSize: '9px',
                         textTransform: 'uppercase',
                         letterSpacing: '0.12em',
@@ -827,7 +827,7 @@ export default function OnboardingScreen() {
                     <div style={{ fontSize: '22px', marginBottom: '6px' }}>{emoji}</div>
                     <div
                       style={{
-                        fontFamily: 'Cinzel, serif',
+                        fontFamily: 'Public Sans, sans-serif',
                         fontSize: '11px',
                         color: 'var(--moon)',
                         lineHeight: 1.4,
@@ -844,23 +844,23 @@ export default function OnboardingScreen() {
                 onClick={handleBeginJourney}
                 whileHover={{
                   backgroundColor: 'var(--lapis-mid)',
-                  boxShadow: '0 0 48px rgba(42,82,152,0.5)',
+                  boxShadow: '0 0 48px rgba(16,185,129,0.5)',
                 }}
                 transition={{ duration: 0.15 }}
                 style={{
                   width: '100%',
                   height: '56px',
                   background: 'var(--lapis)',
-                  border: '1px solid rgba(91,143,214,0.35)',
+                  border: '1px solid rgba(52,211,153,0.35)',
                   borderRadius: '16px',
                   cursor: 'pointer',
-                  fontFamily: 'Cinzel, serif',
+                  fontFamily: 'Public Sans, sans-serif',
                   fontSize: '13px',
                   fontWeight: 700,
                   textTransform: 'uppercase',
                   letterSpacing: '0.14em',
                   color: 'var(--moon-bright)',
-                  boxShadow: '0 0 32px rgba(42,82,152,0.3)',
+                  boxShadow: '0 0 32px rgba(16,185,129,0.3)',
                 }}
               >
                 Begin Your Journey →

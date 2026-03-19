@@ -38,7 +38,7 @@ export default function WeeklyPlanWidget({ plan }: WeeklyPlanWidgetProps) {
     <div
       style={{
         background: 'var(--basalt-mid)',
-        border: '1px solid rgba(232,238,245,0.07)',
+        border: '1px solid rgba(226,232,240,0.07)',
         borderRadius: '18px',
         padding: '24px',
         marginBottom: '32px',
@@ -88,7 +88,7 @@ export default function WeeklyPlanWidget({ plan }: WeeklyPlanWidgetProps) {
             </div>
             <div
               style={{
-                fontFamily: 'Cinzel, serif',
+                fontFamily: 'Public Sans, sans-serif',
                 fontSize: '12px',
                 textTransform: 'uppercase',
                 letterSpacing: '0.16em',
@@ -118,7 +118,7 @@ export default function WeeklyPlanWidget({ plan }: WeeklyPlanWidgetProps) {
         >
           <span
             style={{
-              fontFamily: 'Cinzel, serif',
+              fontFamily: 'Public Sans, sans-serif',
               fontSize: '9px',
               textTransform: 'uppercase',
               letterSpacing: '0.22em',
@@ -132,14 +132,14 @@ export default function WeeklyPlanWidget({ plan }: WeeklyPlanWidgetProps) {
           <div
             style={{
               background: 'var(--lapis-deep)',
-              border: '1px solid rgba(91,143,214,0.2)',
+              border: '1px solid rgba(52,211,153,0.2)',
               borderRadius: '20px',
               padding: '4px 14px',
             }}
           >
             <span
               style={{
-                fontFamily: 'Cinzel, serif',
+                fontFamily: 'Public Sans, sans-serif',
                 fontSize: '9px',
                 textTransform: 'uppercase',
                 letterSpacing: '0.1em',
@@ -156,7 +156,7 @@ export default function WeeklyPlanWidget({ plan }: WeeklyPlanWidgetProps) {
               background: 'none',
               border: 'none',
               cursor: 'pointer',
-              fontFamily: 'Cinzel, serif',
+              fontFamily: 'Public Sans, sans-serif',
               fontSize: '10px',
               color: 'var(--lapis-bright)',
               padding: 0,
@@ -171,7 +171,7 @@ export default function WeeklyPlanWidget({ plan }: WeeklyPlanWidgetProps) {
           <div
             style={{
               background: 'var(--lapis-deep)',
-              border: '1px solid rgba(91,143,214,0.2)',
+              border: '1px solid rgba(52,211,153,0.2)',
               borderRadius: '16px',
               padding: '18px 20px',
               marginBottom: '16px',
@@ -188,7 +188,7 @@ export default function WeeklyPlanWidget({ plan }: WeeklyPlanWidgetProps) {
             >
               <span
                 style={{
-                  fontFamily: 'Cinzel, serif',
+                  fontFamily: 'Public Sans, sans-serif',
                   fontSize: '8px',
                   textTransform: 'uppercase',
                   letterSpacing: '0.18em',
@@ -200,7 +200,7 @@ export default function WeeklyPlanWidget({ plan }: WeeklyPlanWidgetProps) {
               </span>
               <span
                 style={{
-                  fontFamily: 'Cinzel, serif',
+                  fontFamily: 'Public Sans, sans-serif',
                   fontSize: '8px',
                   textTransform: 'uppercase',
                   letterSpacing: '0.1em',
@@ -228,8 +228,8 @@ export default function WeeklyPlanWidget({ plan }: WeeklyPlanWidgetProps) {
                 style={{
                   width: '48px',
                   height: '48px',
-                  background: 'rgba(232,238,245,0.08)',
-                  border: '1px solid rgba(232,238,245,0.1)',
+                  background: 'rgba(226,232,240,0.08)',
+                  border: '1px solid rgba(226,232,240,0.1)',
                   borderRadius: '12px',
                   display: 'flex',
                   alignItems: 'center',
@@ -243,7 +243,7 @@ export default function WeeklyPlanWidget({ plan }: WeeklyPlanWidgetProps) {
               <div>
                 <div
                   style={{
-                    fontFamily: 'Cinzel, serif',
+                    fontFamily: 'Public Sans, sans-serif',
                     fontSize: '16px',
                     fontWeight: 700,
                     color: 'var(--moon-bright)',
@@ -253,7 +253,7 @@ export default function WeeklyPlanWidget({ plan }: WeeklyPlanWidgetProps) {
                 </div>
                 <div
                   style={{
-                    fontFamily: 'Crimson Pro, serif',
+                    fontFamily: 'Public Sans, sans-serif',
                     fontSize: '12px',
                     fontStyle: 'italic',
                     color: 'var(--moon-dim)',
@@ -276,7 +276,7 @@ export default function WeeklyPlanWidget({ plan }: WeeklyPlanWidgetProps) {
             >
               <span
                 style={{
-                  fontFamily: 'Cinzel, serif',
+                  fontFamily: 'Public Sans, sans-serif',
                   fontSize: '7px',
                   textTransform: 'uppercase',
                   letterSpacing: '0.14em',
@@ -287,7 +287,7 @@ export default function WeeklyPlanWidget({ plan }: WeeklyPlanWidgetProps) {
               </span>
               <span
                 style={{
-                  fontFamily: 'Crimson Pro, serif',
+                  fontFamily: 'Public Sans, sans-serif',
                   fontSize: '12px',
                   fontStyle: 'italic',
                   color: 'var(--lapis-bright)',
@@ -312,7 +312,7 @@ export default function WeeklyPlanWidget({ plan }: WeeklyPlanWidgetProps) {
                 </span>
                 <p
                   style={{
-                    fontFamily: 'Crimson Pro, serif',
+                    fontFamily: 'Public Sans, sans-serif',
                     fontSize: '12px',
                     fontStyle: 'italic',
                     color: 'var(--moon-dim)',
@@ -332,11 +332,11 @@ export default function WeeklyPlanWidget({ plan }: WeeklyPlanWidgetProps) {
                 width: '100%',
                 height: '48px',
                 marginTop: '16px',
-                background: 'rgba(232,238,245,0.1)',
-                border: '1px solid rgba(232,238,245,0.15)',
+                background: 'rgba(226,232,240,0.1)',
+                border: '1px solid rgba(226,232,240,0.15)',
                 borderRadius: '12px',
                 cursor: 'pointer',
-                fontFamily: 'Cinzel, serif',
+                fontFamily: 'Public Sans, sans-serif',
                 fontSize: '11px',
                 textTransform: 'uppercase',
                 letterSpacing: '0.12em',
@@ -345,11 +345,11 @@ export default function WeeklyPlanWidget({ plan }: WeeklyPlanWidgetProps) {
               }}
               onMouseEnter={(e) => {
                 ;(e.currentTarget as HTMLButtonElement).style.background =
-                  'rgba(91,143,214,0.15)'
+                  'rgba(52,211,153,0.15)'
               }}
               onMouseLeave={(e) => {
                 ;(e.currentTarget as HTMLButtonElement).style.background =
-                  'rgba(232,238,245,0.1)'
+                  'rgba(226,232,240,0.1)'
               }}
             >
               Start Today's Session →
@@ -360,7 +360,7 @@ export default function WeeklyPlanWidget({ plan }: WeeklyPlanWidgetProps) {
           <div
             style={{
               background: 'var(--basalt)',
-              border: '1px dashed rgba(232,238,245,0.08)',
+              border: '1px dashed rgba(226,232,240,0.08)',
               borderRadius: '16px',
               padding: '24px',
               marginBottom: '16px',
@@ -369,7 +369,7 @@ export default function WeeklyPlanWidget({ plan }: WeeklyPlanWidgetProps) {
           >
             <p
               style={{
-                fontFamily: 'Crimson Pro, serif',
+                fontFamily: 'Public Sans, sans-serif',
                 fontSize: '14px',
                 fontStyle: 'italic',
                 color: 'var(--muted)',
@@ -393,7 +393,7 @@ export default function WeeklyPlanWidget({ plan }: WeeklyPlanWidgetProps) {
                 style={{
                   flex: 1,
                   background: day.isCompleted ? 'var(--basalt-mid)' : 'var(--basalt-raised)',
-                  border: '1px solid rgba(232,238,245,0.06)',
+                  border: '1px solid rgba(226,232,240,0.06)',
                   borderRadius: '12px',
                   padding: '10px 8px',
                   textAlign: 'center',
@@ -403,7 +403,7 @@ export default function WeeklyPlanWidget({ plan }: WeeklyPlanWidgetProps) {
               >
                 <div
                   style={{
-                    fontFamily: 'Cinzel, serif',
+                    fontFamily: 'Public Sans, sans-serif',
                     fontSize: '8px',
                     textTransform: 'uppercase',
                     letterSpacing: '0.1em',
@@ -418,7 +418,7 @@ export default function WeeklyPlanWidget({ plan }: WeeklyPlanWidgetProps) {
                     <div style={{ fontSize: '18px', margin: '2px auto 4px' }}>😴</div>
                     <div
                       style={{
-                        fontFamily: 'Crimson Pro, serif',
+                        fontFamily: 'Public Sans, sans-serif',
                         fontSize: '9px',
                         fontStyle: 'italic',
                         color: 'var(--muted)',
@@ -440,7 +440,7 @@ export default function WeeklyPlanWidget({ plan }: WeeklyPlanWidgetProps) {
                     </div>
                     <div
                       style={{
-                        fontFamily: 'Crimson Pro, serif',
+                        fontFamily: 'Public Sans, sans-serif',
                         fontSize: '10px',
                         fontStyle: 'italic',
                         color: 'var(--muted)',
@@ -488,7 +488,7 @@ export default function WeeklyPlanWidget({ plan }: WeeklyPlanWidgetProps) {
         >
           <span
             style={{
-              fontFamily: 'Crimson Pro, serif',
+              fontFamily: 'Public Sans, sans-serif',
               fontSize: '11px',
               fontStyle: 'italic',
               color: 'var(--muted)',
@@ -503,7 +503,7 @@ export default function WeeklyPlanWidget({ plan }: WeeklyPlanWidgetProps) {
               background: 'none',
               border: 'none',
               cursor: regenerating ? 'not-allowed' : 'pointer',
-              fontFamily: 'Cinzel, serif',
+              fontFamily: 'Public Sans, sans-serif',
               fontSize: '9px',
               textTransform: 'uppercase',
               letterSpacing: '0.1em',

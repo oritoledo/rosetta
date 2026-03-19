@@ -22,11 +22,11 @@ export default function PersonaCard({
       onClick={() => onSelect(persona.id)}
       style={{
         background: selected ? persona.avatarBg : 'var(--basalt-mid)',
-        border: `1px solid ${selected ? `rgba(91,143,214,0.3)` : 'rgba(232,238,245,0.07)'}`,
+        border: `1px solid ${selected ? `rgba(52,211,153,0.3)` : 'rgba(226,232,240,0.07)'}`,
         borderRadius: '14px',
         padding: '14px',
         cursor: 'pointer',
-        boxShadow: selected ? '0 0 16px rgba(42,82,152,0.25)' : 'none',
+        boxShadow: selected ? '0 0 16px rgba(16,185,129,0.25)' : 'none',
         transition: 'all 150ms ease',
         position: 'relative',
         overflow: 'hidden',
@@ -34,7 +34,7 @@ export default function PersonaCard({
       onMouseEnter={(e) => {
         if (!selected) {
           ;(e.currentTarget as HTMLDivElement).style.borderColor =
-            'rgba(91,143,214,0.2)'
+            'rgba(52,211,153,0.2)'
           ;(e.currentTarget as HTMLDivElement).style.transform =
             'translateY(-2px)'
         }
@@ -42,7 +42,7 @@ export default function PersonaCard({
       onMouseLeave={(e) => {
         if (!selected) {
           ;(e.currentTarget as HTMLDivElement).style.borderColor =
-            'rgba(232,238,245,0.07)'
+            'rgba(226,232,240,0.07)'
           ;(e.currentTarget as HTMLDivElement).style.transform = 'translateY(0)'
         }
       }}
@@ -72,7 +72,7 @@ export default function PersonaCard({
           <div style={{ marginBottom: '4px' }}>
             <span
               style={{
-                fontFamily: 'Cinzel, serif',
+                fontFamily: 'Public Sans, sans-serif',
                 fontSize: '13px',
                 fontWeight: 600,
                 color: 'var(--moon)',
@@ -82,7 +82,7 @@ export default function PersonaCard({
             </span>
             <span
               style={{
-                fontFamily: 'Crimson Pro, serif',
+                fontFamily: 'Public Sans, sans-serif',
                 fontSize: '11px',
                 fontStyle: 'italic',
                 color: 'var(--muted)',
@@ -106,13 +106,13 @@ export default function PersonaCard({
               <span
                 key={tag}
                 style={{
-                  fontFamily: 'Cinzel, serif',
+                  fontFamily: 'Public Sans, sans-serif',
                   fontSize: '7px',
                   textTransform: 'uppercase',
                   letterSpacing: '0.08em',
                   color: 'var(--moon-dim)',
-                  background: 'rgba(232,238,245,0.06)',
-                  border: '1px solid rgba(232,238,245,0.08)',
+                  background: 'rgba(226,232,240,0.06)',
+                  border: '1px solid rgba(226,232,240,0.08)',
                   borderRadius: '20px',
                   padding: '2px 7px',
                 }}
@@ -133,7 +133,7 @@ export default function PersonaCard({
           >
             <span
               style={{
-                fontFamily: 'Cinzel, serif',
+                fontFamily: 'Public Sans, sans-serif',
                 fontSize: '8px',
                 color: persona.difficultyColor,
                 fontWeight: 600,
@@ -147,7 +147,7 @@ export default function PersonaCard({
                   display: 'flex',
                   alignItems: 'center',
                   gap: '3px',
-                  fontFamily: 'Crimson Pro, serif',
+                  fontFamily: 'Public Sans, sans-serif',
                   fontSize: '9px',
                   fontStyle: 'italic',
                   color: 'var(--muted)',
