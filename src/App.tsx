@@ -3,6 +3,7 @@ import { BrowserRouter, Routes, Route, useLocation, useNavigate } from 'react-ro
 import { AnimatePresence } from 'framer-motion'
 import { StoreProvider, useStore } from './store/userStore'
 import Sidebar from './components/Sidebar'
+import AchievementManager from './components/AchievementManager'
 import HomeScreen from './screens/HomeScreen'
 import SceneIntroScreen from './screens/SceneIntroScreen'
 import ConversationScreen from './screens/ConversationScreen'
@@ -140,6 +141,7 @@ function AppShell() {
     >
       <BootGuard />
       <PlanBoot />
+      <AchievementManager />
       {!isOnboarding && <Sidebar />}
       <main
         style={{

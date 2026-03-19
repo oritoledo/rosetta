@@ -10,6 +10,7 @@ import { GrammarError } from '../data/errors'
 import { mockErrors } from '../data/mockErrors'
 import { getDueWords } from '../hooks/useSM2'
 import type { WeeklyPlan } from '../types/plan'
+import type { SessionRecord, UnlockedBadge } from '../types/achievements'
 
 // ─── Types ────────────────────────────────────────────────────────────────────
 
@@ -44,6 +45,11 @@ export interface AppState {
   planGeneratedAt: number | null
   planRegenerating: boolean
   planSeed: number
+  // ── Achievement system ────────────────────────────────────────────────────
+  sessionHistory: SessionRecord[]
+  reviewSessionsCompleted: number
+  unlockedBadges: UnlockedBadge[]
+  hydrated: boolean                           // true after localStorage hydration
 }
 
 type Action =
@@ -61,12 +67,27 @@ type Action =
   | { type: 'SET_WEEKLY_PLAN'; payload: { plan: WeeklyPlan; seed: number } }
   | { type: 'SET_PLAN_REGENERATING'; payload: boolean }
   | { type: 'MARK_DAY_COMPLETED'; payload: string }         // date ISO string
+  // ── Achievement actions ───────────────────────────────────────────────────
+  | { type: 'COMPLETE_SESSION'; payload: SessionRecord }
+  | { type: 'INCREMENT_REVIEW_SESSIONS' }
+  | { type: 'UNLOCK_BADGE'; payload: UnlockedBadge }
+  | { type: 'MARK_BADGE_SEEN'; payload: string }            // badgeId
 
 // ─── Helpers ──────────────────────────────────────────────────────────────────
 
 function computeReviewQueue(vocab: VocabWord[]): VocabWord[] {
   return getDueWords(vocab)
 }
+
+// Pre-seeded sessions to match the existing mock UI state
+const DAY = 86_400_000
+const _now = Date.now()
+const seedSessions: SessionRecord[] = [
+  { id: 'seed_1', sceneId: 'cafe',   personaId: 'sofia',  completedAt: _now - 2 * DAY, score: 74, errorsCount: 3 },
+  { id: 'seed_2', sceneId: 'market', personaId: 'yusuf',  completedAt: _now - 3 * DAY, score: 81, errorsCount: 2 },
+  { id: 'seed_3', sceneId: 'train',  personaId: 'marco',  completedAt: _now - 4 * DAY, score: 66, errorsCount: 5 },
+  { id: 'seed_4', sceneId: 'doctor', personaId: 'elena',  completedAt: _now - 5 * DAY, score: 88, errorsCount: 1 },
+]
 
 // ─── Reducer ─────────────────────────────────────────────────────────────────
 
@@ -79,6 +100,7 @@ function reducer(state: AppState, action: Action): AppState {
         ...action.payload,
         vocabulary: vocab,
         reviewQueue: computeReviewQueue(vocab),
+        hydrated: true,
       }
     }
 
@@ -168,6 +190,34 @@ function reducer(state: AppState, action: Action): AppState {
       }
     }
 
+    case 'COMPLETE_SESSION':
+      return {
+        ...state,
+        sessionHistory: [...state.sessionHistory, action.payload],
+      }
+
+    case 'INCREMENT_REVIEW_SESSIONS':
+      return { ...state, reviewSessionsCompleted: state.reviewSessionsCompleted + 1 }
+
+    case 'UNLOCK_BADGE': {
+      const alreadyUnlocked = state.unlockedBadges.some(
+        (u) => u.badgeId === action.payload.badgeId,
+      )
+      if (alreadyUnlocked) return state
+      return {
+        ...state,
+        unlockedBadges: [...state.unlockedBadges, action.payload],
+      }
+    }
+
+    case 'MARK_BADGE_SEEN':
+      return {
+        ...state,
+        unlockedBadges: state.unlockedBadges.map((u) =>
+          u.badgeId === action.payload ? { ...u, seen: true } : u,
+        ),
+      }
+
     default:
       return state
   }
@@ -188,6 +238,10 @@ const initialState: AppState = {
   planGeneratedAt: null,
   planRegenerating: false,
   planSeed: Date.now(),
+  sessionHistory: seedSessions,
+  reviewSessionsCompleted: 0,
+  unlockedBadges: [],
+  hydrated: false,
 }
 
 // ─── Context ──────────────────────────────────────────────────────────────────
@@ -206,32 +260,37 @@ export function StoreProvider({ children }: { children: ReactNode }) {
 
   // Hydrate from localStorage on mount
   useEffect(() => {
-    const rawUser       = localStorage.getItem('rosetta_user')
-    const rawVocab      = localStorage.getItem('rosetta_vocab')
-    const rawErrors     = localStorage.getItem('rosetta_errors')
-    const rawCheatSheet = localStorage.getItem('rosetta_cheatsheet')
-    const rawVisited    = localStorage.getItem('rosetta_visited_tabs')
-    const rawBriefs     = localStorage.getItem('rosetta_brief_completed')
-    const rawPersona    = localStorage.getItem('rosetta_persona')
-    const rawPlanSeed   = localStorage.getItem('rosetta_plan_seed')
+    const rawUser              = localStorage.getItem('rosetta_user')
+    const rawVocab             = localStorage.getItem('rosetta_vocab')
+    const rawErrors            = localStorage.getItem('rosetta_errors')
+    const rawCheatSheet        = localStorage.getItem('rosetta_cheatsheet')
+    const rawVisited           = localStorage.getItem('rosetta_visited_tabs')
+    const rawBriefs            = localStorage.getItem('rosetta_brief_completed')
+    const rawPersona           = localStorage.getItem('rosetta_persona')
+    const rawPlanSeed          = localStorage.getItem('rosetta_plan_seed')
+    const rawSessions          = localStorage.getItem('rosetta_sessions')
+    const rawReviewCount       = localStorage.getItem('rosetta_review_count')
+    const rawUnlockedBadges    = localStorage.getItem('rosetta_badges')
 
     const partial: Partial<AppState> = {}
 
-    if (rawUser)       { try { partial.user = JSON.parse(rawUser) }                   catch { /* ignore */ } }
-    if (rawVocab)      { try { partial.vocabulary = JSON.parse(rawVocab) }            catch { /* ignore */ } }
-    if (rawErrors)     { try { partial.errors = JSON.parse(rawErrors) }               catch { /* ignore */ } }
-    if (rawCheatSheet) { try { partial.cheatSheet = JSON.parse(rawCheatSheet) }       catch { /* ignore */ } }
-    if (rawVisited)    { try { partial.visitedTabs = JSON.parse(rawVisited) }         catch { /* ignore */ } }
-    if (rawBriefs)     { try { partial.briefCompleted = JSON.parse(rawBriefs) }       catch { /* ignore */ } }
-    if (rawPersona)    { try { partial.selectedPersona = JSON.parse(rawPersona) }     catch { /* ignore */ } }
-    if (rawPlanSeed)   { try { partial.planSeed = JSON.parse(rawPlanSeed) }           catch { /* ignore */ } }
+    if (rawUser)           { try { partial.user = JSON.parse(rawUser) }                      catch { /* ignore */ } }
+    if (rawVocab)          { try { partial.vocabulary = JSON.parse(rawVocab) }               catch { /* ignore */ } }
+    if (rawErrors)         { try { partial.errors = JSON.parse(rawErrors) }                  catch { /* ignore */ } }
+    if (rawCheatSheet)     { try { partial.cheatSheet = JSON.parse(rawCheatSheet) }          catch { /* ignore */ } }
+    if (rawVisited)        { try { partial.visitedTabs = JSON.parse(rawVisited) }            catch { /* ignore */ } }
+    if (rawBriefs)         { try { partial.briefCompleted = JSON.parse(rawBriefs) }          catch { /* ignore */ } }
+    if (rawPersona)        { try { partial.selectedPersona = JSON.parse(rawPersona) }        catch { /* ignore */ } }
+    if (rawPlanSeed)       { try { partial.planSeed = JSON.parse(rawPlanSeed) }              catch { /* ignore */ } }
+    if (rawSessions)       { try { partial.sessionHistory = JSON.parse(rawSessions) }        catch { /* ignore */ } }
+    if (rawReviewCount)    { try { partial.reviewSessionsCompleted = JSON.parse(rawReviewCount) } catch { /* ignore */ } }
+    if (rawUnlockedBadges) { try { partial.unlockedBadges = JSON.parse(rawUnlockedBadges) }  catch { /* ignore */ } }
 
-    if (Object.keys(partial).length > 0) {
-      dispatch({ type: 'HYDRATE', payload: partial })
-    }
+    // Always dispatch HYDRATE (sets hydrated: true) — even with empty partial
+    dispatch({ type: 'HYDRATE', payload: partial })
   }, [])
 
-  // Persist on every change
+  // Persist on every relevant change
   useEffect(() => {
     if (state.user) localStorage.setItem('rosetta_user', JSON.stringify(state.user))
     localStorage.setItem('rosetta_vocab',           JSON.stringify(state.vocabulary))
@@ -241,6 +300,9 @@ export function StoreProvider({ children }: { children: ReactNode }) {
     localStorage.setItem('rosetta_brief_completed', JSON.stringify(state.briefCompleted))
     localStorage.setItem('rosetta_persona',         JSON.stringify(state.selectedPersona))
     localStorage.setItem('rosetta_plan_seed',       JSON.stringify(state.planSeed))
+    localStorage.setItem('rosetta_sessions',        JSON.stringify(state.sessionHistory))
+    localStorage.setItem('rosetta_review_count',    JSON.stringify(state.reviewSessionsCompleted))
+    localStorage.setItem('rosetta_badges',          JSON.stringify(state.unlockedBadges))
   }, [
     state.user,
     state.vocabulary,
@@ -250,6 +312,9 @@ export function StoreProvider({ children }: { children: ReactNode }) {
     state.briefCompleted,
     state.selectedPersona,
     state.planSeed,
+    state.sessionHistory,
+    state.reviewSessionsCompleted,
+    state.unlockedBadges,
   ])
 
   return (

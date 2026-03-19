@@ -4,6 +4,7 @@ import { useNavigate } from 'react-router-dom'
 import SkillBar from '../components/SkillBar'
 import StampGrid from '../components/StampGrid'
 import ActivityRow from '../components/ActivityRow'
+import BadgeShowcase from '../components/BadgeShowcase'
 import { weeklyActivity, recentActivity, skills, stamps } from '../data/mockProgress'
 import { useStore } from '../store/userStore'
 import { ErrorCategory, ErrorPattern, categoryLabels } from '../data/errors'
@@ -295,7 +296,7 @@ function PatternCard({ pattern, errors }: { pattern: ErrorPattern; errors: Retur
 export default function ScrollScreen() {
   const navigate = useNavigate()
   const { state } = useStore()
-  const [rightTab, setRightTab] = useState<'passport' | 'patterns'>('passport')
+  const [rightTab, setRightTab] = useState<'passport' | 'patterns' | 'badges'>('passport')
 
   const patterns = computePatterns(state.errors)
   const topPattern = patterns[0]
@@ -502,8 +503,9 @@ export default function ScrollScreen() {
                 borderBottom: '1px solid rgba(139,115,85,0.2)',
               }}
             >
-              {(['passport', 'patterns'] as const).map((tab) => {
+              {(['passport', 'patterns', 'badges'] as const).map((tab) => {
                 const active = rightTab === tab
+                const label = tab === 'passport' ? 'Passport' : tab === 'patterns' ? 'Patterns' : 'Badges'
                 return (
                   <button
                     key={tab}
@@ -524,7 +526,7 @@ export default function ScrollScreen() {
                       marginBottom: '-1px',
                     }}
                   >
-                    {tab === 'passport' ? 'Passport' : 'Patterns'}
+                    {label}
                   </button>
                 )
               })}
@@ -883,6 +885,31 @@ export default function ScrollScreen() {
                       </div>
                     </>
                   )}
+                </motion.div>
+              )}
+
+              {/* ── BADGES TAB ── */}
+              {rightTab === 'badges' && (
+                <motion.div
+                  key="badges"
+                  initial={{ opacity: 0, y: 8 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  exit={{ opacity: 0, y: -8 }}
+                  transition={{ duration: 0.2 }}
+                >
+                  <div
+                    style={{
+                      fontFamily: 'Cinzel, serif',
+                      fontSize: '10px',
+                      textTransform: 'uppercase',
+                      letterSpacing: '0.22em',
+                      color: '#8a7a68',
+                      marginBottom: '16px',
+                    }}
+                  >
+                    Your Achievements
+                  </div>
+                  <BadgeShowcase />
                 </motion.div>
               )}
 

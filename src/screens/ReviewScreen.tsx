@@ -59,6 +59,7 @@ export default function ReviewScreen() {
     setSessionScores(newScores)
 
     if (currentIndex + 1 >= totalWords) {
+      dispatch({ type: 'INCREMENT_REVIEW_SESSIONS' })
       setDone(true)
     } else {
       // Flip back to front for next card
