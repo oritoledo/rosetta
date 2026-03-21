@@ -16,6 +16,7 @@ import ReviewScreen from './screens/ReviewScreen'
 import DrillScreen from './screens/DrillScreen'
 import BriefScreen from './screens/BriefScreen'
 import PlanScreen from './screens/PlanScreen'
+import LandingScreen from './screens/LandingScreen'
 import { generateWeeklyPlan, serializePlan, deserializePlan } from './utils/planGenerator'
 import type { StoredPlan } from './types/plan'
 
@@ -27,8 +28,9 @@ function BootGuard() {
 
   useEffect(() => {
     const raw = localStorage.getItem('rosetta_user')
-    if (!raw && location.pathname !== '/onboarding') {
-      navigate('/onboarding', { replace: true })
+    const exempt = ['/onboarding', '/landing']
+    if (!raw && !exempt.includes(location.pathname)) {
+      navigate('/landing', { replace: true })
     }
   }, [location.pathname])
 
@@ -162,7 +164,10 @@ export default function App() {
   return (
     <StoreProvider>
       <BrowserRouter>
-        <AppShell />
+        <Routes>
+          <Route path="/landing" element={<LandingScreen />} />
+          <Route path="*" element={<AppShell />} />
+        </Routes>
       </BrowserRouter>
     </StoreProvider>
   )
