@@ -2,6 +2,7 @@ import { useEffect, useRef } from 'react'
 import { BrowserRouter, Routes, Route, useLocation, useNavigate } from 'react-router-dom'
 import { AnimatePresence } from 'framer-motion'
 import { StoreProvider, useStore } from './store/userStore'
+import { SettingsProvider } from './store/settingsStore'
 import Sidebar from './components/Sidebar'
 import AchievementManager from './components/AchievementManager'
 import HomeScreen from './screens/HomeScreen'
@@ -162,13 +163,15 @@ function AppShell() {
 
 export default function App() {
   return (
-    <StoreProvider>
-      <BrowserRouter>
-        <Routes>
-          <Route path="/landing" element={<LandingScreen />} />
-          <Route path="*" element={<AppShell />} />
-        </Routes>
-      </BrowserRouter>
-    </StoreProvider>
+    <SettingsProvider>
+      <StoreProvider>
+        <BrowserRouter>
+          <Routes>
+            <Route path="/landing" element={<LandingScreen />} />
+            <Route path="*" element={<AppShell />} />
+          </Routes>
+        </BrowserRouter>
+      </StoreProvider>
+    </SettingsProvider>
   )
 }

@@ -386,6 +386,7 @@ export default function Sidebar() {
 
       {/* User section */}
       <div
+        onClick={() => navigate('/settings#profile')}
         style={{
           marginTop: 'auto',
           padding: '16px 12px',
@@ -393,7 +394,11 @@ export default function Sidebar() {
           display: 'flex',
           alignItems: 'center',
           gap: '12px',
+          cursor: 'pointer',
+          transition: 'background 150ms ease',
         }}
+        onMouseEnter={(e) => { (e.currentTarget as HTMLDivElement).style.background = 'var(--basalt-mid)' }}
+        onMouseLeave={(e) => { (e.currentTarget as HTMLDivElement).style.background = 'transparent' }}
       >
         <div
           style={{

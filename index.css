@@ -50,6 +50,49 @@ body {
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   overflow: hidden;
+  transition: background-color 300ms ease, color 300ms ease;
+}
+
+/* ── Light theme overrides ──────────────────────────────────────────────── */
+body.theme-light {
+  --basalt:        #f5f2eb;
+  --basalt-mid:    #ede8df;
+  --basalt-raised: #e5dfd4;
+  --basalt-edge:   #d8d0c4;
+  --moon:          #1a1612;
+  --moon-bright:   #0f0d0a;
+  --moon-dim:      #5a5248;
+  --muted:         #8a7a68;
+  --faint:         #d8d0c4;
+  --papyrus:       #f5f2eb;
+  --papyrus-dark:  #e5dfd4;
+  background: linear-gradient(135deg, #f5f2eb 0%, #ede8df 100%);
+}
+
+/* ── Custom CSS var for font size ───────────────────────────────────────── */
+:root {
+  --body-font-size: 14px;
+}
+
+/* ── Range input thumb (cross-browser) ─────────────────────────────────── */
+input[type='range']::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  appearance: none;
+  width: 18px;
+  height: 18px;
+  border-radius: 50%;
+  background: var(--lapis);
+  cursor: pointer;
+  border: none;
+  box-shadow: 0 0 6px rgba(5, 150, 105, 0.4);
+}
+input[type='range']::-moz-range-thumb {
+  width: 18px;
+  height: 18px;
+  border-radius: 50%;
+  background: var(--lapis);
+  cursor: pointer;
+  border: none;
 }
 
 /* Hide scrollbars globally */

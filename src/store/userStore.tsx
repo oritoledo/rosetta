@@ -72,6 +72,14 @@ type Action =
   | { type: 'INCREMENT_REVIEW_SESSIONS' }
   | { type: 'UNLOCK_BADGE'; payload: UnlockedBadge }
   | { type: 'MARK_BADGE_SEEN'; payload: string }            // badgeId
+  // ── Settings-driven user actions ─────────────────────────────────────────
+  | { type: 'UPDATE_USER_NAME'; payload: string }
+  | { type: 'UPDATE_LANGUAGE'; payload: string }
+  | { type: 'UPDATE_LEVEL'; payload: string }
+  // ── Danger zone actions ───────────────────────────────────────────────────
+  | { type: 'RESET_PLAN' }
+  | { type: 'CLEAR_VOCABULARY' }
+  | { type: 'RESET_ALL' }
 
 // ─── Helpers ──────────────────────────────────────────────────────────────────
 
@@ -216,6 +224,41 @@ function reducer(state: AppState, action: Action): AppState {
         unlockedBadges: state.unlockedBadges.map((u) =>
           u.badgeId === action.payload ? { ...u, seen: true } : u,
         ),
+      }
+
+    case 'UPDATE_USER_NAME':
+      if (!state.user) return state
+      return { ...state, user: { ...state.user, name: action.payload } }
+
+    case 'UPDATE_LANGUAGE':
+      if (!state.user) return state
+      return { ...state, user: { ...state.user, language: action.payload } }
+
+    case 'UPDATE_LEVEL':
+      if (!state.user) return state
+      return { ...state, user: { ...state.user, level: action.payload } }
+
+    case 'RESET_PLAN':
+      return {
+        ...state,
+        weeklyPlan: null,
+        planGeneratedAt: null,
+        planSeed: Date.now(),
+      }
+
+    case 'CLEAR_VOCABULARY': {
+      const fresh = seedVocabulary
+      return {
+        ...state,
+        vocabulary: fresh,
+        reviewQueue: computeReviewQueue(fresh),
+      }
+    }
+
+    case 'RESET_ALL':
+      return {
+        ...initialState,
+        hydrated: true,
       }
 
     default:
