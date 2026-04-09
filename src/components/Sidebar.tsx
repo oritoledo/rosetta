@@ -113,7 +113,6 @@ export default function Sidebar() {
       <nav style={{ padding: '16px 12px', display: 'flex', flexDirection: 'column', gap: '4px' }}>
         {navItems.map((item) => {
           const active = item.match(location.pathname)
-          // Badge: amber dot + count on Practice when review words are due
           const showBadge = item.label === 'Practice' && dueCount > 0
 
           return (
@@ -199,6 +198,52 @@ export default function Sidebar() {
             </button>
           )
         })}
+
+        {/* Passport — dynamic path requires separate render */}
+        {(() => {
+          const passportPath = `/passport/${user?.name?.toLowerCase() || 'me'}`
+          const active = location.pathname.startsWith('/passport')
+          return (
+            <button
+              onClick={() => navigate(passportPath)}
+              style={{
+                display: 'flex',
+                alignItems: 'center',
+                gap: '12px',
+                padding: '10px 12px',
+                borderRadius: '12px',
+                cursor: 'pointer',
+                background: active ? 'var(--lapis-deep)' : 'transparent',
+                border: active
+                  ? '1px solid rgba(52,211,153,0.2)'
+                  : '1px solid transparent',
+                boxShadow: active ? '0 0 16px rgba(16,185,129,0.25)' : 'none',
+                width: '100%',
+                textAlign: 'left',
+                transition: 'background 150ms ease, border-color 150ms ease',
+              }}
+              onMouseEnter={(e) => {
+                if (!active) (e.currentTarget as HTMLButtonElement).style.background = 'var(--basalt-mid)'
+              }}
+              onMouseLeave={(e) => {
+                if (!active) (e.currentTarget as HTMLButtonElement).style.background = 'transparent'
+              }}
+            >
+              <span style={{ fontSize: '20px', flexShrink: 0 }}>🪪</span>
+              <span style={{
+                fontFamily: 'Public Sans, sans-serif',
+                fontSize: '12px',
+                fontWeight: 600,
+                letterSpacing: '0.08em',
+                textTransform: 'uppercase',
+                color: active ? 'var(--lapis-bright)' : 'var(--muted)',
+                transition: 'color 150ms ease',
+              }}>
+                Passport
+              </span>
+            </button>
+          )
+        })()}
       </nav>
 
       {/* Review due section */}

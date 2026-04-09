@@ -1,9 +1,8 @@
-import { useEffect, useRef } from 'react'
+import React, { useEffect, useRef, useState } from 'react'
 import { BrowserRouter, Routes, Route, useLocation, useNavigate } from 'react-router-dom'
 import { AnimatePresence } from 'framer-motion'
 import { StoreProvider, useStore } from './store/userStore'
 import { SettingsProvider } from './store/settingsStore'
-import Sidebar from './components/Sidebar'
 import AchievementManager from './components/AchievementManager'
 import HomeScreen from './screens/HomeScreen'
 import SceneIntroScreen from './screens/SceneIntroScreen'
@@ -18,8 +17,39 @@ import DrillScreen from './screens/DrillScreen'
 import BriefScreen from './screens/BriefScreen'
 import PlanScreen from './screens/PlanScreen'
 import LandingScreen from './screens/LandingScreen'
+import PassportScreen from './screens/PassportScreen'
 import { generateWeeklyPlan, serializePlan, deserializePlan } from './utils/planGenerator'
 import type { StoredPlan } from './types/plan'
+
+// ─── Global error boundary ────────────────────────────────────────────────────
+
+class AppErrorBoundary extends React.Component<
+  { children: React.ReactNode },
+  { error: Error | null }
+> {
+  state = { error: null }
+  static getDerivedStateFromError(error: Error) { return { error } }
+  render() {
+    if (this.state.error) {
+      return (
+        <div style={{ padding: 40, fontFamily: 'system-ui', color: '#1A1A1A', background: '#FAF9F6', minHeight: '100vh' }}>
+          <h2 style={{ marginBottom: 12 }}>Something went wrong</h2>
+          <p style={{ color: '#888', marginBottom: 20 }}>Try clearing your data and reloading.</p>
+          <button
+            onClick={() => { localStorage.clear(); window.location.reload() }}
+            style={{ background: '#1A1A1A', color: 'white', border: 'none', padding: '10px 20px', borderRadius: 8, cursor: 'pointer', fontSize: 14 }}
+          >
+            Clear data and reload
+          </button>
+          <pre style={{ marginTop: 24, fontSize: 12, color: '#C8694A', background: '#FDF0EC', padding: 16, borderRadius: 8, overflow: 'auto' }}>
+            {(this.state.error as Error).message}
+          </pre>
+        </div>
+      )
+    }
+    return this.props.children
+  }
+}
 
 // ─── Boot guard: redirect to /onboarding if user not found ───────────────────
 
@@ -107,7 +137,7 @@ function AnimatedRoutes() {
   const location = useLocation()
 
   return (
-    <AnimatePresence mode="wait">
+    <AnimatePresence>
       <Routes location={location} key={location.pathname}>
         <Route path="/onboarding"        element={<OnboardingScreen />}   />
         <Route path="/"                  element={<HomeScreen />}         />
@@ -126,17 +156,36 @@ function AnimatedRoutes() {
   )
 }
 
+// ─── Icon rail nav items ───────────────────────────────────────────────────────
+
+const NAV_ITEMS = [
+  { path: '/',         icon: '🏠', label: 'Home'     },
+  { path: '/plan',     icon: '📅', label: 'Plan'     },
+  { path: '/practice', icon: '✏️', label: 'Practice' },
+  { path: '/review',   icon: '🔄', label: 'Review'   },
+  { path: '/scroll',   icon: '📜', label: 'Scroll'   },
+  { path: '/settings', icon: '⚙️', label: 'Settings' },
+]
+
 // ─── App shell ────────────────────────────────────────────────────────────────
 
 function AppShell() {
   const location = useLocation()
+  const navigate = useNavigate()
+  const { state } = useStore()
+  const [hoveredNav, setHoveredNav] = useState<string | null>(null)
   const isOnboarding = location.pathname === '/onboarding'
+
+  const isActive = (path: string) =>
+    path === '/' ? location.pathname === '/' : location.pathname.startsWith(path)
+
+  const userInitial = state.user?.name?.[0]?.toUpperCase() ?? '?'
 
   return (
     <div
       style={{
         display: 'grid',
-        gridTemplateColumns: isOnboarding ? '1fr' : '240px 1fr',
+        gridTemplateColumns: isOnboarding ? '1fr' : '56px 1fr',
         width: '100vw',
         height: '100dvh',
         overflow: 'hidden',
@@ -145,7 +194,141 @@ function AppShell() {
       <BootGuard />
       <PlanBoot />
       <AchievementManager />
-      {!isOnboarding && <Sidebar />}
+
+      {!isOnboarding && (
+        <nav
+          style={{
+            width: '56px',
+            height: '100dvh',
+            background: 'var(--basalt-mid)',
+            borderRight: '1px solid rgba(226,232,240,0.06)',
+            display: 'flex',
+            flexDirection: 'column',
+            alignItems: 'center',
+            paddingTop: '16px',
+            paddingBottom: '16px',
+            gap: '4px',
+            position: 'relative',
+            zIndex: 10,
+            flexShrink: 0,
+          }}
+        >
+          {/* Logo R */}
+          <div
+            style={{
+              width: '36px',
+              height: '36px',
+              display: 'flex',
+              alignItems: 'center',
+              justifyContent: 'center',
+              marginBottom: '16px',
+              flexShrink: 0,
+            }}
+          >
+            <span
+              style={{
+                fontFamily: 'Cinzel, serif',
+                fontSize: '18px',
+                fontWeight: 700,
+                color: 'var(--lapis-bright)',
+                letterSpacing: '0.05em',
+                userSelect: 'none',
+              }}
+            >
+              R
+            </span>
+          </div>
+
+          {/* Nav items */}
+          {NAV_ITEMS.map((item) => (
+            <div
+              key={item.path}
+              style={{ position: 'relative', flexShrink: 0 }}
+              onMouseEnter={() => setHoveredNav(item.path)}
+              onMouseLeave={() => setHoveredNav(null)}
+            >
+              <button
+                onClick={() => navigate(item.path)}
+                style={{
+                  width: '36px',
+                  height: '36px',
+                  borderRadius: '10px',
+                  border: 'none',
+                  background: isActive(item.path)
+                    ? '#1A1A1A'
+                    : hoveredNav === item.path
+                      ? 'rgba(226,232,240,0.06)'
+                      : 'transparent',
+                  cursor: 'pointer',
+                  display: 'flex',
+                  alignItems: 'center',
+                  justifyContent: 'center',
+                  fontSize: '16px',
+                  transition: 'background 150ms ease',
+                  outline: 'none',
+                }}
+              >
+                {item.icon}
+              </button>
+
+              {/* Tooltip */}
+              {hoveredNav === item.path && (
+                <div
+                  style={{
+                    position: 'absolute',
+                    left: '44px',
+                    top: '50%',
+                    transform: 'translateY(-50%)',
+                    background: '#1A1A1A',
+                    border: '1px solid rgba(226,232,240,0.1)',
+                    borderRadius: '8px',
+                    padding: '5px 10px',
+                    whiteSpace: 'nowrap',
+                    pointerEvents: 'none',
+                    zIndex: 200,
+                    fontFamily: 'Cinzel, serif',
+                    fontSize: '10px',
+                    textTransform: 'uppercase',
+                    letterSpacing: '0.08em',
+                    color: 'var(--moon)',
+                    boxShadow: '0 4px 12px rgba(0,0,0,0.4)',
+                  }}
+                >
+                  {item.label}
+                </div>
+              )}
+            </div>
+          ))}
+
+          {/* Spacer */}
+          <div style={{ flex: 1 }} />
+
+          {/* User avatar */}
+          <div
+            onClick={() => navigate('/settings')}
+            style={{
+              width: '32px',
+              height: '32px',
+              borderRadius: '50%',
+              background: 'var(--lapis-deep)',
+              border: '1px solid rgba(91,143,214,0.3)',
+              display: 'flex',
+              alignItems: 'center',
+              justifyContent: 'center',
+              fontFamily: 'Cinzel, serif',
+              fontSize: '12px',
+              fontWeight: 600,
+              color: 'var(--moon-bright)',
+              cursor: 'pointer',
+              flexShrink: 0,
+              userSelect: 'none',
+            }}
+          >
+            {userInitial}
+          </div>
+        </nav>
+      )}
+
       <main
         style={{
           position: 'relative',
@@ -163,15 +346,18 @@ function AppShell() {
 
 export default function App() {
   return (
-    <SettingsProvider>
-      <StoreProvider>
-        <BrowserRouter>
-          <Routes>
-            <Route path="/landing" element={<LandingScreen />} />
-            <Route path="*" element={<AppShell />} />
-          </Routes>
-        </BrowserRouter>
-      </StoreProvider>
-    </SettingsProvider>
+    <AppErrorBoundary>
+      <SettingsProvider>
+        <StoreProvider>
+          <BrowserRouter>
+            <Routes>
+              <Route path="/landing" element={<LandingScreen />} />
+              <Route path="/passport/:username" element={<PassportScreen />} />
+              <Route path="*" element={<AppShell />} />
+            </Routes>
+          </BrowserRouter>
+        </StoreProvider>
+      </SettingsProvider>
+    </AppErrorBoundary>
   )
 }
